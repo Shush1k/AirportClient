@@ -6,37 +6,20 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import program.Main;
 import program.models.Person;
+import program.models.RegistrationEditModel;
+import program.utils.validation.Validation;
 
 
-public class RegistrationPageController {
-    @FXML
-    private TextField firstNameField;
-    @FXML
-    private TextField lastNameField;
-    @FXML
-    private TextField loginField;
-    @FXML
-    private TextField passwordField;
-    @FXML
-    private TextField passwordRepeatField;
-    @FXML
-    private TextField sexField;
-    @FXML
-    private DatePicker birthdayField;
-    @FXML
-    private TextField seriesField;
-    @FXML
-    private TextField numberField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField phoneField;
+public class RegistrationPageController extends RegistrationEditModel{
 
     private boolean okClicked = false;
     private Stage RegistrationStage;
     private Person person;
     private Main main;
 
+    /**
+     * Инициализация полей
+     */
     @FXML
     public void initialize(){
         /*Пока задокументируем*/
@@ -56,14 +39,26 @@ public class RegistrationPageController {
     }
     public boolean isOkClicked(){return okClicked;}
 
+    /**
+     * @param RegistrationStage - установка сцены регистрации
+     */
     public void setRegistrationStage(Stage RegistrationStage){this.RegistrationStage = RegistrationStage;}
 
+    /**
+     * Закрытие сцены регистрации
+     */
     @FXML
     private void handleCancel(){RegistrationStage.close();}
 
+    /**
+     * Нажатие на кнопку регистрации
+     * POST запрос
+     */
     @FXML
     private void handleRegistration(){
-//        TODO действия после нажатия на кнопку Зарегистрироваться
+        /*TODO: действия после нажатия на кнопку Зарегистрироваться
+           POST request
+         */
         RegistrationStage.close();
     }
 

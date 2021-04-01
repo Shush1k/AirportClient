@@ -1,20 +1,14 @@
 package program.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+
 import javafx.stage.Stage;
 import program.Main;
 import program.models.Person;
-import program.utils.Alerts;
-import program.utils.Validation;
+import program.models.SignInModel;
+import program.utils.alerts.Alerts;
 
-public class AuthorizationController {
-
-    @FXML
-    private TextField loginField;
-    @FXML
-    private PasswordField passwordField;
+public class AuthorizationController extends SignInModel {
 
     private Main main;
     private Stage AuthorizationStage;
@@ -54,7 +48,6 @@ public class AuthorizationController {
 
     private boolean isValidAuthorization() {
         /* Alert type - showNoValidInput */
-        // TODO БД запрос на проверку существующих данных
         String errorMessage = "";
         if (loginField.getText() == null || loginField.getText().length() == 0) {
             errorMessage += "Нет логина!\n";

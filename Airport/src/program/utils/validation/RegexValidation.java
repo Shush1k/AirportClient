@@ -1,8 +1,8 @@
-package program.utils;
+package program.utils.validation;
 
 import java.util.regex.Pattern;
 
-public class Validation {
+public class RegexValidation {
     // Введем stdRegex чтобы нельзя было использовать символы из списка (SQL-иньекции)
     private static final String stdRegex = "^[^%\"';:]*$";
     private static final String emailRegex = "^[a-zA-Z0-9]+@([a-zA-Z]{2,10}[.]){1,3}(com|by|ru|eu|uk)$";
