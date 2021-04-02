@@ -4,6 +4,11 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public abstract class Alerts {
+
+    /**
+     * Ошибка входа
+     * @param stage - текущее окно
+     */
     public static void showNoValidSignIn(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);

@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="program.controllers.AboutPageController">
     <Label layoutX="75.0" layoutY="103.0" text="Баранов Александр, ПИ19-3" />
-    <TextArea editable="false" layoutX="385.0" layoutY="160.0" prefHeight="164.0" prefWidth="295.0" text="Приложение может выводить информацию &#10;о рейсах, есть табло прилетов и вылетов,&#10;доступна информация об авиакомпаниях.&#10;Чтобы использовать функционал, необходимо&#10;зарегистрироваться и войти в личный кабинет.&#10;" AnchorPane.rightAnchor="5.0" />
+    <TextArea editable="false" layoutX="385.0" layoutY="160.0" prefHeight="164.0" prefWidth="295.0" text="Приложение может выводить информацию &#10;о рейсах, есть табло прилетов и вылетов,&#10;доступна информация об авиакомпаниях.&#10;Чтобы использовать функционал, необходимо&#10;зарегистрироваться и авторизоваться.&#10;" AnchorPane.rightAnchor="5.0" />
    <Label layoutX="300.0" layoutY="38.0" text="Справка" />
    <Label layoutX="470.0" layoutY="111.0" text="О программе" />
    <Label layoutX="123.0" layoutY="55.0" text="Автор" />

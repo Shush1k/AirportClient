@@ -62,6 +62,15 @@ public class Validation {
         }
     }
 
+    public static boolean isValidAuthorizationRegex(SignInModel model, Stage stage) {
+        if (RegexValidation.checkStandard(model.loginField.getText()) && RegexValidation.checkPassword(model.passwordField.getText()))
+            return true;
+        else {
+            Alerts.showNoValidSignIn(stage);
+            return false;
+        }
+    }
+
     /**
      * Проверка максимальной длины полей
      *
