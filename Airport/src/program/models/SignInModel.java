@@ -5,8 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import program.Main;
 
 public abstract class SignInModel {
+    protected Main main;
+    protected Stage AuthorizationStage;
+
     @FXML
     public TextField loginField;
 
@@ -14,15 +18,17 @@ public abstract class SignInModel {
     public PasswordField passwordField;
 
 
-    protected Stage dialStage;
-
-
     @FXML
     private void handleCancel() {
-        dialStage.close();
+        AuthorizationStage.close();
     }
 
-    public void setDialStage(Stage dialStage) {
-        this.dialStage = dialStage;
+
+    public void setAuthorizationStage(Stage authorizationStage) {
+        AuthorizationStage = authorizationStage;
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
     }
 }

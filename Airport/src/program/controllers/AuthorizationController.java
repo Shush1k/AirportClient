@@ -1,18 +1,12 @@
 package program.controllers;
 
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
-import program.Main;
 import program.models.Person;
 import program.models.SignInModel;
 import program.utils.validation.Validation;
 
 public class AuthorizationController extends SignInModel {
-
-    private Main main;
-    private Stage AuthorizationStage;
     private Person person;
-
 
     @FXML
     private void initialize() {
@@ -25,9 +19,6 @@ public class AuthorizationController extends SignInModel {
         return person;
     }
 
-    public void setAuthorizationStage(Stage authorizationStage) {
-        AuthorizationStage = authorizationStage;
-    }
 
     /**
      * Нажатие на кнопку Войти
@@ -50,11 +41,5 @@ public class AuthorizationController extends SignInModel {
     private void handlerRegistrationBtn() {
         main.showRegistrationPage();
     }
-
-
-    public void setMain(Main main) {
-        this.main = main;
-    }
-
 
 }
