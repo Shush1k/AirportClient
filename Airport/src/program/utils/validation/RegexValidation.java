@@ -3,9 +3,8 @@ package program.utils.validation;
 import java.util.regex.Pattern;
 
 public class RegexValidation {
-    // Введем stdRegex чтобы нельзя было использовать символы из списка (SQL-иньекции)
     private static final String stdRegex = "^[^%\"';:]*$";
-    private static final String emailRegex = "^[a-zA-Z0-9]+@([a-zA-Z]{2,10}[.]){1,3}(com|by|ru|eu|uk)$";
+    private static final String emailRegex = "^[a-zA-Z0-9.]+@([a-zA-Z]{2,10}[.]){1,3}(com|by|ru|eu|uk)$";
     private static final String passwordRegex = "^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,})$";
     private static final String phoneNumberRegex = "^[(+7)8]+([0-9]{10})$";
 

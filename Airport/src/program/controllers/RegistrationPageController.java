@@ -23,18 +23,19 @@ public class RegistrationPageController extends RegistrationEditModel{
 
     /**
      * Нажатие на кнопку регистрации
-     * POST запрос
+     * отправка данных POST запросом на сервер
      */
     @FXML
     private void handleRegistration(){
-        /*TODO: действия после нажатия на кнопку Зарегистрироваться
-           POST request
-         */
-        if (Validation.RegistrationDataValidation(this, RegistrationStage)) {
-            /*TODO: проверка через Regex*/
-            RegistrationStage.close();
-        }
 
+        if (Validation.RegistrationDataValidation(this, RegistrationStage)) {
+            if(Validation.isValidLength(this, RegistrationStage)){
+                if (Validation.isValidRegistrationRegex(this, RegistrationStage)){
+                    /*TODO: здесь должен быть POST request с отправкой полей регистрации*/
+                    RegistrationStage.close();
+                }
+            }
+        }
     }
 
 

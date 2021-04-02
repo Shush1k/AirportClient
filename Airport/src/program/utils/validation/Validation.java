@@ -8,10 +8,34 @@ import program.utils.alerts.Alerts;
 public class Validation {
 
     /**
+     * Проверка полей на корректность через регулярные выражения
+     *
+     * @param model - модель Регистрации
+     * @param stage - текущее окно
+     * @return boolean true если нет ошибок
+     */
+    public static boolean isValidRegistrationRegex(RegistrationEditModel model, Stage stage) {
+        if (!RegexValidation.checkStandard(model.firstNameField.getText()))
+            Alerts.showNoValidStdRegex(stage, "Имя");
+        else if (!RegexValidation.checkStandard(model.lastNameField.getText()))
+            Alerts.showNoValidStdRegex(stage, "Фамилия");
+        else if (!RegexValidation.checkStandard(model.loginField.getText()))
+            Alerts.showNoValidStdRegex(stage, "Логин");
+        else if (!RegexValidation.checkEmail(model.emailField.getText()))
+            Alerts.showNoValidEmail(stage);
+        else if (!RegexValidation.checkPassword(model.passwordField.getText()))
+            Alerts.showNoValidPasswordFormat(stage);
+        else
+            return true;
+        return false;
+    }
+
+    /**
      * Проверка полей регистрации на корректность
-     * @param model - регистрационная модель
-     * @param stage
-     * @return
+     *
+     * @param model - модель Регистрации
+     * @param stage - текущее окно
+     * @return boolean true если нет ошибок
      */
     public static boolean RegistrationDataValidation(RegistrationEditModel model, Stage stage) {
         String errorMessage = "";
@@ -39,10 +63,11 @@ public class Validation {
     }
 
     /**
+     * Проверка максимальной длины полей
      *
      * @param model - модель Регистрации
-     * @param stage
-     * @return
+     * @param stage - текущее окно
+     * @return boolean true если нет ошибок
      */
     public static boolean isValidLength(RegistrationEditModel model, Stage stage) {
         if (!Validation.checkLength(model.firstNameField.getText(), 50))
@@ -54,9 +79,9 @@ public class Validation {
         else if (!Validation.checkLength(model.emailField.getText(), 50))
             Alerts.showNoValidLength(stage, "Email", 50);
         else if (!Validation.checkLength(model.passwordField.getText(), 50))
-            Alerts.showNoValidLength(stage, "Email", 50);
+            Alerts.showNoValidLength(stage, "Пароль", 50);
         else if (!Validation.checkLength(model.passwordRepeatField.getText(), 50))
-            Alerts.showNoValidLength(stage, "Email", 50);
+            Alerts.showNoValidLength(stage, "Повторный пароль", 50);
         else
             return true;
         return false;
@@ -64,9 +89,10 @@ public class Validation {
 
     /**
      * Проверка ввода логина и пароля
+     *
      * @param model - модель Авторизации
-     * @param stage
-     * @return
+     * @param stage - текущее окно
+     * @return boolean true если нет ошибок
      */
     public static boolean isValidAuthorization(SignInModel model, Stage stage) {
         String errorMessage = "";
@@ -86,9 +112,12 @@ public class Validation {
 
     /**
      * Проверка длины сообщения
+     *
      * @param text - сообщение
-     * @param len - длина поля в БД
-     * @return
+     * @param len  - длина поля в БД
+     * @return boolean - true если длина сообщения меньше возможной
      */
-    public static boolean checkLength(String text, int len) { return text.length() <= len; }
+    public static boolean checkLength(String text, int len) {
+        return text.length() <= len;
+    }
 }
