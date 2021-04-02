@@ -12,6 +12,16 @@ public abstract class Alerts {
         alert.setContentText("Введите корректные данные или зарегистрируйтесь!");
         alert.showAndWait();
     }
+
+    public static void showNoValidLength(Stage stage, String name, int symbols) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Превышение длины строки");
+        alert.setHeaderText("Длина поля " + name + " больше " + symbols + " символов!");
+        alert.setContentText("Измените значение текстового поля");
+        alert.showAndWait();
+    }
+
     public static void showNoValidInput(Stage stage, String errorMessage) {
         /* Если пользователь вводит то, чего не должен*/
         Alert alert = new Alert(Alert.AlertType.ERROR);

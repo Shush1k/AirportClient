@@ -5,8 +5,12 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import program.Main;
 
 public abstract class RegistrationEditModel {
+    protected Stage RegistrationStage;
+    private Main main;
+
     @FXML
     public TextField firstNameField;
 
@@ -23,12 +27,21 @@ public abstract class RegistrationEditModel {
     public PasswordField passwordField;
 
     @FXML
-    public PasswordField repeatPasswordField;
+    public PasswordField passwordRepeatField;
 
-    protected Stage stage;
 
+    /**
+     * Закрытие сцены регистрации
+     */
     @FXML
-    private void handleCancel() { stage.close(); }
+    private void handleCancel(){RegistrationStage.close();}
 
-    public void setDialStage(Stage stage) { this.stage = stage; }
+    /**
+     * @param RegistrationStage - установка сцены регистрации
+     */
+    public void setRegistrationStage(Stage RegistrationStage){this.RegistrationStage = RegistrationStage;}
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
 }
