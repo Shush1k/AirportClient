@@ -76,14 +76,13 @@ public class Main extends Application {
             mainLayout = (BorderPane) loader.load();
 
             Scene scene = new Scene(mainLayout);
-            Stage mainStage = new Stage();
-            mainStage.setScene(scene);
-            mainStage.setResizable(false);
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
 
             MainLayoutController mainLayoutController = loader.getController();
             mainLayoutController.setMain(this);
             mainLayoutController.openArrivalBoard();
-            mainStage.show();
+            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
