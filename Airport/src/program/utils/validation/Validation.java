@@ -62,6 +62,38 @@ public class Validation {
         }
     }
 
+    /**
+     * Проверка полей изменения информации пользователя на корректность
+     * @param model - модель Регистрации
+     * @param stage - текущее окно
+     * @return
+     */
+    public static boolean EditPersonDataValidation(RegistrationEditModel model, Stage stage) {
+        String errorMessage = "";
+        if (model.firstNameField.getText() == null || model.firstNameField.getText().length() == 0)
+            errorMessage += "Нет имени!\n";
+        if (model.lastNameField.getText() == null || model.lastNameField.getText().length() == 0)
+            errorMessage += "Нет фамилии!\n";
+        if (model.loginField.getText() == null || model.loginField.getText().length() == 0)
+            errorMessage += "Нет логина!\n";
+        if (model.emailField.getText() == null || model.emailField.getText().length() == 0)
+            errorMessage += "Нет почты!\n";
+        if (model.passwordField.getText() == null || model.passwordField.getText().length() == 0)
+            errorMessage += "Нет пароля!\n";
+        if (errorMessage.length() == 0) return true;
+        else {
+            Alerts.showNoValidInput(stage, errorMessage.substring(0, errorMessage.length() - 1));
+            return false;
+        }
+    }
+
+    /**
+     * Проверка полей авторизации
+     *
+     * @param model - модель Регистрации
+     * @param stage - текущее окно
+     * @return
+     */
     public static boolean isValidAuthorizationRegex(SignInModel model, Stage stage) {
         if (RegexValidation.checkStandard(model.loginField.getText()) && RegexValidation.checkPassword(model.passwordField.getText()))
             return true;
@@ -96,6 +128,28 @@ public class Validation {
         return false;
     }
 
+    /**
+     * Проверка длины полей
+     *
+     * @param model - модель Регистрации
+     * @param stage - текущее окно
+     * @return
+     */
+    public static boolean isValidLength2(RegistrationEditModel model, Stage stage) {
+        if (!Validation.checkLength(model.firstNameField.getText(), 50))
+            Alerts.showNoValidLength(stage, "Имя", 50);
+        else if (!Validation.checkLength(model.lastNameField.getText(), 50))
+            Alerts.showNoValidLength(stage, "Фамилия", 50);
+        else if (!Validation.checkLength(model.loginField.getText(), 50))
+            Alerts.showNoValidLength(stage, "Логин", 50);
+        else if (!Validation.checkLength(model.emailField.getText(), 50))
+            Alerts.showNoValidLength(stage, "Email", 50);
+        else if (!Validation.checkLength(model.passwordField.getText(), 50))
+            Alerts.showNoValidLength(stage, "Пароль", 50);
+        else
+            return true;
+        return false;
+    }
     /**
      * Проверка ввода логина и пароля
      *

@@ -1,9 +1,10 @@
 package program.controllers;
 
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 import program.models.Person;
 import program.models.RegistrationEditModel;
+import program.utils.alerts.Alerts;
+import program.utils.validation.Validation;
 
 public class EditPersonController extends RegistrationEditModel {
 
@@ -30,11 +31,29 @@ public class EditPersonController extends RegistrationEditModel {
     //  TODO действие обновление информации о персоне
     @FXML
     private void handleUpdate() {
+        if (Validation.EditPersonDataValidation(this, RegistrationStage)) {
+            if(Validation.isValidLength2(this, RegistrationStage)){
+                if (Validation.isValidRegistrationRegex(this, RegistrationStage)){
+                    /*TODO: здесь должен быть PUT request с отправкой полей:
+                    *  ID
+                    *  first_name
+                    *  last_name
+                    *  login
+                    *  email
+                    */
+                    Alerts.showSuccessEditPerson(RegistrationStage);
+
+                }
+            }
+        }
     }
 
-    //  TODO действие удаления аккаунта
     @FXML
     private void handleDeleteAcc() {
+        delete = Alerts.showDeleteAccount(RegistrationStage);
+        if (delete){
+            /*TODO Получаем boolean тип, а далее DELETE request*/
+        }
     }
 
 }

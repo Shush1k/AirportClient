@@ -1,12 +1,28 @@
 package program.utils.alerts;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 public abstract class Alerts {
 
     /**
+     * Информация об изменении данных пользователя
+     *
+     * @param stage - текущее окно
+     */
+    public static void showSuccessEditPerson(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initOwner(stage);
+        alert.setTitle("Данные изменены");
+        alert.setHeaderText("Ваши пользовательские данные успешно изменены");
+        alert.showAndWait();
+    }
+
+    /**
      * Ошибка входа
+     *
      * @param stage - текущее окно
      */
     public static void showNoValidSignIn(Stage stage) {
@@ -68,8 +84,13 @@ public abstract class Alerts {
         alert.showAndWait();
     }
 
+    /**
+     * Неверная информормация введена в поля
+     *
+     * @param stage        - текущее окно
+     * @param errorMessage - сообщение об ошибке
+     */
     public static void showNoValidInput(Stage stage, String errorMessage) {
-        /* Если пользователь вводит то, чего не должен*/
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
         alert.setTitle("Ошибка ввода");
@@ -92,14 +113,14 @@ public abstract class Alerts {
         alert.showAndWait();
     }
 
-    public static void shoNoValidPhoneNumber(Stage stage) {
-        /* Если пользователь вводит некорректный номер телефона*/
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    public static boolean showDeleteAccount(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initOwner(stage);
-        alert.setTitle("Формат номера телефона");
-        alert.setHeaderText("Введите номер телефона в указанном формате");
-        alert.setContentText("Формат ввода: +7{номер телефона} или 8{номер телефона}");
-        alert.showAndWait();
+        alert.setTitle("Удаление профиля");
+        alert.setHeaderText("Вы уверены, что хотите удалить свой профиль?");
+        for (ButtonType type: alert.getButtonTypes())
+            ((Button) alert.getDialogPane().lookupButton(type)).setDefaultButton(type == ButtonType.CANCEL);
+        return alert.showAndWait().get() == ButtonType.OK;
     }
 
 }
