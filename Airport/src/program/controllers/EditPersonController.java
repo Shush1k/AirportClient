@@ -34,13 +34,7 @@ public class EditPersonController extends RegistrationEditModel {
         if (Validation.EditPersonDataValidation(this, RegistrationStage)) {
             if(Validation.isValidLength2(this, RegistrationStage)){
                 if (Validation.isValidRegistrationRegex(this, RegistrationStage)){
-                    /*TODO: здесь должен быть PUT request с отправкой полей:
-                    *  ID
-                    *  first_name
-                    *  last_name
-                    *  login
-                    *  email
-                    */
+                    /*TODO: здесь должен быть PUT request с отправкой сущности*/
                     Alerts.showSuccessEditPerson(RegistrationStage);
 
                 }

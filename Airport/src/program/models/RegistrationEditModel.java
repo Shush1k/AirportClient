@@ -1,6 +1,7 @@
 package program.models;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,6 +22,12 @@ public abstract class RegistrationEditModel {
 
     @FXML
     public TextField emailField;
+
+    @FXML
+    public TextField phoneField;
+
+    @FXML
+    public DatePicker birthdayPicker;
 
     @FXML
     public PasswordField passwordField;

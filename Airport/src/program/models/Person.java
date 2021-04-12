@@ -1,9 +1,8 @@
 package program.models;
 
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+
+import java.time.LocalDate;
 
 public class Person {
     private final LongProperty id;
@@ -11,13 +10,29 @@ public class Person {
     private final StringProperty lastName;
     private final StringProperty login;
     private final StringProperty email;
+    private final StringProperty phoneNumber;
+    private final ObjectProperty<LocalDate> birthday;
     private final StringProperty password;
     private final StringProperty repeatPassword;
 
+    /**
+     * Констуктор Персоны
+     *
+     * @param firstName
+     * @param lastName
+     * @param login
+     * @param email
+     * @param phoneNumber
+     * @param birthday
+     * @param password
+     * @param repeatPassword
+     */
     public Person(String firstName,
                   String lastName,
                   String login,
                   String email,
+                  String phoneNumber,
+                  LocalDate birthday,
                   String password,
                   String repeatPassword) {
         this.id = new SimpleLongProperty();
@@ -25,13 +40,106 @@ public class Person {
         this.lastName = new SimpleStringProperty(lastName);
         this.login = new SimpleStringProperty(login);
         this.email = new SimpleStringProperty(email);
+        this.phoneNumber = new SimpleStringProperty(phoneNumber);
+        this.birthday = new SimpleObjectProperty<>(birthday);
         this.password = new SimpleStringProperty(password);
         this.repeatPassword = new SimpleStringProperty(repeatPassword);
     }
 
+    /**
+     * Конструктор без phoneNumber, birthday
+     *
+     * @param firstName
+     * @param lastName
+     * @param login
+     * @param email
+     * @param password
+     * @param repeatPassword
+     */
+    public Person(String firstName,
+                  String lastName,
+                  String login,
+                  String email,
+                  String password,
+                  String repeatPassword) {
+        this(
+                firstName,
+                lastName,
+                login,
+                email,
+                null,
+                null,
+                password,
+                repeatPassword
+        );
+    }
 
+    /**
+     * Конструктор без birthday
+     *
+     * @param firstName
+     * @param lastName
+     * @param login
+     * @param email
+     * @param phoneNumber
+     * @param password
+     * @param repeatPassword
+     */
+    public Person(String firstName,
+                  String lastName,
+                  String login,
+                  String email,
+                  String phoneNumber,
+                  String password,
+                  String repeatPassword) {
+        this(
+                firstName,
+                lastName,
+                login,
+                email,
+                phoneNumber,
+                null,
+                password,
+                repeatPassword
+        );
+    }
+
+    /**
+     * Конструктор без phoneNumber
+     *
+     * @param firstName
+     * @param lastName
+     * @param login
+     * @param email
+     * @param birthday
+     * @param password
+     * @param repeatPassword
+     */
+    public Person(String firstName,
+                  String lastName,
+                  String login,
+                  String email,
+                  LocalDate birthday,
+                  String password,
+                  String repeatPassword) {
+        this(
+                firstName,
+                lastName,
+                login,
+                email,
+                null,
+                birthday,
+                password,
+                repeatPassword
+        );
+    }
+
+
+    /**
+     * Пустой конструктор
+     */
     public Person() {
-        this(null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null);
     }
 
     public long getId() {
@@ -121,13 +229,15 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id.get() +
-                ", firstName=" + firstName.get() +
-                ", lastName=" + lastName.get() +
-                ", login=" + login.get() +
-                ", email=" + email.get() +
-                ", password=" + password.get() +
-                ", repeatPassword=" + repeatPassword.get() +
+                "id=" + id +
+                ", firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", login=" + login +
+                ", email=" + email +
+                ", phoneNumber=" + phoneNumber +
+                ", birthday=" + birthday +
+                ", password=" + password +
+                ", repeatPassword=" + repeatPassword +
                 '}';
     }
 }
