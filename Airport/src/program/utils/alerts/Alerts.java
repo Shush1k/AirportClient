@@ -21,6 +21,19 @@ public abstract class Alerts {
     }
 
     /**
+     * Информация об успешной регистрации пользователя в системе
+     * @param stage - текущее окно
+     */
+    public static void showSuccessRegistration(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initOwner(stage);
+        alert.setTitle("Успешная регистрация");
+        alert.setHeaderText("Ваши пользовательские данные успешно добавлены");
+        alert.setContentText("Теперь авторизуйтесь на главной странице!");
+        alert.showAndWait();
+    }
+
+    /**
      * Ошибка входа
      *
      * @param stage - текущее окно

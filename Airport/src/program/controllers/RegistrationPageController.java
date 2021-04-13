@@ -2,6 +2,7 @@ package program.controllers;
 
 import javafx.fxml.FXML;
 import program.models.RegistrationEditModel;
+import program.utils.alerts.Alerts;
 import program.utils.validation.Validation;
 
 
@@ -32,6 +33,7 @@ public class RegistrationPageController extends RegistrationEditModel{
             if(Validation.isValidLength(this, RegistrationStage)){
                 if (Validation.isValidRegistrationRegex(this, RegistrationStage)){
                     /*TODO: здесь должен быть POST request с отправкой полей регистрации*/
+                    Alerts.showSuccessRegistration(RegistrationStage);
                     RegistrationStage.close();
                 }
             }
