@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import program.controllers.*;
 import program.models.Person;
+import program.utils.api.Api;
 
 import java.io.IOException;
 
@@ -19,9 +20,15 @@ public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private BorderPane mainLayout;
+    private final Api api;
     private final ObservableList<Person> personData = FXCollections.observableArrayList();
 
+    public Api getApi() {
+        return api;
+    }
+
     public Main() {
+        api = new Api();
     }
 
     public static void main(String[] args) {

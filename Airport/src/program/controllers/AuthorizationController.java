@@ -3,6 +3,7 @@ package program.controllers;
 import javafx.fxml.FXML;
 import program.models.Person;
 import program.models.SignInModel;
+import program.utils.alerts.Alerts;
 import program.utils.validation.Validation;
 
 public class AuthorizationController extends SignInModel {
@@ -29,7 +30,14 @@ public class AuthorizationController extends SignInModel {
 //        if (Validation.isValidAuthorization(this, AuthorizationStage)) {
 //            if (Validation.isValidAuthorizationRegex(this, AuthorizationStage)) {
                 /*TODO: POST запрос на авторизацию*/
-                main.MainLayout();
+                boolean authResult = main.getApi().checkUserExists(loginField.getText(), passwordField.getText());
+                if (authResult){
+                    main.MainLayout();
+                }
+                else {
+                    Alerts.showNoValidSignIn(AuthorizationStage);
+                }
+
 //            }
 //        }
     }
