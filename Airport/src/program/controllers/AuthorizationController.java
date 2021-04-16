@@ -26,12 +26,12 @@ public class AuthorizationController extends SignInModel {
      */
     @FXML
     private void handlerSignInBtn() {
-        if (Validation.isValidAuthorization(this, AuthorizationStage)) {
-            if (Validation.isValidAuthorizationRegex(this, AuthorizationStage)) {
+//        if (Validation.isValidAuthorization(this, AuthorizationStage)) {
+//            if (Validation.isValidAuthorizationRegex(this, AuthorizationStage)) {
                 /*TODO: POST запрос на авторизацию*/
                 main.MainLayout();
-            }
-        }
+//            }
+//        }
     }
 
     /**

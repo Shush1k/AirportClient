@@ -19,9 +19,13 @@ public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private BorderPane mainLayout;
-    private ObservableList<Person> personData = FXCollections.observableArrayList();
+    private final ObservableList<Person> personData = FXCollections.observableArrayList();
 
     public Main() {
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 
     public ObservableList<Person> getPersonData() {
@@ -30,10 +34,9 @@ public class Main extends Application {
 
     /**
      * @param primaryStage установка сцены
-     * @throws Exception
      */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Airport");
 
@@ -51,7 +54,7 @@ public class Main extends Application {
             /*Панель меню, вкладка помощь*/
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/rootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = loader.load();
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -73,7 +76,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/mainLayout.fxml"));
-            mainLayout = (BorderPane) loader.load();
+            mainLayout = loader.load();
 
             Scene scene = new Scene(mainLayout);
             primaryStage.setScene(scene);
@@ -96,7 +99,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/authorization.fxml"));
-            AnchorPane authorizationPage = (AnchorPane) loader.load();
+            AnchorPane authorizationPage = loader.load();
 
             rootLayout.setCenter(authorizationPage);
 
@@ -114,7 +117,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/registration.fxml"));
-            AnchorPane registrationPage = (AnchorPane) loader.load();
+            AnchorPane registrationPage = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Регистрация");
             stage.initModality(Modality.WINDOW_MODAL);
@@ -186,7 +189,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/arrivalBoard.fxml"));
-            BorderPane arrivalBoardPage = (BorderPane) loader.load();
+            BorderPane arrivalBoardPage = loader.load();
 
             mainLayout.setCenter(arrivalBoardPage);
 
@@ -205,7 +208,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/departureBoard.fxml"));
-            BorderPane departureBoardPage = (BorderPane) loader.load();
+            BorderPane departureBoardPage = loader.load();
 
             mainLayout.setCenter(departureBoardPage);
 
@@ -224,7 +227,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/airlineInfo.fxml"));
-            BorderPane airlineInfoPage = (BorderPane) loader.load();
+            BorderPane airlineInfoPage = loader.load();
 
             mainLayout.setCenter(airlineInfoPage);
 
@@ -233,9 +236,5 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

@@ -52,12 +52,11 @@
                     <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="221.0" styleClass="table-view">
                             <children>
-                                <TableView fx:id="personTable" prefHeight="298.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <TableView fx:id="departureTableView" prefHeight="298.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <columns>
                                         <TableColumn fx:id="flightNumber" prefWidth="102.0" text="Номер рейса" />
-                                        <TableColumn fx:id="arrival_date" prefWidth="92.02156066894531" text="Дата вылета" />
-                                        <TableColumn fx:id="arrival_time" prefWidth="225.97842407226562" text="Время вылета" />
-                                        <TableColumn fx:id="city_to" prefWidth="53.0" text="Аэропорт назначения" />
+                                        <TableColumn fx:id="departureDate" prefWidth="92.02156066894531" text="Дата и время вылета" />
+                                        <TableColumn fx:id="cityTo" prefWidth="53.0" text="Аэропорт назначения" />
                                         <TableColumn fx:id="status" prefWidth="53.0" text="Статус" />
                                     </columns>
                                     <columnResizePolicy>
