@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
+/**
+ * Класс, содержащий в себе все уведомления
+ */
 public abstract class Alerts {
 
     /**
@@ -22,6 +25,7 @@ public abstract class Alerts {
 
     /**
      * Информация об успешной регистрации пользователя в системе
+     *
      * @param stage - текущее окно
      */
     public static void showSuccessRegistration(Stage stage) {
@@ -32,6 +36,12 @@ public abstract class Alerts {
         alert.setContentText("Теперь авторизуйтесь на главной странице!");
         alert.showAndWait();
     }
+
+    /**
+     * Отказ регистрации нового пользователя в системе
+     *
+     * @param stage - текущее окно
+     */
     public static void showFailedRegistration(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -134,12 +144,18 @@ public abstract class Alerts {
         alert.showAndWait();
     }
 
+    /**
+     * Подтверждение от пользователя об удалении аккаунта
+     *
+     * @param stage - текущее окно
+     * @return true - если пользователь выбрал кнопку OK
+     */
     public static boolean showDeleteAccount(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initOwner(stage);
         alert.setTitle("Удаление профиля");
         alert.setHeaderText("Вы уверены, что хотите удалить свой профиль?");
-        for (ButtonType type: alert.getButtonTypes())
+        for (ButtonType type : alert.getButtonTypes())
             ((Button) alert.getDialogPane().lookupButton(type)).setDefaultButton(type == ButtonType.CANCEL);
         return alert.showAndWait().get() == ButtonType.OK;
     }
