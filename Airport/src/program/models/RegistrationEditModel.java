@@ -9,7 +9,7 @@ import program.Main;
 
 public abstract class RegistrationEditModel {
     protected Stage RegistrationStage;
-    private Main main;
+    protected Main main;
 
     @FXML
     public TextField firstNameField;

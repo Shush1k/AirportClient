@@ -32,6 +32,14 @@ public abstract class Alerts {
         alert.setContentText("Теперь авторизуйтесь на главной странице!");
         alert.showAndWait();
     }
+    public static void showFailedRegistration(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("В регистрация отказано");
+        alert.setHeaderText("Пользователь с таким login/email уже существует");
+        alert.setContentText("Введите другие данные!");
+        alert.showAndWait();
+    }
 
     /**
      * Ошибка входа

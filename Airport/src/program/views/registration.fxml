@@ -37,13 +37,13 @@
                 <Label fx:id="passwordRepeatLabel" text="Повторный пароль *" GridPane.rowIndex="2" />
                 <Label fx:id="FirstNameLabel" text="Имя *" GridPane.rowIndex="3" />
                 <Label fx:id="LastNameLabel" text="Фамилия *" GridPane.rowIndex="4" />
-                <Label fx:id="EmailLabel" text="Email" GridPane.rowIndex="5" />
-                <TextField fx:id="loginField" GridPane.columnIndex="1" />
-            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <PasswordField fx:id="passwordRepeatField" layoutX="152.0" layoutY="56.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Label fx:id="EmailLabel" text="Email *" GridPane.rowIndex="5" />
+                <TextField fx:id="loginField" promptText="Login" GridPane.columnIndex="1" />
+            <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="passwordRepeatField" promptText="Введите пароль повторно" layoutX="152.0" layoutY="56.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="firstNameField" promptText="Иван" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="lastNameField" promptText="Иванов" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <TextField fx:id="emailField" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             </children>
         </GridPane>
         <HBox layoutX="107.0" layoutY="538.0" prefHeight="31.0" prefWidth="263.0" spacing="30.0" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="30.0">
