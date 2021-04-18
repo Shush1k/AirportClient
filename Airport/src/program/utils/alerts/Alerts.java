@@ -6,7 +6,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 /**
- * Класс, содержащий в себе все уведомления
+ * Класс Alerts, содержащий в себе все уведомления
  */
 public abstract class Alerts {
 

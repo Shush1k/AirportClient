@@ -5,6 +5,9 @@ import program.models.RegistrationEditModel;
 import program.models.SignInModel;
 import program.utils.alerts.Alerts;
 
+/**
+ * Класс Validation содержит проверки пользовательского ввода
+ */
 public class Validation {
 
     /**
@@ -64,6 +67,7 @@ public class Validation {
 
     /**
      * Проверка полей изменения информации пользователя на корректность
+     *
      * @param model - модель Регистрации
      * @param stage - текущее окно
      * @return
@@ -92,7 +96,7 @@ public class Validation {
      *
      * @param model - модель Регистрации
      * @param stage - текущее окно
-     * @return
+     * @return true - если нет ошибок
      */
     public static boolean isValidAuthorizationRegex(SignInModel model, Stage stage) {
         if (RegexValidation.checkStandard(model.loginField.getText()) && RegexValidation.checkPassword(model.passwordField.getText()))
@@ -108,7 +112,7 @@ public class Validation {
      *
      * @param model - модель Регистрации
      * @param stage - текущее окно
-     * @return boolean true если нет ошибок
+     * @return true - если нет ошибок
      */
     public static boolean isValidLength(RegistrationEditModel model, Stage stage) {
         if (!Validation.checkLength(model.firstNameField.getText(), 50))
@@ -133,7 +137,7 @@ public class Validation {
      *
      * @param model - модель Регистрации
      * @param stage - текущее окно
-     * @return
+     * @return true - если нет ошибок
      */
     public static boolean isValidLength2(RegistrationEditModel model, Stage stage) {
         if (!Validation.checkLength(model.firstNameField.getText(), 50))
@@ -150,12 +154,13 @@ public class Validation {
             return true;
         return false;
     }
+
     /**
      * Проверка ввода логина и пароля
      *
      * @param model - модель Авторизации
      * @param stage - текущее окно
-     * @return boolean true если нет ошибок
+     * @return true - если нет ошибок
      */
     public static boolean isValidAuthorization(SignInModel model, Stage stage) {
         String errorMessage = "";
@@ -178,7 +183,7 @@ public class Validation {
      *
      * @param text - сообщение
      * @param len  - длина поля в БД
-     * @return boolean - true если длина сообщения меньше возможной
+     * @return true - если длина сообщения меньше возможной
      */
     public static boolean checkLength(String text, int len) {
         return text.length() <= len;

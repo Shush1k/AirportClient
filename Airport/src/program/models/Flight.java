@@ -4,6 +4,9 @@ import javafx.beans.property.*;
 
 import java.time.LocalDate;
 
+/**
+ * Класс Flight - рейсы
+ */
 public class Flight {
     private final LongProperty id;
     private final StringProperty flightNumber;

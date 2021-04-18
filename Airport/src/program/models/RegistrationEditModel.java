@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import program.Main;
 
+/**
+ * Абстрактный класс RegistrationEditModel - модель регистрации
+ */
 public abstract class RegistrationEditModel {
     protected Stage RegistrationStage;
     protected Main main;

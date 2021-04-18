@@ -16,6 +16,9 @@ import program.utils.api.Api;
 
 import java.io.IOException;
 
+/**
+ * Класс Main запускает приложение Airport
+ */
 public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
@@ -27,6 +30,9 @@ public class Main extends Application {
         return api;
     }
 
+    /**
+     * Пустой конструктор с экземпляром класса api
+     */
     public Main() {
         api = new Api();
     }
@@ -40,12 +46,14 @@ public class Main extends Application {
     }
 
     /**
+     * Метод, которые устанавливает первое окно приложения
+     *
      * @param primaryStage установка сцены
      */
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Airport");
+        this.primaryStage.setTitle("Airport App");
 
         initRootLayout();
         showAuthorizationPage();
@@ -53,12 +61,11 @@ public class Main extends Application {
 
     /**
      * Загрузка сцены rootLayout
-     * Меню с кнопкой об авторе
+     * Меню содержит строку об авторе
      */
     @FXML
     public void initRootLayout() {
         try {
-            /*Панель меню, вкладка помощь*/
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/rootLayout.fxml"));
             rootLayout = loader.load();
@@ -77,7 +84,7 @@ public class Main extends Application {
 
     /**
      * Главное окно с Toolbar
-     * Панель на которой расположены основные функции программы по умолчанию запускаем Табло прилетов
+     * Панель на которой расположены основные окна программы по умолчанию запускаем Табло прилетов
      */
     public void MainLayout() {
         try {

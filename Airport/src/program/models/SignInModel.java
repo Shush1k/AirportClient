@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import program.Main;
 
+/**
+ * Абстрактный класс SignInModel - модель входа в приложение
+ */
 public abstract class SignInModel {
     protected Main main;
     protected Stage AuthorizationStage;

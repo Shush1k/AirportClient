@@ -4,6 +4,9 @@ import javafx.beans.property.*;
 
 import java.time.LocalDate;
 
+/**
+ * Класс Person - содержит данные об аккаунте пользователя
+ */
 public class Person {
     private final LongProperty id;
     private final StringProperty firstName;
@@ -18,14 +21,14 @@ public class Person {
     /**
      * Констуктор Персоны
      *
-     * @param firstName
-     * @param lastName
-     * @param login
-     * @param email
-     * @param phoneNumber
-     * @param birthday
-     * @param password
-     * @param repeatPassword
+     * @param firstName      - имя
+     * @param lastName       - фамилия
+     * @param login          - логин
+     * @param email          - почта
+     * @param phoneNumber    - номер телефона
+     * @param birthday       - дата рождения
+     * @param password       - пароль
+     * @param repeatPassword - повторный пароль
      */
     public Person(String firstName,
                   String lastName,
@@ -49,12 +52,12 @@ public class Person {
     /**
      * Конструктор без phoneNumber, birthday
      *
-     * @param firstName
-     * @param lastName
-     * @param login
-     * @param email
-     * @param password
-     * @param repeatPassword
+     * @param firstName      - имя
+     * @param lastName       - фамилия
+     * @param login          - логин
+     * @param email          - почта
+     * @param password       - пароль
+     * @param repeatPassword - повторный пароль
      */
     public Person(String firstName,
                   String lastName,
@@ -77,13 +80,13 @@ public class Person {
     /**
      * Конструктор без birthday
      *
-     * @param firstName
-     * @param lastName
-     * @param login
-     * @param email
-     * @param phoneNumber
-     * @param password
-     * @param repeatPassword
+     * @param firstName      - имя
+     * @param lastName       - фамилия
+     * @param login          - логин
+     * @param email          - почта
+     * @param phoneNumber    - номер телефона
+     * @param password       - пароль
+     * @param repeatPassword - повторный пароль
      */
     public Person(String firstName,
                   String lastName,
@@ -107,13 +110,13 @@ public class Person {
     /**
      * Конструктор без phoneNumber
      *
-     * @param firstName
-     * @param lastName
-     * @param login
-     * @param email
-     * @param birthday
-     * @param password
-     * @param repeatPassword
+     * @param firstName      - имя
+     * @param lastName       - фамилия
+     * @param login          - логин
+     * @param email          - почта
+     * @param birthday       - дата рождения
+     * @param password       - пароль
+     * @param repeatPassword - повторный пароль
      */
     public Person(String firstName,
                   String lastName,

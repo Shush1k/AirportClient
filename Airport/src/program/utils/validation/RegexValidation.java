@@ -2,6 +2,14 @@ package program.utils.validation;
 
 import java.util.regex.Pattern;
 
+/**
+ * Класс RegexValidation содержит проверки через регулярные выражения
+ * Проверки:
+ * stdRegex - строка запрещенных символов
+ * emailRegex - проверка почты
+ * passwordRegex - проверка сложности и шаблона пароля
+ * phoneNumberRegex - проверка номера телефона
+ */
 public class RegexValidation {
     private static final String stdRegex = "^[^%\"';:]*$";
     private static final String emailRegex = "^[a-zA-Z0-9.]+@([a-zA-Z]{2,10}[.]){1,3}(com|by|ru|eu|uk)$";

@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Класс Route - маршруты, которые привязаны к рейсам
+ */
 public class Route {
     private final LongProperty id;
     private final StringProperty departureCity;

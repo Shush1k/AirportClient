@@ -7,6 +7,9 @@ import javafx.beans.property.StringProperty;
 
 import java.util.Arrays;
 
+/**
+ * Класс Airline - авиакомпании
+ */
 public class Airline {
     private final LongProperty id;
     private final StringProperty code;
@@ -18,11 +21,11 @@ public class Airline {
     /**
      * Конструктор авиакомпании
      *
-     * @param code
-     * @param name
-     * @param website
-     * @param phoneNumber
-     * @param email
+     * @param code        - код IATA
+     * @param name        - название авиакомпании
+     * @param website     - сайт
+     * @param phoneNumber - номер телефона
+     * @param email       - почта
      */
     public Airline(String code,
                    String name,
@@ -42,11 +45,12 @@ public class Airline {
     /**
      * Констуктор без email
      *
-     * @param code
-     * @param name
-     * @param website
-     * @param phoneNumber
+     * @param code        - код IATA
+     * @param name        - название авиакомпании
+     * @param website     - сайт
+     * @param phoneNumber - номер телефона
      */
+
     public Airline(String code,
                    String name,
                    String website,
@@ -57,10 +61,11 @@ public class Airline {
 
     /**
      * Конструктор без phoneNumber
-     * @param code
-     * @param name
-     * @param website
-     * @param email
+     *
+     * @param code    - код IATA
+     * @param name    - название авиакомпании
+     * @param website - сайт
+     * @param email   - почта
      */
     public Airline(String code,
                    String name,
@@ -73,9 +78,9 @@ public class Airline {
     /**
      * Конструктор без phoneNumber, email
      *
-     * @param code
-     * @param name
-     * @param website
+     * @param code    - код IATA
+     * @param name    - название авиакомпании
+     * @param website - сайт
      */
     public Airline(String code,
                    String name,
