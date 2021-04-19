@@ -11,13 +11,13 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="program.controllers.AirlineInfoController">
    <bottom>
-            <TableView fx:id="airlineTable" prefHeight="400.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="airlineTableView" prefHeight="400.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                 <columns>
-                    <TableColumn fx:id="airlineCode" prefWidth="102.0" text="Код" />
-                    <TableColumn fx:id="airlineName" prefWidth="303.0" text="Авиакомпания" />
-                    <TableColumn fx:id="website" prefWidth="116.0" text="Сайт" />
-                    <TableColumn fx:id="telephone" prefWidth="120.0" text="Телефон" />
-                    <TableColumn fx:id="email" prefWidth="121.0" text="Email" />
+                    <TableColumn fx:id="airlineCodeColumn" prefWidth="102.0" text="Код" />
+                    <TableColumn fx:id="airlineNameColumn" prefWidth="303.0" text="Авиакомпания" />
+                    <TableColumn fx:id="websiteColumn" prefWidth="116.0" text="Сайт" />
+                    <TableColumn fx:id="telephoneColumn" prefWidth="120.0" text="Телефон" />
+                    <TableColumn fx:id="emailColumn" prefWidth="121.0" text="Email" />
                 </columns>
                 <columnResizePolicy>
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -27,7 +27,7 @@
    <top>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="292.0" layoutY="89.0" mnemonicParsing="false" text="Показать">
+            <Button fx:id="handlerAirlinesBtn" layoutX="292.0" layoutY="89.0" mnemonicParsing="false" text="Показать">
                <font>
                   <Font size="16.0" />
                </font>

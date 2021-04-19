@@ -2,6 +2,7 @@ package program.controllers;
 
 import javafx.fxml.FXML;
 import program.Main;
+import program.models.Airline;
 
 public class MainLayoutController {
     /*Данный класс контроллер нужен для управлением ToolBar*/

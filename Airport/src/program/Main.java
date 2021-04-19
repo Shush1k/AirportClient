@@ -11,6 +11,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import program.controllers.*;
+import program.models.Airline;
+import program.models.Flight;
 import program.models.Person;
 import program.utils.api.Api;
 
@@ -238,6 +240,8 @@ public class Main extends Application {
      * расположено в центре mainLayout
      */
     public void showAirlineInfoPage() {
+//        TODO: где и как получать авиакомпании
+        Airline[] airlines = new Airline[10]; //temp
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/airlineInfo.fxml"));
@@ -247,6 +251,8 @@ public class Main extends Application {
 
             AirlineInfoController controller = loader.getController();
             controller.setMain(this);
+            controller.setAirlines(airlines);
+            controller.showAirlinesContent();
         } catch (IOException e) {
             e.printStackTrace();
         }
