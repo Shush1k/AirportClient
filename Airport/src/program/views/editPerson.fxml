@@ -27,28 +27,28 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-            <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Логин" />
-            <Label text="Имя" GridPane.rowIndex="1" />
-                <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Фамилия" GridPane.rowIndex="2" />
-                <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Email" GridPane.rowIndex="3" />
+            <Label  alignment="CENTER_RIGHT" layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Логин" />
+            <Label text="Имя" GridPane.rowIndex="2" />
+                <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Фамилия" GridPane.rowIndex="3" />
+                <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Email" GridPane.rowIndex="1" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Телефон" GridPane.rowIndex="4" />
             <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Дата рождения" GridPane.rowIndex="5" />
                 <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="Пароль" GridPane.rowIndex="6" />
-            <TextField fx:id="loginField" promptText="Login" GridPane.columnIndex="1" />
-            <TextField fx:id="firstNameField" promptText="Имя" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="lastNameField" promptText="Фамилия" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="emailField" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="loginField" editable="false" promptText="Login" GridPane.columnIndex="1" />
+            <TextField fx:id="firstNameField" promptText="Имя" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="lastNameField" promptText="Фамилия" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="emailField" editable="false" promptText="example@mail.com" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="phoneField" promptText="+89038964871" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <PasswordField fx:id="passwordField" promptText="Введите пароль" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <DatePicker fx:id="birthdayPicker" prefHeight="27.0" prefWidth="263.0" promptText="18.08.2001" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <DatePicker fx:id="birthdayPicker" editable="false" prefHeight="27.0" prefWidth="263.0" promptText="18.08.2001" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             </children>
          <padding>
             <Insets top="10.0" />
