@@ -217,6 +217,7 @@ public class Main extends Application {
             mainLayout.setCenter(arrivalBoardPage);
             ArrivalBoardController controller = loader.getController();
             controller.setStage(primaryStage);
+            controller.setApi(api);
             controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();

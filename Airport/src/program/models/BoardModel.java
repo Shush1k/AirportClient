@@ -5,10 +5,12 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import program.Main;
+import program.utils.api.Api;
 
 public abstract class BoardModel {
     protected Stage stage;
     protected Main main;
+    protected Api api;
 
 
 //    Формат даты в POSTMAN такой: "2021-04-17T17:30"
@@ -34,6 +36,10 @@ public abstract class BoardModel {
 
     public void setMain(Main main) {
         this.main = main;
+    }
+
+    public void setApi(Api api) {
+        this.api = api;
     }
 }
 

@@ -2,7 +2,8 @@ package program.models;
 
 import javafx.beans.property.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 /**
  * Класс Flight - рейсы
@@ -10,8 +11,8 @@ import java.time.LocalDate;
 public class Flight {
     private final LongProperty id;
     private final StringProperty flightNumber;
-    private final ObjectProperty<LocalDate> departureDate;
-    private final ObjectProperty<LocalDate> arrivalDate;
+    private final ObjectProperty<LocalDateTime> departureDate;
+    private final ObjectProperty<LocalDateTime> arrivalDate;
     private final StringProperty status;
     private final StringProperty planeModel;
 
@@ -24,7 +25,7 @@ public class Flight {
      * @param status        - статус рейса
      * @param planeModel    - модель самолета
      */
-    public Flight(String flightNumber, LocalDate departureDate, LocalDate arrivalDate, String status, String planeModel) {
+    public Flight(String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, String status, String planeModel) {
         this.id = new SimpleLongProperty();
         this.flightNumber = new SimpleStringProperty(flightNumber);
         this.departureDate = new SimpleObjectProperty<>(departureDate);
@@ -41,7 +42,7 @@ public class Flight {
      * @param arrivalDate   - дата прибытия
      * @param planeModel    - модель самолета
      */
-    public Flight(String flightNumber, LocalDate departureDate, LocalDate arrivalDate, String planeModel) {
+    public Flight(String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, String planeModel) {
         this(flightNumber, departureDate, arrivalDate, null, planeModel);
     }
 
@@ -68,19 +69,19 @@ public class Flight {
         this.flightNumber.set(flightNumber);
     }
 
-    public LocalDate getDepartureDate() {
+    public LocalDateTime getDepartureDate() {
         return departureDate.get();
     }
 
-    public void setDepartureDate(LocalDate departureDate) {
+    public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate.set(departureDate);
     }
 
-    public LocalDate getArrivalDate() {
+    public LocalDateTime getArrivalDate() {
         return arrivalDate.get();
     }
 
-    public void setArrivalDate(LocalDate arrivalDate) {
+    public void setArrivalDate(LocalDateTime arrivalDate) {
         this.arrivalDate.set(arrivalDate);
     }
 
@@ -100,5 +101,15 @@ public class Flight {
         this.planeModel.set(planeModel);
     }
 
-
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "id=" + id +
+                ", flightNumber=" + flightNumber +
+                ", departureDate=" + departureDate +
+                ", arrivalDate=" + arrivalDate +
+                ", status=" + status +
+                ", planeModel=" + planeModel +
+                '}';
+    }
 }

@@ -8,13 +8,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import program.models.BoardModel;
 import program.models.Flight;
+import program.utils.api.Api;
 import program.utils.validation.DateValidation;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class ArrivalBoardController extends BoardModel {
-
     @FXML
     private TableView<Flight> arrivalTableView;
     @FXML
@@ -48,6 +50,11 @@ public class ArrivalBoardController extends BoardModel {
     private void handleShowArrival() {
         if (DateValidation.isValidDate(this, stage)){
             System.out.println("успешно");
+            List<Flight> result = api.getArrivalFlights(startDateField.getText(), endDateField.getText(), true);
+            for (int i = 0; i < result.size(); i++) {
+                System.out.println(result.get(i).toString());
+
+            }
         }
     }
 
