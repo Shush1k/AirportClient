@@ -15,7 +15,7 @@ public class Validation {
      *
      * @param model - модель Регистрации
      * @param stage - текущее окно
-     * @return boolean true если нет ошибок
+     * @return true если нет ошибок
      */
     public static boolean isValidRegistrationRegex(RegistrationEditModel model, Stage stage) {
         if (!RegexValidation.checkStandard(model.firstNameField.getText()))
@@ -38,7 +38,7 @@ public class Validation {
      *
      * @param model - модель Регистрации
      * @param stage - текущее окно
-     * @return boolean true если нет ошибок
+     * @return true если нет ошибок
      */
     public static boolean RegistrationDataValidation(RegistrationEditModel model, Stage stage) {
         String errorMessage = "";
@@ -54,6 +54,11 @@ public class Validation {
             errorMessage += "Нет пароля!\n";
         if (model.passwordRepeatField.getText() == null || model.passwordRepeatField.getText().length() == 0)
             errorMessage += "Нет повтора пароля!\n";
+        if ((model.emailField.getText() != null && model.loginField.getText() != null) &&
+                !model.emailField.getText().equals(model.loginField.getText())){
+            errorMessage += "Логин должен совпадать с почтой!\n";
+
+        }
         if ((model.passwordField.getText() != null && model.passwordRepeatField.getText() != null) &&
                 !model.passwordField.getText().equals(model.passwordRepeatField.getText()))
             errorMessage += "Повтор пароля не совпадает с паролем!\n";
@@ -70,7 +75,7 @@ public class Validation {
      *
      * @param model - модель Регистрации
      * @param stage - текущее окно
-     * @return
+     * @return true если нет ошибок
      */
     public static boolean EditPersonDataValidation(RegistrationEditModel model, Stage stage) {
         String errorMessage = "";

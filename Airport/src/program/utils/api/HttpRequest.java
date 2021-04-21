@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-public class HttpRequestImpl {
+public class HttpRequest {
 
     public static String sendPost(String urlString, String jsonString) {
         try {
