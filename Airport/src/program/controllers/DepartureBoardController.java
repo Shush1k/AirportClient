@@ -1,15 +1,10 @@
 package program.controllers;
 
-import javafx.stage.Stage;
-import program.Main;
+import javafx.fxml.FXML;
+import program.models.BoardModel;
 
-public class DepartureBoardController {
-    private Main main;
-    private Stage departureBoardStage;
-
-    public void setDepartureBoardStage(Stage departureBoardStage) {
-        this.departureBoardStage = departureBoardStage;
+public class DepartureBoardController extends BoardModel {
+    @FXML
+    public void handleShowDeparture() {
     }
-
-    public void setMain(Main main){this.main = main;}
 }

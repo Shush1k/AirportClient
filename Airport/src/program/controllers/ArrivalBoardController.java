@@ -6,16 +6,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import program.Main;
+import program.models.BoardModel;
 import program.models.Flight;
+import program.utils.validation.DateValidation;
 
 import java.util.Arrays;
 
 
-public class ArrivalBoardController {
-    private Main main;
-    private Stage arrivalBoardStage;
+public class ArrivalBoardController extends BoardModel {
 
     @FXML
     private TableView<Flight> arrivalTableView;
@@ -34,11 +32,23 @@ public class ArrivalBoardController {
     private ObservableList<Flight> flightsData;
 
     /**
+     * Инициализация полей
+     */
+    @FXML
+    public void initialize() {
+        startDateField.setText(null);
+        endDateField.setText(null);
+    }
+
+    /**
      * Кнопка отправляет Get запрос
      * получает прибывающие рейсы
      */
     @FXML
     private void handleShowArrival() {
+        if (DateValidation.isValidDate(this, stage)){
+            System.out.println("успешно");
+        }
     }
 
 
@@ -61,13 +71,5 @@ public class ArrivalBoardController {
     public void setFlights(Flight[] flights) {
         flightsData = FXCollections.observableArrayList();
         flightsData.addAll(Arrays.asList(flights));
-    }
-
-    public void setArrivalBoardStage(Stage arrivalBoardStage) {
-        this.arrivalBoardStage = arrivalBoardStage;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
     }
 }

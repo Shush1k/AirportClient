@@ -25,12 +25,12 @@
                   <Font name="Chalkboard SE Light" size="22.0" />
                </font>
             </Label>
-                <Button fx:id="handleShowArrival" layoutX="521.0" layoutY="99.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="198.0" text="Показать рейсы" textFill="#142bcc">
+                <Button layoutX="521.0" layoutY="99.0" mnemonicParsing="false" onAction="#handleShowArrival" prefHeight="27.0" prefWidth="198.0" text="Показать рейсы" textFill="#142bcc">
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <TextField fx:id="startField" layoutX="166.0" layoutY="66.0" promptText="11:00" AnchorPane.leftAnchor="150.0" />
-            <TextField fx:id="endField" layoutX="163.0" layoutY="113.0" promptText="23:00" AnchorPane.leftAnchor="150.0" />
+            <TextField fx:id="startDateField" layoutX="166.0" layoutY="66.0" promptText="11:00" AnchorPane.leftAnchor="150.0" />
+            <TextField fx:id="endDateField" layoutX="163.0" layoutY="113.0" promptText="23:00" AnchorPane.leftAnchor="150.0" />
             <DatePicker fx:id="datePicker" layoutX="153.0" layoutY="26.0" prefHeight="27.0" prefWidth="163.0" promptText="11.04.2021" AnchorPane.leftAnchor="150.0" />
             <Label layoutX="529.0" layoutY="23.0" prefHeight="29.0" prefWidth="238.0" text="Табло прилетов">
                <font>
