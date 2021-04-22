@@ -96,6 +96,30 @@ public class Airline {
         this(null, null, null, null, null);
     }
 
+    public void setId(long id) {
+        this.id.set(id);
+    }
+
+    public void setCode(String code) {
+        this.code.set(code);
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    public void setWebsite(String website) {
+        this.website.set(website);
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber.set(phoneNumber);
+    }
+
+    public void setEmail(String email) {
+        this.email.set(email);
+    }
+
     @Override
     public String toString() {
         return "Airline{" +

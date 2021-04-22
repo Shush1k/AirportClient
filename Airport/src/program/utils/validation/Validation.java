@@ -1,6 +1,7 @@
 package program.utils.validation;
 
 import javafx.stage.Stage;
+import program.controllers.AirlineInfoController;
 import program.models.RegistrationEditModel;
 import program.models.SignInModel;
 import program.utils.alerts.Alerts;
@@ -192,5 +193,12 @@ public class Validation {
      */
     public static boolean checkLength(String text, int len) {
         return text.length() <= len;
+    }
+
+    public static boolean isAirlineNameBlank(String text) {
+        if (text == null || text.length() == 0) {
+            return true;
+        }
+        return false;
     }
 }

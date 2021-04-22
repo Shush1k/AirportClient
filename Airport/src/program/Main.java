@@ -260,9 +260,9 @@ public class Main extends Application {
 
             AirlineInfoController controller = loader.getController();
             controller.setMain(this);
-            controller.setAirlineInfoStage(primaryStage);
-            controller.setAirlines(airlines);
-            controller.showAirlinesContent();
+            controller.setStage(primaryStage);
+            controller.setApi(api);
+//            controller.showAirlinesContent();
         } catch (IOException e) {
             e.printStackTrace();
         }

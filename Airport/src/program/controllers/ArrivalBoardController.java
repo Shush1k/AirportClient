@@ -56,7 +56,7 @@ public class ArrivalBoardController extends BoardModel {
             if (DateValidation.isOneDateBlank(this, stage)) {
                 if (DateValidation.isValidDateFormat(this, stage)) {
                     // Получаем прыбывающие рейсы
-                    List<Flight> result = api.getArrivalFlights(startDateField.getText(), endDateField.getText(), true);
+                    List<Flight> result = api.getFlightsBetweenDates(startDateField.getText(), endDateField.getText(), true);
                     for (int i = 0; i < result.size(); i++) {
                         System.out.println(result.get(i).toString());
                     }

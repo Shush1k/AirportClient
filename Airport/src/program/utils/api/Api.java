@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import program.models.Airline;
 import program.models.Flight;
 import program.models.Person;
 
@@ -78,7 +79,15 @@ public class Api {
         return false;
     }
 
-    public List<Flight> getArrivalFlights(String startDate, String endDate, Boolean isArrive) {
+    /**
+     * Получаем список прибывающих/отбывающие рейсов попадающие в временной диапазон
+     *
+     * @param startDate - начальная дата и время
+     * @param endDate   - конечная дата и время
+     * @param isArrive  - если true, значит поиск по прибывающим рейсам, иначе по отбывающим
+     * @return список рейсов
+     */
+    public List<Flight> getFlightsBetweenDates(String startDate, String endDate, Boolean isArrive) {
 
         startDate = URLEncoder.encode(startDate, StandardCharsets.UTF_8);
         endDate = URLEncoder.encode(endDate, StandardCharsets.UTF_8);
@@ -134,5 +143,37 @@ public class Api {
 
     }
 
-//    public List<Flight> getDepartureFlights();
+    // TODO: не работает
+    public List<Airline> getAllAirlines() {
+        String URL = String.format("%s/airlines/all", HOST);
+        List<Airline> result = new ArrayList<>();
+        String response = HttpRequest.sendGet(URL);
+
+        if (response != null) {
+            JsonArray jsonAirlineArray = JsonParser.parseString(response).getAsJsonArray();
+            for (int i = 0; i < jsonAirlineArray.size(); i++) {
+                JsonObject airlineJson = jsonAirlineArray.get(i).getAsJsonObject();
+
+                Airline airline = new Airline();
+                airline.setId(airlineJson.get("airline_id").getAsInt());
+                airline.setCode(airlineJson.get("companyCode").getAsString());
+                airline.setName(airlineJson.get("companyName").getAsString());
+                airline.setWebsite(airlineJson.get("website").getAsString());
+//            TODO: понять, что делать в случае если поле JsonNull
+                airline.setPhoneNumber(airlineJson.get("phone").getAsString());
+                airline.setEmail(airlineJson.get("email").getAsString());
+                result.add(airline);
+            }
+        }
+
+        return result;
+    }
+    // TODO: доделаем позже
+//    public List<Airline> getAirlineSubCompanyName(String subString, Boolean filter){
+//        String URL = String.format("%s/airlines/like?name=%s&filter=%s", HOST, subString, filter);
+//        List<Airline> result = new ArrayList<>();
+//        String response = HttpRequest.sendGet(URL);
+//
+//        return result;
+//    }
 }

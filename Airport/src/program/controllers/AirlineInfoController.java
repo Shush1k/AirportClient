@@ -5,16 +5,21 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import program.Main;
 import program.models.Airline;
+import program.utils.api.Api;
+import program.utils.validation.Validation;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class AirlineInfoController {
     private Main main;
-    private Stage airlineInfoStage;
+    private Stage stage;
+    protected Api api;
     ObservableList<Airline> airlinesData = FXCollections.observableArrayList();
 
     @FXML
@@ -30,6 +35,9 @@ public class AirlineInfoController {
     @FXML
     private TableColumn<Airline, String> emailColumn;
 
+    @FXML
+    private TextField searchCompany;
+
     public void setAirlines(Airline[] airlines) {
         //TODO airlines[0] не работает
         airlines[0] = new Airline("1", "2", "3", "4", "5");
@@ -37,9 +45,13 @@ public class AirlineInfoController {
         airlinesData.addAll(Arrays.asList(airlines));
     }
 
+    @FXML
+    public void initialize() {
+        searchCompany.setText(null);
+    }
 
-    public void setAirlineInfoStage(Stage airlineInfoStage) {
-        this.airlineInfoStage = airlineInfoStage;
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     /**
@@ -58,9 +70,24 @@ public class AirlineInfoController {
     //    TODO: запрос по url /airlines/like или /airlines/all если пустая строка
     @FXML
     public void handlerAirlinesBtn() {
-    }
+        if (Validation.isAirlineNameBlank(searchCompany.getText())) {
+            // Получаем все авиакомпании
+            List<Airline> result = api.getAllAirlines();
+            for (int i = 0; i < result.size(); i++) {
+                System.out.println(result.get(i).toString());
+            }
+        } else {
+            // TODO: Валидация длины поля, а также реализация на сервер!
+        }
 
-    public void setMain(Main main) {
-        this.main = main;
+
+        }
+
+        public void setMain (Main main){
+            this.main = main;
+        }
+
+        public void setApi (Api api){
+            this.api = api;
+        }
     }
-}
