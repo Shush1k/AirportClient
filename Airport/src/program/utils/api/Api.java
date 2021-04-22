@@ -143,7 +143,7 @@ public class Api {
 
     }
 
-    // TODO: не работает
+    // TODO: заменить try/catch блок
     public List<Airline> getAllAirlines() {
         String URL = String.format("%s/airlines/all", HOST);
         List<Airline> result = new ArrayList<>();
@@ -160,20 +160,58 @@ public class Api {
                 airline.setName(airlineJson.get("companyName").getAsString());
                 airline.setWebsite(airlineJson.get("website").getAsString());
 //            TODO: понять, что делать в случае если поле JsonNull
-                airline.setPhoneNumber(airlineJson.get("phone").getAsString());
-                airline.setEmail(airlineJson.get("email").getAsString());
+                try {
+                    airline.setPhoneNumber(airlineJson.get("phone").getAsString());
+
+                } catch (RuntimeException e) {
+                    // временно, пока не знаем, как обрабатывать
+                    airline.setPhoneNumber(null);
+                }
+                try {
+                    airline.setEmail(airlineJson.get("email").getAsString());
+                } catch (RuntimeException e) {
+                    // временно, пока не знаем, как обрабатывать
+                    airline.setEmail(null);
+                }
                 result.add(airline);
             }
         }
 
         return result;
     }
-    // TODO: доделаем позже
-//    public List<Airline> getAirlineSubCompanyName(String subString, Boolean filter){
-//        String URL = String.format("%s/airlines/like?name=%s&filter=%s", HOST, subString, filter);
-//        List<Airline> result = new ArrayList<>();
-//        String response = HttpRequest.sendGet(URL);
-//
-//        return result;
-//    }
+    // TODO: заменить try/catch блок
+    public List<Airline> getAirlinesBySubCompanyName(String subString, Boolean filter){
+        String URL = String.format("%s/airlines/like?name=%s&filter=%s", HOST, subString, filter);
+        List<Airline> result = new ArrayList<>();
+        String response = HttpRequest.sendGet(URL);
+
+        if (response != null) {
+            JsonArray jsonAirlineArray = JsonParser.parseString(response).getAsJsonArray();
+            for (int i = 0; i < jsonAirlineArray.size(); i++) {
+                JsonObject airlineJson = jsonAirlineArray.get(i).getAsJsonObject();
+
+                Airline airline = new Airline();
+                airline.setId(airlineJson.get("airline_id").getAsInt());
+                airline.setCode(airlineJson.get("companyCode").getAsString());
+                airline.setName(airlineJson.get("companyName").getAsString());
+                airline.setWebsite(airlineJson.get("website").getAsString());
+//            TODO: понять, что делать в случае если поле JsonNull
+                try {
+                    airline.setPhoneNumber(airlineJson.get("phone").getAsString());
+
+                } catch (RuntimeException e) {
+                    // временно, пока не знаем, как обрабатывать
+                    airline.setPhoneNumber(null);
+                }
+                try {
+                    airline.setEmail(airlineJson.get("email").getAsString());
+                } catch (RuntimeException e) {
+                    // временно, пока не знаем, как обрабатывать
+                    airline.setEmail(null);
+                }
+                result.add(airline);
+            }
+        }
+        return result;
+    }
 }

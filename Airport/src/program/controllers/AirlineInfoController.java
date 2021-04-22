@@ -39,8 +39,6 @@ public class AirlineInfoController {
     private TextField searchCompany;
 
     public void setAirlines(Airline[] airlines) {
-        //TODO airlines[0] не работает
-        airlines[0] = new Airline("1", "2", "3", "4", "5");
         airlinesData = FXCollections.observableArrayList();
         airlinesData.addAll(Arrays.asList(airlines));
     }
@@ -78,16 +76,22 @@ public class AirlineInfoController {
             }
         } else {
             // TODO: Валидация длины поля, а также реализация на сервер!
+            // пока фильтер: true, т.к. нет кнопки
+            // Получаем все авиакомпании по вхождению подстроки
+            List<Airline> result = api.getAirlinesBySubCompanyName(searchCompany.getText(), true);
+            for (int i = 0; i < result.size(); i++) {
+                System.out.println(result.get(i).toString());
+            }
         }
 
 
-        }
-
-        public void setMain (Main main){
-            this.main = main;
-        }
-
-        public void setApi (Api api){
-            this.api = api;
-        }
     }
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public void setApi(Api api) {
+        this.api = api;
+    }
+}
