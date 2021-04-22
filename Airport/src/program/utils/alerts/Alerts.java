@@ -116,6 +116,20 @@ public abstract class Alerts {
     }
 
     /**
+     * Не правильный формат даты
+     *
+     * @param stage - текущее окно
+     */
+    public static void showNoValidDateFormat(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Некорректный формат даты");
+        alert.setHeaderText("Некорректный формат полей дат");
+        alert.setContentText("Укажите дату в следующем формате \'2021-04-16 18:59\'");
+        alert.showAndWait();
+    }
+
+    /**
      * Неверная информормация введена в поля
      *
      * @param stage        - текущее окно

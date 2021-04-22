@@ -106,5 +106,33 @@ public class Api {
 
     }
 
+    /**
+     * Получаем список всех рейсов
+     *
+     * @return список рейсов
+     */
+    public List<Flight> getAllFlights() {
+        String URL = String.format("%s/flights/all", HOST);
+        List<Flight> result = new ArrayList<>();
+        String response = HttpRequest.sendGet(URL);
+        JsonArray jsonArray = JsonParser.parseString(response).getAsJsonArray();
+
+        for (int i = 0; i < jsonArray.size(); i++) {
+            JsonObject flightJson = jsonArray.get(i).getAsJsonObject();
+            Flight flight = new Flight();
+            flight.setId(flightJson.get("flight_id").getAsInt());
+            flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
+            LocalDateTime departureDate = DateConvert.stringToDate(flightJson.get("departureDate").getAsString());
+            flight.setDepartureDate(departureDate);
+            LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
+            flight.setArrivalDate(arrivalDate);
+            flight.setStatus(flightJson.get("status").getAsString());
+            flight.setPlaneModel(flightJson.get("planeModel").getAsString());
+            result.add(flight);
+        }
+        return result;
+
+    }
+
 //    public List<Flight> getDepartureFlights();
 }
