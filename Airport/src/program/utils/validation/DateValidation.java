@@ -15,10 +15,9 @@ public class DateValidation {
      * Проверка, что оба поля пустые
      *
      * @param model - модель
-     * @param stage - текущее окно
      * @return
      */
-    public static boolean isBothDatesBlank(BoardModel model, Stage stage) {
+    public static boolean isBothDatesBlank(BoardModel model) {
         int fieldCount = 0;
         if (model.startDateField.getText() == null || model.startDateField.getText().length() == 0) {
             fieldCount++;

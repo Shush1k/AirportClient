@@ -46,11 +46,8 @@ public class ArrivalBoardController extends BoardModel {
      */
     @FXML
     private void handleShowArrival() {
-//        if (DateValidation.isValidDateFormat(this, stage)) {
-//            System.out.println("Валидный");
-//
-//        }
-        if (DateValidation.isBothDatesBlank(this, stage)) {
+        if (DateValidation.isBothDatesBlank(this)) {
+            // Получаем все рейсы
             List<Flight> result = api.getAllFlights();
             for (int i = 0; i < result.size(); i++) {
                 System.out.println(result.get(i).toString());
@@ -58,7 +55,7 @@ public class ArrivalBoardController extends BoardModel {
         } else {
             if (DateValidation.isOneDateBlank(this, stage)) {
                 if (DateValidation.isValidDateFormat(this, stage)) {
-//                TODO: валидация даты по шаблону, иначе Alert
+                    // Получаем прыбывающие рейсы
                     List<Flight> result = api.getArrivalFlights(startDateField.getText(), endDateField.getText(), true);
                     for (int i = 0; i < result.size(); i++) {
                         System.out.println(result.get(i).toString());
