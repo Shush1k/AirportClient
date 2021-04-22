@@ -16,6 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс Api - нужен для связи с сервером по HTTP протоколу
+ */
 public class Api {
     private final String HOST = "http://localhost:8080";
     private Person currentLoginPerson;

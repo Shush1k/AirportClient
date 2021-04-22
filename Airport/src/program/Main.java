@@ -238,6 +238,7 @@ public class Main extends Application {
 
             DepartureBoardController controller = loader.getController();
             controller.setStage(primaryStage);
+            controller.setApi(api);
             controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();
