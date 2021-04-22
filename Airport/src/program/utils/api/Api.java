@@ -97,7 +97,7 @@ public class Api {
             LocalDateTime departureDate = DateConvert.stringToDate(flightJson.get("departureDate").getAsString());
             flight.setDepartureDate(departureDate);
             LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
-            flight.setDepartureDate(arrivalDate);
+            flight.setArrivalDate(arrivalDate);
             flight.setStatus(flightJson.get("status").getAsString());
             flight.setPlaneModel(flightJson.get("planeModel").getAsString());
             result.add(flight);
