@@ -274,8 +274,6 @@ public class Main extends Application {
      * расположено в центре mainLayout
      */
     public void showAirlineInfoPage() {
-//        TODO: где и как получать авиакомпании
-        Airline[] airlines = new Airline[10]; //temp
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("views/airlinesPage.fxml"));
@@ -287,7 +285,6 @@ public class Main extends Application {
             controller.setMain(this);
             controller.setStage(primaryStage);
             controller.setApi(api);
-//            controller.showAirlinesContent();
         } catch (IOException e) {
             e.printStackTrace();
         }
