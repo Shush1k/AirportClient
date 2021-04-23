@@ -9,7 +9,6 @@ import program.utils.validation.Validation;
 
 public class EditPersonController extends RegistrationEditModel {
     private boolean delete = false;
-
     private Person person;
 
     public void setPerson(Person person) {
@@ -43,19 +42,20 @@ public class EditPersonController extends RegistrationEditModel {
     //  TODO действие обновление информации о персоне
     @FXML
     private void handleUpdate() {
-        if (Validation.EditPersonDataValidation(this, RegistrationStage)) {
-            if(Validation.isValidLength2(this, RegistrationStage)){
-                if (Validation.isValidRegistrationRegex(this, RegistrationStage)){
-                    if (RegexValidation.checkPhoneNumber(phoneField.getText())){
-                        /*TODO: здесь должен быть PUT request с отправкой сущности*/
-                        Alerts.showSuccessEditPerson(RegistrationStage);
-                    } else {
-                        Alerts.showNoValidPhoneNumber(RegistrationStage);
-                    }
-
-                }
-            }
-        }
+        System.out.println(person.getEmail());
+//        if (Validation.EditPersonDataValidation(this, RegistrationStage)) {
+//            if(Validation.isValidLength2(this, RegistrationStage)){
+//                if (Validation.isValidRegistrationRegex(this, RegistrationStage)){
+//                    if (RegexValidation.checkPhoneNumber(phoneField.getText())){
+//                        /*TODO: здесь должен быть PUT request с отправкой сущности*/
+//                        Alerts.showSuccessEditPerson(RegistrationStage);
+//                    } else {
+//                        Alerts.showNoValidPhoneNumber(RegistrationStage);
+//                    }
+//
+//                }
+//            }
+//        }
     }
 
     /**

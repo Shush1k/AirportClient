@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class Api {
     private final String HOST = "http://localhost:8080";
-    private Person currentLoginPerson;
+    public Person currentLoginPerson;
 
     public Person getCurrentLoginPerson() {
         return currentLoginPerson;

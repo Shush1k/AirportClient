@@ -193,6 +193,7 @@ public class Main extends Application {
 
             EditPersonController controller = loader.getController();
             controller.setApi(api);
+            controller.setPerson(api.currentLoginPerson);
             controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();
