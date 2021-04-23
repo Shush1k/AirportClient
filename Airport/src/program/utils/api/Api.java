@@ -151,8 +151,8 @@ public class Api {
     }
 
     // TODO: заменить try/catch блок
-    public List<Airline> getAllAirlines() {
-        String URL = String.format("%s/airlines/all", HOST);
+    public List<Airline> getAllAirlines(Boolean filter) {
+        String URL = String.format("%s/airlines/all?filter=%s", HOST, filter);
         List<Airline> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);
 

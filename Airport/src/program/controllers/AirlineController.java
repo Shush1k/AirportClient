@@ -3,6 +3,7 @@ package program.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -20,6 +21,7 @@ import java.util.List;
 public class AirlineController {
     private Main main;
     private Stage stage;
+    private boolean filter = false;
     protected Api api;
     ObservableList<Airline> airlinesData = FXCollections.observableArrayList();
 
@@ -38,6 +40,9 @@ public class AirlineController {
 
     @FXML
     private TextField searchCompany;
+
+    @FXML
+    private CheckBox sortAirlineBtn;
 
     public void setAirlines(Airline[] airlines) {
         airlinesData = FXCollections.observableArrayList();
@@ -66,12 +71,22 @@ public class AirlineController {
         airlineTableView.setItems(airlinesData);
     }
 
+    @FXML
+    public void sortAirlinesByDesc() {
+
+    }
+
     //    TODO: запрос по url /airlines/like или /airlines/all если пустая строка
     @FXML
     public void handlerAirlinesBtn() {
+        if (sortAirlineBtn.isSelected()) {
+            filter = true;
+        } else {
+            filter = false;
+        }
         if (Validation.isAirlineNameBlank(searchCompany.getText())) {
             // Получаем все авиакомпании
-            List<Airline> result = api.getAllAirlines();
+            List<Airline> result = api.getAllAirlines(filter);
             for (int i = 0; i < result.size(); i++) {
                 System.out.println(result.get(i).toString());
             }
@@ -79,7 +94,7 @@ public class AirlineController {
             // TODO: Валидация длины поля, а также реализация на сервер!
             // пока фильтер: true, т.к. нет кнопки
             // Получаем все авиакомпании по вхождению подстроки
-            List<Airline> result = api.getAirlinesBySubCompanyName(searchCompany.getText(), true);
+            List<Airline> result = api.getAirlinesBySubCompanyName(searchCompany.getText(), filter);
             for (int i = 0; i < result.size(); i++) {
                 System.out.println(result.get(i).toString());
             }

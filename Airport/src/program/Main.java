@@ -254,7 +254,7 @@ public class Main extends Application {
         Airline[] airlines = new Airline[10]; //temp
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("views/airlineInfo.fxml"));
+            loader.setLocation(Main.class.getResource("views/airlinesPage.fxml"));
             BorderPane airlineInfoPage = loader.load();
 
             mainLayout.setCenter(airlineInfoPage);
