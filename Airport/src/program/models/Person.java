@@ -2,7 +2,7 @@ package program.models;
 
 import javafx.beans.property.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Класс Person - содержит данные об аккаунте пользователя
@@ -14,7 +14,7 @@ public class Person {
     private final StringProperty login;
     private final StringProperty email;
     private final StringProperty phoneNumber;
-    private final ObjectProperty<LocalDate> birthday;
+    private final ObjectProperty<LocalDateTime> birthday;
     private final StringProperty password;
     private final StringProperty repeatPassword;
 
@@ -35,7 +35,7 @@ public class Person {
                   String login,
                   String email,
                   String phoneNumber,
-                  LocalDate birthday,
+                  LocalDateTime birthday,
                   String password,
                   String repeatPassword) {
         this.id = new SimpleLongProperty();
@@ -122,7 +122,7 @@ public class Person {
                   String lastName,
                   String login,
                   String email,
-                  LocalDate birthday,
+                  LocalDateTime birthday,
                   String password,
                   String repeatPassword) {
         this(
@@ -229,11 +229,19 @@ public class Person {
         this.repeatPassword.set(repeatPassword);
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber.set(phoneNumber);
+    }
+
+    public void setBirthday(LocalDateTime birthday) {
+        this.birthday.set(birthday);
+    }
+
     public String getPhoneNumber() {
         return phoneNumber.get();
     }
 
-    public LocalDate getBirthday() {
+    public LocalDateTime getBirthday() {
         return birthday.get();
     }
 

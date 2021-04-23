@@ -50,7 +50,22 @@ public class Api {
             currentLoginPerson.setEmail(result.get("email").getAsString());
             currentLoginPerson.setFirstName(result.get("firstName").getAsString());
             currentLoginPerson.setLastName(result.get("lastName").getAsString());
-//            currentLoginPerson.setId(result.get("id").getAsLong());
+
+
+            try {
+                currentLoginPerson.setPhoneNumber(result.get("phoneNumber").getAsString());
+            } catch (RuntimeException e) {
+                currentLoginPerson.setPhoneNumber(null);
+            }
+            try {
+                LocalDateTime birthDay=DateConvert.stringToDate(result.get("birthDate").getAsString());
+                currentLoginPerson.setBirthday(birthDay);
+
+            } catch (RuntimeException e) {
+                currentLoginPerson.setBirthday(DateConvert.stringToDate("2021-01-01T03:00:00"));
+            }
+
+
             return true;
         }
 
@@ -116,6 +131,10 @@ public class Api {
                 flight.setDepartureDate(departureDate);
                 LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
                 flight.setArrivalDate(arrivalDate);
+
+                System.out.println(flightJson.get("arrivalDate").getAsString());
+
+
                 flight.setStatus(flightJson.get("status").getAsString());
                 flight.setPlaneModel(flightJson.get("planeModel").getAsString());
                 result.add(flight);

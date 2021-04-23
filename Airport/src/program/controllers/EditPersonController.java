@@ -7,6 +7,8 @@ import program.utils.alerts.Alerts;
 import program.utils.validation.RegexValidation;
 import program.utils.validation.Validation;
 
+import java.time.LocalDate;
+
 public class EditPersonController extends RegistrationEditModel {
     private boolean delete = false;
     private Person person;
@@ -18,7 +20,7 @@ public class EditPersonController extends RegistrationEditModel {
         loginField.setText(this.person.getLogin());
         emailField.setText(this.person.getEmail());
         phoneField.setText(this.person.getPhoneNumber());
-        birthdayPicker.setValue(this.person.getBirthday());
+        birthdayPicker.setValue(LocalDate.from(this.person.getBirthday()));
         passwordField.setText(this.person.getPassword());
 //        passwordRepeatField.setText(this.person.getRepeatPassword());
     }
@@ -42,7 +44,6 @@ public class EditPersonController extends RegistrationEditModel {
     //  TODO действие обновление информации о персоне
     @FXML
     private void handleUpdate() {
-        System.out.println(person.getEmail());
 //        if (Validation.EditPersonDataValidation(this, RegistrationStage)) {
 //            if(Validation.isValidLength2(this, RegistrationStage)){
 //                if (Validation.isValidRegistrationRegex(this, RegistrationStage)){
@@ -73,7 +74,7 @@ public class EditPersonController extends RegistrationEditModel {
                         если пустое значение, пишем пользователю,
                         что необходимо указать верный пароль, чтобы удалить аккаунт
                     */
-                    boolean result = api.deleteUser("test@email.ru", passwordField.getText());
+                    boolean result = api.deleteUser(person.getEmail(), passwordField.getText());
                     if (result){
                         main.initRootLayout();
                     } else {
