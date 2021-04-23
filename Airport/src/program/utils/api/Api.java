@@ -10,6 +10,7 @@ import program.models.Person;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,11 +59,12 @@ public class Api {
                 currentLoginPerson.setPhoneNumber(null);
             }
             try {
-                LocalDateTime birthDay=DateConvert.stringToDate(result.get("birthDate").getAsString());
+                LocalDate birthDay = DateConvert.stringToDate(result.get("birthDate").getAsString());
                 currentLoginPerson.setBirthday(birthDay);
 
             } catch (RuntimeException e) {
-                currentLoginPerson.setBirthday(DateConvert.stringToDate("2021-01-01T03:00:00"));
+                //TODO: проверить возможен ли такой вариант после всех правок с датами на 23.04
+                currentLoginPerson.setBirthday(DateConvert.stringToDate("2000-01-01"));
             }
 
 
@@ -101,6 +103,30 @@ public class Api {
         return false;
     }
 
+    public Boolean updateUser(String firstName, String lastName, String login,
+                              String email, String phoneNumber, LocalDate birthDate, String password) {
+        String URL = String.format("%s/users/update", HOST);
+        Map<String, String> user = new HashMap<>();
+        user.put("login", login);
+        user.put("firstName", firstName);
+        user.put("lastName", lastName);
+        user.put("email", email);
+        user.put("birthDate", String.valueOf(birthDate));
+        user.put("phoneNumber", phoneNumber);
+        user.put("password", password);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        String response = HttpRequest.sendPut(URL, json);
+        if (response != null) {
+            JsonObject jsonResult = JsonParser.parseString(response).getAsJsonObject();
+            if (jsonResult.get("success").getAsBoolean()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Получаем список прибывающих/отбывающие рейсов попадающие в временной диапазон
      *
@@ -127,9 +153,9 @@ public class Api {
                 Flight flight = new Flight();
                 flight.setId(flightJson.get("flight_id").getAsInt());
                 flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
-                LocalDateTime departureDate = DateConvert.stringToDate(flightJson.get("departureDate").getAsString());
+                LocalDateTime departureDate = DateConvert.stringToDateTime(flightJson.get("departureDate").getAsString());
                 flight.setDepartureDate(departureDate);
-                LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
+                LocalDateTime arrivalDate = DateConvert.stringToDateTime(flightJson.get("arrivalDate").getAsString());
                 flight.setArrivalDate(arrivalDate);
 
                 System.out.println(flightJson.get("arrivalDate").getAsString());
@@ -163,9 +189,9 @@ public class Api {
                 Flight flight = new Flight();
                 flight.setId(flightJson.get("flight_id").getAsInt());
                 flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
-                LocalDateTime departureDate = DateConvert.stringToDate(flightJson.get("departureDate").getAsString());
+                LocalDateTime departureDate = DateConvert.stringToDateTime(flightJson.get("departureDate").getAsString());
                 flight.setDepartureDate(departureDate);
-                LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
+                LocalDateTime arrivalDate = DateConvert.stringToDateTime(flightJson.get("arrivalDate").getAsString());
                 flight.setArrivalDate(arrivalDate);
                 flight.setStatus(flightJson.get("status").getAsString());
                 flight.setPlaneModel(flightJson.get("planeModel").getAsString());

@@ -115,8 +115,8 @@ public class Flight {
     }
 
     //TODO: Что-то придумать с датой
-    public String getDepartureDateProperty() {
-        return DateConvert.DateToStringProperty(departureDate.getValue());
+    public ObjectProperty<LocalDateTime> getDepartureDateProperty() {
+        return departureDate;
     }
 
     public ObjectProperty<LocalDateTime> getArrivalDateProperty() {

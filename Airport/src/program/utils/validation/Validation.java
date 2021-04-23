@@ -24,8 +24,10 @@ public class Validation {
             Alerts.showNoValidStdRegex(stage, "Фамилия");
         else if (!RegexValidation.checkStandard(model.loginField.getText()))
             Alerts.showNoValidStdRegex(stage, "Логин");
-        else if (!RegexValidation.checkPassword(model.passwordField.getText()))
-            Alerts.showNoValidPasswordFormat(stage);
+        else if (!RegexValidation.checkPhoneNumber(model.phoneField.getText()))
+            Alerts.showNoValidPhoneNumber(stage);
+//        else if (!RegexValidation.checkPassword(model.passwordField.getText()))
+//            Alerts.showNoValidPasswordFormat(stage);
         else
             return true;
         return false;
@@ -145,8 +147,8 @@ public class Validation {
             Alerts.showNoValidLength(stage, "Имя", 50);
         else if (!Validation.checkLength(model.lastNameField.getText(), 50))
             Alerts.showNoValidLength(stage, "Фамилия", 50);
-        else if (!Validation.checkLength(model.phoneField.getText(), 50))
-            Alerts.showNoValidLength(stage, "Телефон", 50);
+        else if (!Validation.checkLength(model.phoneField.getText(), 20))
+            Alerts.showNoValidLength(stage, "Телефон", 20);
         else if (!Validation.checkLength(model.passwordField.getText(), 50))
             Alerts.showNoValidLength(stage, "Пароль", 50);
         else
@@ -205,6 +207,9 @@ public class Validation {
      * @return true если длина сообщения меньше возможной
      */
     public static boolean checkLength(String text, int len) {
+        if (text == null){
+            return true;
+        }
         return text.length() <= len;
     }
 

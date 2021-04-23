@@ -122,7 +122,7 @@ public abstract class Alerts {
                 """);
         alert.showAndWait();
     }
-    public static void showNoValidPasswordDeleteAction(Stage stage) {
+    public static void showNoValidAccountPassword(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
         alert.setTitle("Введите ваш пароль от аккаунта");

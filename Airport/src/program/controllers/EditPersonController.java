@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import program.models.Person;
 import program.models.RegistrationEditModel;
 import program.utils.alerts.Alerts;
-import program.utils.validation.RegexValidation;
 import program.utils.validation.Validation;
 
 import java.time.LocalDate;
@@ -22,68 +21,62 @@ public class EditPersonController extends RegistrationEditModel {
         phoneField.setText(this.person.getPhoneNumber());
         birthdayPicker.setValue(LocalDate.from(this.person.getBirthday()));
         passwordField.setText(this.person.getPassword());
-//        passwordRepeatField.setText(this.person.getRepeatPassword());
     }
 
-    /**
-     * Инициализация полей
-     */
-//    TODO: не работает, получение полей через api
-//    @FXML
-//    public void initialize() {
-//        loginField.setText(api.getCurrentLoginPerson().getLogin());
-//        emailField.setText(api.getCurrentLoginPerson().getEmail());
-//        birthdayPicker.setValue(api.getCurrentLoginPerson().getBirthday());
-//    }
+
     public Person getPerson() {
         return person;
     }
 
-    public boolean isDelete() { return delete; }
-
-    //  TODO действие обновление информации о персоне
-    @FXML
-    private void handleUpdate() {
-//        if (Validation.EditPersonDataValidation(this, RegistrationStage)) {
-//            if(Validation.isValidLength2(this, RegistrationStage)){
-//                if (Validation.isValidRegistrationRegex(this, RegistrationStage)){
-//                    if (RegexValidation.checkPhoneNumber(phoneField.getText())){
-//                        /*TODO: здесь должен быть PUT request с отправкой сущности*/
-//                        Alerts.showSuccessEditPerson(RegistrationStage);
-//                    } else {
-//                        Alerts.showNoValidPhoneNumber(RegistrationStage);
-//                    }
-//
-//                }
-//            }
-//        }
+    public boolean isDelete() {
+        return delete;
     }
 
     /**
-     *
+     * Кнопка обновления информации о пользователе
+     */
+    @FXML
+    private void handleUpdate() {
+        if (Validation.EditPersonDataValidation(this, RegistrationStage)) { // Поля не пустые
+            if (Validation.isValidLength2(this, RegistrationStage)) { // Длина полей не большая
+                if (Validation.isValidRegistrationRegex(this, RegistrationStage)) {
+                    boolean authResult = main.getApi().checkUserExists(emailField.getText(), passwordField.getText());
+                    if (authResult){
+                        boolean updateResult = api.updateUser(firstNameField.getText(), lastNameField.getText(), loginField.getText(),
+                                emailField.getText(), phoneField.getText(), birthdayPicker.getValue(), passwordField.getText());
+                        if (updateResult) {
+                            // устанавливаем новые значения полей для currentLoginPerson
+                            api.currentLoginPerson.setFirstName(firstNameField.getText());
+                            api.currentLoginPerson.setLastName(lastNameField.getText());
+                            api.currentLoginPerson.setLogin(loginField.getText());
+                            api.currentLoginPerson.setEmail(emailField.getText());
+                            api.currentLoginPerson.setPhoneNumber(phoneField.getText());
+                            api.currentLoginPerson.setBirthday(LocalDate.from(birthdayPicker.getValue()));
+                            Alerts.showSuccessEditPerson(RegistrationStage);
+                        }
+                    } else {
+                        Alerts.showNoValidAccountPassword(RegistrationStage);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Кнопка удаления аккаунта пользователя
      */
     @FXML
     private void handleDeleteAcc() {
-        // валидация
-        if (Validation.isValidPassword(this, RegistrationStage)){
-//            if (RegexValidation.checkPassword(passwordField.getText())){
-                delete = Alerts.showDeleteAccount(RegistrationStage);
-                if (delete){
-                    // Пока не знаем как получать данные о email у currentLoginPerson, поэтому строка test@email.ru
-                    /* TODO сделать проверку поля
-                        если пустое значение, пишем пользователю,
-                        что необходимо указать верный пароль, чтобы удалить аккаунт
-                    */
-                    boolean result = api.deleteUser(person.getEmail(), passwordField.getText());
-                    if (result){
-                        main.initRootLayout();
-                    } else {
-                        Alerts.showNoValidPasswordDeleteAction(RegistrationStage);
-                    }
+        if (Validation.isValidPassword(this, RegistrationStage)) {
+            delete = Alerts.showDeleteAccount(RegistrationStage);
+            if (delete) {
+                boolean result = api.deleteUser(person.getEmail(), passwordField.getText());
+                if (result) {
+                    main.initRootLayout();
+                } else {
+                    Alerts.showNoValidAccountPassword(RegistrationStage);
                 }
-//            } else {
-//                Alerts.showNoValidPasswordFormat(RegistrationStage);
-//            }
+            }
         }
 
     }
