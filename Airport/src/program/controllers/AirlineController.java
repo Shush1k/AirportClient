@@ -16,7 +16,8 @@ import program.utils.validation.Validation;
 import java.util.Arrays;
 import java.util.List;
 
-public class AirlineInfoController {
+
+public class AirlineController {
     private Main main;
     private Stage stage;
     protected Api api;

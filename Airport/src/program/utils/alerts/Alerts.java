@@ -64,6 +64,14 @@ public abstract class Alerts {
         alert.setContentText("Введите корректные данные или зарегистрируйтесь!");
         alert.showAndWait();
     }
+    public static void showNoValidPhoneNumber(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Неправильный формат номера телефона");
+        alert.setHeaderText("Введите корректный номер телефона");
+        alert.setContentText("Форматы: +79859820558 или 89859826158");
+        alert.showAndWait();
+    }
 
     /**
      * Ошибка запрещенных символов из списка [% " ' ; :]

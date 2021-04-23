@@ -1,7 +1,6 @@
 package program.utils.validation;
 
 import javafx.stage.Stage;
-import program.controllers.AirlineInfoController;
 import program.models.RegistrationEditModel;
 import program.models.SignInModel;
 import program.utils.alerts.Alerts;
@@ -25,8 +24,6 @@ public class Validation {
             Alerts.showNoValidStdRegex(stage, "Фамилия");
         else if (!RegexValidation.checkStandard(model.loginField.getText()))
             Alerts.showNoValidStdRegex(stage, "Логин");
-        else if (!RegexValidation.checkEmail(model.emailField.getText()))
-            Alerts.showNoValidEmail(stage);
         else if (!RegexValidation.checkPassword(model.passwordField.getText()))
             Alerts.showNoValidPasswordFormat(stage);
         else
@@ -84,10 +81,8 @@ public class Validation {
             errorMessage += "Нет имени!\n";
         if (model.lastNameField.getText() == null || model.lastNameField.getText().length() == 0)
             errorMessage += "Нет фамилии!\n";
-        if (model.loginField.getText() == null || model.loginField.getText().length() == 0)
-            errorMessage += "Нет логина!\n";
-        if (model.emailField.getText() == null || model.emailField.getText().length() == 0)
-            errorMessage += "Нет почты!\n";
+        if (model.phoneField.getText() == null || model.phoneField.getText().length() == 0)
+            errorMessage += "Нет номера телефона!\n";
         if (model.passwordField.getText() == null || model.passwordField.getText().length() == 0)
             errorMessage += "Нет пароля!\n";
         if (errorMessage.length() == 0) return true;
@@ -150,10 +145,8 @@ public class Validation {
             Alerts.showNoValidLength(stage, "Имя", 50);
         else if (!Validation.checkLength(model.lastNameField.getText(), 50))
             Alerts.showNoValidLength(stage, "Фамилия", 50);
-        else if (!Validation.checkLength(model.loginField.getText(), 50))
-            Alerts.showNoValidLength(stage, "Логин", 50);
-        else if (!Validation.checkLength(model.emailField.getText(), 50))
-            Alerts.showNoValidLength(stage, "Email", 50);
+        else if (!Validation.checkLength(model.phoneField.getText(), 50))
+            Alerts.showNoValidLength(stage, "Телефон", 50);
         else if (!Validation.checkLength(model.passwordField.getText(), 50))
             Alerts.showNoValidLength(stage, "Пароль", 50);
         else

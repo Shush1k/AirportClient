@@ -23,6 +23,10 @@ public class Api {
     private final String HOST = "http://localhost:8080";
     private Person currentLoginPerson;
 
+    public Person getCurrentLoginPerson() {
+        return currentLoginPerson;
+    }
+
     /**
      * Метод проверки авторизации пользователя на сервере
      *
@@ -46,7 +50,7 @@ public class Api {
             currentLoginPerson.setEmail(result.get("email").getAsString());
             currentLoginPerson.setFirstName(result.get("firstName").getAsString());
             currentLoginPerson.setLastName(result.get("lastName").getAsString());
-            currentLoginPerson.setId(result.get("id").getAsLong());
+//            currentLoginPerson.setId(result.get("id").getAsLong());
             return true;
         }
 
@@ -182,8 +186,9 @@ public class Api {
 
         return result;
     }
+
     // TODO: заменить try/catch блок
-    public List<Airline> getAirlinesBySubCompanyName(String subString, Boolean filter){
+    public List<Airline> getAirlinesBySubCompanyName(String subString, Boolean filter) {
         String URL = String.format("%s/airlines/like?name=%s&filter=%s", HOST, subString, filter);
         List<Airline> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);

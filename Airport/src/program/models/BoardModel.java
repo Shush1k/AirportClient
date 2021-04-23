@@ -1,7 +1,6 @@
 package program.models;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import program.Main;
@@ -13,7 +12,7 @@ public abstract class BoardModel {
     protected Api api;
 
 
-//    Формат даты в POSTMAN такой: "2021-04-17T17:30"
+    //    Формат даты в POSTMAN такой: "2021-04-17T17:30"
     @FXML
     public TextField startDateField;
 

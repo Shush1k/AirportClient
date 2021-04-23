@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="program.controllers.AirlineInfoController">
+            fx:controller="program.controllers.AirlineController">
     <bottom>
         <TableView fx:id="airlineTableView" prefHeight="400.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <columns>

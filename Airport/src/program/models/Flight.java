@@ -3,7 +3,6 @@ package program.models;
 import javafx.beans.property.*;
 
 import java.time.LocalDateTime;
-import java.time.LocalDateTime;
 
 /**
  * Класс Flight - рейсы

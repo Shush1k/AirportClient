@@ -259,7 +259,7 @@ public class Main extends Application {
 
             mainLayout.setCenter(airlineInfoPage);
 
-            AirlineInfoController controller = loader.getController();
+            AirlineController controller = loader.getController();
             controller.setMain(this);
             controller.setStage(primaryStage);
             controller.setApi(api);

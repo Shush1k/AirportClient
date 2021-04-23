@@ -229,6 +229,14 @@ public class Person {
         this.repeatPassword.set(repeatPassword);
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber.get();
+    }
+
+    public LocalDate getBirthday() {
+        return birthday.get();
+    }
+
     @Override
     public String toString() {
         return "Person{" +
