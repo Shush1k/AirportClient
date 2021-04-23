@@ -122,6 +122,15 @@ public abstract class Alerts {
                 """);
         alert.showAndWait();
     }
+    public static void showNoValidPasswordDeleteAction(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Введите ваш пароль от аккаунта");
+        alert.setHeaderText("Некорректный пароль аккаунта");
+        alert.setContentText("Укажите пароль, который вы ввели при регистрации");
+        alert.showAndWait();
+    }
+
 
     /**
      * Не правильный формат даты

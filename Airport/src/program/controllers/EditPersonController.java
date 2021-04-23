@@ -21,7 +21,7 @@ public class EditPersonController extends RegistrationEditModel {
         phoneField.setText(this.person.getPhoneNumber());
         birthdayPicker.setValue(this.person.getBirthday());
         passwordField.setText(this.person.getPassword());
-        passwordRepeatField.setText(this.person.getRepeatPassword());
+//        passwordRepeatField.setText(this.person.getRepeatPassword());
     }
 
     /**
@@ -63,16 +63,28 @@ public class EditPersonController extends RegistrationEditModel {
      */
     @FXML
     private void handleDeleteAcc() {
-        delete = Alerts.showDeleteAccount(RegistrationStage);
-        if (delete){
-            // Пока не знаем как получать данные о email у currentLoginPerson, поэтому строка test@email.ru
-            /* TODO сделать проверку поля
-                если пустое значение, пишем пользователю,
-                что необходимо указать верный пароль, чтобы удалить аккаунт
-            */
-            api.deleteUser("test@email.ru", passwordField.getText());
-            main.initRootLayout();
+        // валидация
+        if (Validation.isValidPassword(this, RegistrationStage)){
+//            if (RegexValidation.checkPassword(passwordField.getText())){
+                delete = Alerts.showDeleteAccount(RegistrationStage);
+                if (delete){
+                    // Пока не знаем как получать данные о email у currentLoginPerson, поэтому строка test@email.ru
+                    /* TODO сделать проверку поля
+                        если пустое значение, пишем пользователю,
+                        что необходимо указать верный пароль, чтобы удалить аккаунт
+                    */
+                    boolean result = api.deleteUser("test@email.ru", passwordField.getText());
+                    if (result){
+                        main.initRootLayout();
+                    } else {
+                        Alerts.showNoValidPasswordDeleteAction(RegistrationStage);
+                    }
+                }
+//            } else {
+//                Alerts.showNoValidPasswordFormat(RegistrationStage);
+//            }
         }
+
     }
 
 }

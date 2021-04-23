@@ -13,8 +13,8 @@ public class Validation {
     /**
      * Проверка полей на корректность через регулярные выражения
      *
-     * @param model - модель Регистрации
-     * @param stage - текущее окно
+     * @param model модель Регистрации
+     * @param stage текущее окно
      * @return true если нет ошибок
      */
     public static boolean isValidRegistrationRegex(RegistrationEditModel model, Stage stage) {
@@ -34,8 +34,8 @@ public class Validation {
     /**
      * Проверка полей регистрации на корректность
      *
-     * @param model - модель Регистрации
-     * @param stage - текущее окно
+     * @param model модель Регистрации
+     * @param stage текущее окно
      * @return true если нет ошибок
      */
     public static boolean RegistrationDataValidation(RegistrationEditModel model, Stage stage) {
@@ -53,7 +53,7 @@ public class Validation {
         if (model.passwordRepeatField.getText() == null || model.passwordRepeatField.getText().length() == 0)
             errorMessage += "Нет повтора пароля!\n";
         if ((model.emailField.getText() != null && model.loginField.getText() != null) &&
-                !model.emailField.getText().equals(model.loginField.getText())){
+                !model.emailField.getText().equals(model.loginField.getText())) {
             errorMessage += "Логин должен совпадать с почтой!\n";
 
         }
@@ -71,8 +71,8 @@ public class Validation {
     /**
      * Проверка полей изменения информации пользователя на корректность
      *
-     * @param model - модель Регистрации
-     * @param stage - текущее окно
+     * @param model модель Регистрации
+     * @param stage текущее окно
      * @return true если нет ошибок
      */
     public static boolean EditPersonDataValidation(RegistrationEditModel model, Stage stage) {
@@ -95,9 +95,9 @@ public class Validation {
     /**
      * Проверка полей авторизации
      *
-     * @param model - модель Регистрации
-     * @param stage - текущее окно
-     * @return true - если нет ошибок
+     * @param model модель Регистрации
+     * @param stage текущее окно
+     * @return true  если нет ошибок
      */
     public static boolean isValidAuthorizationRegex(SignInModel model, Stage stage) {
         if (RegexValidation.checkStandard(model.loginField.getText()) && RegexValidation.checkPassword(model.passwordField.getText()))
@@ -111,9 +111,9 @@ public class Validation {
     /**
      * Проверка максимальной длины полей
      *
-     * @param model - модель Регистрации
-     * @param stage - текущее окно
-     * @return true - если нет ошибок
+     * @param model модель Регистрации
+     * @param stage текущее окно
+     * @return true  если нет ошибок
      */
     public static boolean isValidLength(RegistrationEditModel model, Stage stage) {
         if (!Validation.checkLength(model.firstNameField.getText(), 50))
@@ -136,9 +136,9 @@ public class Validation {
     /**
      * Проверка длины полей
      *
-     * @param model - модель Регистрации
-     * @param stage - текущее окно
-     * @return true - если нет ошибок
+     * @param model модель Регистрации
+     * @param stage текущее окно
+     * @return true  если нет ошибок
      */
     public static boolean isValidLength2(RegistrationEditModel model, Stage stage) {
         if (!Validation.checkLength(model.firstNameField.getText(), 50))
@@ -155,11 +155,31 @@ public class Validation {
     }
 
     /**
+     * Проверка ввода пароля
+     *
+     * @param model модель Регистрации
+     * @param stage текущее окно
+     * @return true если нет ошибок
+     */
+    public static boolean isValidPassword(RegistrationEditModel model, Stage stage) {
+        String errorMessage = "";
+        if (model.passwordField.getText() == null || model.passwordField.getText().length() == 0) {
+            errorMessage += "Не заполнен пароль!\n";
+        }
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            Alerts.showNoValidInput(stage, errorMessage);
+            return false;
+        }
+    }
+
+    /**
      * Проверка ввода логина и пароля
      *
-     * @param model - модель Авторизации
-     * @param stage - текущее окно
-     * @return true - если нет ошибок
+     * @param model модель Авторизации
+     * @param stage текущее окно
+     * @return true  если нет ошибок
      */
     public static boolean isValidAuthorization(SignInModel model, Stage stage) {
         String errorMessage = "";
@@ -180,14 +200,20 @@ public class Validation {
     /**
      * Проверка длины сообщения
      *
-     * @param text - сообщение
-     * @param len  - длина поля в БД
-     * @return true - если длина сообщения меньше возможной
+     * @param text сообщение
+     * @param len  длина поля в БД
+     * @return true если длина сообщения меньше возможной
      */
     public static boolean checkLength(String text, int len) {
         return text.length() <= len;
     }
 
+    /**
+     * Проверка значения текстового поля на пустое значение
+     *
+     * @param text текст
+     * @return true если пустое
+     */
     public static boolean isAirlineNameBlank(String text) {
         if (text == null || text.length() == 0) {
             return true;

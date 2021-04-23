@@ -223,9 +223,19 @@ public class Api {
         return result;
     }
 
+    /**
+     * Удалить пользователя по почте
+     *
+     * @param email почта
+     * @param password пароль
+     * @return true - если удалили пользователя, иначе false
+     */
     public boolean deleteUser(String email, String password){
+        password = URLEncoder.encode(password, StandardCharsets.UTF_8);
+
         String URL = String.format("%s/users/delete?email=%s&password=%s", HOST, email, password);
-        String response = HttpRequest.sendDelete(URL);
+        //TODO: пока get запрос на удаление пользователя, delete не работал как нужно
+        String response = HttpRequest.sendGet(URL);
 
         if (response != null) {
 
