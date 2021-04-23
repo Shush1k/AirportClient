@@ -119,6 +119,25 @@ public class Airline {
     public void setEmail(String email) {
         this.email.set(email);
     }
+    public StringProperty getCodeProperty() {
+        return code;
+    }
+
+    public StringProperty getNameProperty() {
+        return name;
+    }
+
+    public StringProperty getEmailProperty() {
+        return email;
+    }
+
+    public StringProperty getWebsiteProperty() {
+        return website;
+    }
+
+    public StringProperty getPhoneNumberProperty() {
+        return phoneNumber;
+    }
 
     @Override
     public String toString() {

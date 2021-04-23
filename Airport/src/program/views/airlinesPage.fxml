@@ -41,7 +41,7 @@
                         <Font name="Chalkboard SE Light" size="30.0"/>
                     </font>
                 </Label>
-                <CheckBox fx:id="sortAirlineBtn" layoutX="490.0" layoutY="97.0" mnemonicParsing="false" onAction="#sortAirlinesByDesc"
+                <CheckBox fx:id="sortAirlineBtn" layoutX="490.0" layoutY="97.0" mnemonicParsing="false"
                           text="По возрастанию" AnchorPane.rightAnchor="100.0">
                     <font>
                         <Font size="18.0"/>
