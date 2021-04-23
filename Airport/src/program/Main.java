@@ -26,15 +26,10 @@ public class Main extends Application {
     private BorderPane rootLayout;
     private BorderPane mainLayout;
     private final Api api;
-    private final Person person;
     private final ObservableList<Person> personData = FXCollections.observableArrayList();
 
     public Api getApi() {
         return api;
-    }
-
-    public Person getPerson() {
-        return person;
     }
 
     /**
@@ -42,8 +37,6 @@ public class Main extends Application {
      */
     public Main() {
         api = new Api();
-/*       TODO: понять зачем api, можно же в person или api нужен чтобы забрать данные, а потом все по классам отдать?*/
-        person = new Person();
     }
 
     public static void main(String[] args) {
