@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import program.Main;
+import program.utils.api.Api;
 
 /**
  * Абстрактный класс RegistrationEditModel - модель регистрации
@@ -13,6 +14,7 @@ import program.Main;
 public abstract class RegistrationEditModel {
     protected Stage RegistrationStage;
     protected Main main;
+    protected Api api;
 
     @FXML
     public TextField firstNameField;
@@ -52,5 +54,9 @@ public abstract class RegistrationEditModel {
 
     public void setMain(Main main) {
         this.main = main;
+    }
+
+    public void setApi(Api api) {
+        this.api = api;
     }
 }

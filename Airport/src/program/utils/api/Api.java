@@ -222,4 +222,19 @@ public class Api {
         }
         return result;
     }
+
+    public boolean deleteUser(String email, String password){
+        String URL = String.format("%s/users/delete?email=%s&password=%s", HOST, email, password);
+        String response = HttpRequest.sendDelete(URL);
+
+        if (response != null) {
+
+            System.out.printf("Удалили пользователя с почтой: %s%n", email);
+            return true;
+        } else {
+            System.out.print("НЕ УДАЛИЛИ!");
+            return false;
+        }
+
+    }
 }

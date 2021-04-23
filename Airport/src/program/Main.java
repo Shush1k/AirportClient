@@ -58,7 +58,7 @@ public class Main extends Application {
         this.primaryStage.setTitle("Airport App");
 
         initRootLayout();
-        showAuthorizationPage();
+
     }
 
     /**
@@ -79,6 +79,7 @@ public class Main extends Application {
             RootLayoutController rootLayoutController = loader.getController();
             rootLayoutController.setMain(this);
             primaryStage.show();
+            showAuthorizationPage();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -191,6 +192,7 @@ public class Main extends Application {
             mainLayout.setCenter(editPersonPage);
 
             EditPersonController controller = loader.getController();
+            controller.setApi(api);
             controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();

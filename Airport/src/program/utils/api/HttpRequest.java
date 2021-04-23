@@ -114,19 +114,33 @@ public class HttpRequest {
         }
     }
 
-    public static Boolean sendDelete(String url) {
+    public static String sendDelete(String urlString) {
         try {
-            URL url1 = new URL(url);
-            HttpURLConnection httpCon = (HttpURLConnection) url1.openConnection();
+            URL url = new URL(urlString);
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
             httpCon.setDoOutput(true);
             httpCon.setRequestProperty(
                     "Content-Type", "application/x-www-form-urlencoded");
             httpCon.setRequestMethod("DELETE");
-            httpCon.connect();
-        } catch (IOException e){
-            e.printStackTrace();
-            return false;
+
+            int responseCode = httpCon.getResponseCode();
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(httpCon.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                return response.toString();
+
+            } else {
+                System.out.println("DELETE получил код " + httpCon.getResponseCode());
+                return null;
+            }
+        } catch (IOException e) {
+            return null;
         }
-        return true;
     }
 }

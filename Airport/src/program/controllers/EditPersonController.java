@@ -4,12 +4,10 @@ import javafx.fxml.FXML;
 import program.models.Person;
 import program.models.RegistrationEditModel;
 import program.utils.alerts.Alerts;
-import program.utils.api.Api;
 import program.utils.validation.RegexValidation;
 import program.utils.validation.Validation;
 
 public class EditPersonController extends RegistrationEditModel {
-    protected Api api;
     private boolean delete = false;
 
     private Person person;
@@ -60,11 +58,20 @@ public class EditPersonController extends RegistrationEditModel {
         }
     }
 
+    /**
+     *
+     */
     @FXML
     private void handleDeleteAcc() {
         delete = Alerts.showDeleteAccount(RegistrationStage);
         if (delete){
-            /*TODO Получаем boolean тип, а далее DELETE request*/
+            // Пока не знаем как получать данные о email у currentLoginPerson, поэтому строка test@email.ru
+            /* TODO сделать проверку поля
+                если пустое значение, пишем пользователю,
+                что необходимо указать верный пароль, чтобы удалить аккаунт
+            */
+            api.deleteUser("test@email.ru", passwordField.getText());
+            main.initRootLayout();
         }
     }
 
