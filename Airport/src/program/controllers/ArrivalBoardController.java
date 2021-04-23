@@ -86,4 +86,8 @@ public class ArrivalBoardController extends BoardModel {
         flightsData = FXCollections.observableArrayList();
         flightsData.addAll(Arrays.asList(flights));
     }
+
+    public void handleClose() {
+        stage.close();
+    }
 }

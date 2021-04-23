@@ -220,6 +220,34 @@ public class Main extends Application {
     }
 
     /**
+     * Окно Деталей по прибывающим рейсам
+     */
+    public void showArrivalDetails() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("views/arrivalDetails.fxml"));
+            AnchorPane arrivalDetails = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Прибывающий рейс");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(primaryStage);
+            stage.setResizable(false);
+
+            Scene scene = new Scene(arrivalDetails);
+            stage.setScene(scene);
+
+            ArrivalBoardController controller = loader.getController();
+            controller.setStage(stage);
+            controller.setApi(api);
+            controller.setMain(this);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Окно Табло вылетов
      * расположено в центре mainLayout
      */

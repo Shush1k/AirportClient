@@ -103,20 +103,24 @@ public class Api {
         String URL = String.format("%s/flights/dates?startDate=%s&endDate=%s&isArrive=%s", HOST, startDate, endDate, isArrive.toString());
         List<Flight> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);
-        JsonArray jsonArray = JsonParser.parseString(response).getAsJsonArray();
 
-        for (int i = 0; i < jsonArray.size(); i++) {
-            JsonObject flightJson = jsonArray.get(i).getAsJsonObject();
-            Flight flight = new Flight();
-            flight.setId(flightJson.get("flight_id").getAsInt());
-            flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
-            LocalDateTime departureDate = DateConvert.stringToDate(flightJson.get("departureDate").getAsString());
-            flight.setDepartureDate(departureDate);
-            LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
-            flight.setArrivalDate(arrivalDate);
-            flight.setStatus(flightJson.get("status").getAsString());
-            flight.setPlaneModel(flightJson.get("planeModel").getAsString());
-            result.add(flight);
+        if (response != null) {
+            JsonArray jsonArray = JsonParser.parseString(response).getAsJsonArray();
+
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JsonObject flightJson = jsonArray.get(i).getAsJsonObject();
+                Flight flight = new Flight();
+                flight.setId(flightJson.get("flight_id").getAsInt());
+                flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
+                LocalDateTime departureDate = DateConvert.stringToDate(flightJson.get("departureDate").getAsString());
+                flight.setDepartureDate(departureDate);
+                LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
+                flight.setArrivalDate(arrivalDate);
+                flight.setStatus(flightJson.get("status").getAsString());
+                flight.setPlaneModel(flightJson.get("planeModel").getAsString());
+                result.add(flight);
+            }
+            return result;
         }
         return result;
 
@@ -131,20 +135,24 @@ public class Api {
         String URL = String.format("%s/flights/all", HOST);
         List<Flight> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);
-        JsonArray jsonArray = JsonParser.parseString(response).getAsJsonArray();
 
-        for (int i = 0; i < jsonArray.size(); i++) {
-            JsonObject flightJson = jsonArray.get(i).getAsJsonObject();
-            Flight flight = new Flight();
-            flight.setId(flightJson.get("flight_id").getAsInt());
-            flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
-            LocalDateTime departureDate = DateConvert.stringToDate(flightJson.get("departureDate").getAsString());
-            flight.setDepartureDate(departureDate);
-            LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
-            flight.setArrivalDate(arrivalDate);
-            flight.setStatus(flightJson.get("status").getAsString());
-            flight.setPlaneModel(flightJson.get("planeModel").getAsString());
-            result.add(flight);
+        if (response != null) {
+            JsonArray jsonArray = JsonParser.parseString(response).getAsJsonArray();
+
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JsonObject flightJson = jsonArray.get(i).getAsJsonObject();
+                Flight flight = new Flight();
+                flight.setId(flightJson.get("flight_id").getAsInt());
+                flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
+                LocalDateTime departureDate = DateConvert.stringToDate(flightJson.get("departureDate").getAsString());
+                flight.setDepartureDate(departureDate);
+                LocalDateTime arrivalDate = DateConvert.stringToDate(flightJson.get("arrivalDate").getAsString());
+                flight.setArrivalDate(arrivalDate);
+                flight.setStatus(flightJson.get("status").getAsString());
+                flight.setPlaneModel(flightJson.get("planeModel").getAsString());
+                result.add(flight);
+            }
+            return result;
         }
         return result;
 
@@ -226,11 +234,11 @@ public class Api {
     /**
      * Удалить пользователя по почте
      *
-     * @param email почта
+     * @param email    почта
      * @param password пароль
      * @return true - если удалили пользователя, иначе false
      */
-    public boolean deleteUser(String email, String password){
+    public boolean deleteUser(String email, String password) {
         password = URLEncoder.encode(password, StandardCharsets.UTF_8);
 
         String URL = String.format("%s/users/delete?email=%s&password=%s", HOST, email, password);
