@@ -59,7 +59,7 @@
                                         <TableColumn fx:id="flightNumberColumn" prefWidth="102.0" text="Номер рейса"/>
                                         <TableColumn fx:id="departureDateColumn" prefWidth="92.02156066894531"
                                                      text="Дата и время вылета"/>
-                                        <TableColumn fx:id="departureCityColumn" prefWidth="53.0" text="Аэропорт назначения"/>
+                                        <TableColumn fx:id="arrivalCityColumn" prefWidth="53.0" text="Аэропорт назначения"/>
                                         <TableColumn fx:id="statusColumn" prefWidth="53.0" text="Статус"/>
                                         <TableColumn fx:id="planeModelColumn" prefWidth="53.0" text="Модель самолета"/>
                                     </columns>

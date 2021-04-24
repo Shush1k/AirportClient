@@ -15,6 +15,9 @@ import java.util.List;
 
 
 public class ArrivalBoardController extends BoardModel {
+    private List<Flight> result;
+    private ObservableList<Flight> arrivalFlightsData = FXCollections.observableArrayList();
+
     @FXML
     private TableView<Flight> arrivalTableView;
     @FXML
@@ -22,22 +25,34 @@ public class ArrivalBoardController extends BoardModel {
     @FXML
     private TableColumn<Flight, String> arrivalDateColumn;
     @FXML
-    private TableColumn<Flight, String> cityFromColumn;
+    private TableColumn<Flight, String> departureCityColumn;
     @FXML
     private TableColumn<Flight, String> statusColumn;
     @FXML
     private TableColumn<Flight, String> planeModelColumn;
 
 
-    private ObservableList<Flight> flightsData;
-
     /**
      * Инициализация полей
      */
     @FXML
     public void initialize() {
+
         startDateField.setText(null);
         endDateField.setText(null);
+
+
+        flightNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getFlightNumberProperty());
+        //TODO: какой-то формат для даты
+//        departureDateColumn.setCellValueFactory(cellData -> cellData.getValue().getDepartureCityProperty());
+        //Пока так:
+        arrivalDateColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalDate"));
+        departureCityColumn.setCellValueFactory(cellData -> cellData.getValue().getDepartureCityProperty());
+        statusColumn.setCellValueFactory(cellData -> cellData.getValue().getStatusProperty());
+        planeModelColumn.setCellValueFactory(cellData -> cellData.getValue().getPlaneModelProperty());
+
+        // заполняем таблицу данными
+        arrivalTableView.setItems(arrivalFlightsData);
     }
 
     /**
@@ -46,12 +61,14 @@ public class ArrivalBoardController extends BoardModel {
      */
     @FXML
     private void handleShowArrival() {
+        arrivalTableView.getItems().clear();
         if (DateValidation.isBothDatesBlank(this)) {
             // Получаем все рейсы
             List<Flight> result = api.getAllFlights(true);
             for (int i = 0; i < result.size(); i++) {
                 System.out.println(result.get(i).toString());
             }
+            arrivalFlightsData.addAll(result);
         } else {
             if (DateValidation.isOneDateBlank(this, stage)) {
                 if (DateValidation.isValidDateFormat(this, stage)) {
@@ -60,32 +77,12 @@ public class ArrivalBoardController extends BoardModel {
                     for (int i = 0; i < result.size(); i++) {
                         System.out.println(result.get(i).toString());
                     }
+                    arrivalFlightsData.addAll(result);
                 }
             }
         }
     }
 
-
-    /**
-     * Показывает данные в таблице arrivalTableView
-     */
-    public void showFlightsContent() {
-        flightNumberColumn.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
-        arrivalDateColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalDate"));
-        cityFromColumn.setCellValueFactory(new PropertyValueFactory<>("cityFrom"));
-        planeModelColumn.setCellValueFactory(new PropertyValueFactory<>("planeModel"));
-        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-        arrivalTableView.setItems(flightsData);
-    }
-
-    /**
-     * @param flights - список рейсов
-     */
-    public void setFlights(Flight[] flights) {
-        flightsData = FXCollections.observableArrayList();
-        flightsData.addAll(Arrays.asList(flights));
-    }
 
     public void handleClose() {
         stage.close();

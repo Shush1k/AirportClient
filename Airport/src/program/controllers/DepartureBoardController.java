@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DepartureBoardController extends BoardModel {
     private List<Flight> result;
-    private ObservableList<Flight> flightsData = FXCollections.observableArrayList();
+    private ObservableList<Flight> departureFlightsData = FXCollections.observableArrayList();
     @FXML
     private TableView<Flight> departureTableView;
     @FXML
@@ -22,7 +22,7 @@ public class DepartureBoardController extends BoardModel {
     @FXML
     private TableColumn<Flight, String> departureDateColumn;
     @FXML
-    private TableColumn<Flight, String> departureCityColumn;
+    private TableColumn<Flight, String> arrivalCityColumn;
     @FXML
     private TableColumn<Flight, String> statusColumn;
     @FXML
@@ -38,18 +38,17 @@ public class DepartureBoardController extends BoardModel {
         endDateField.setText(null);
 
 
-        // устанавливаем значение класса Airline
         flightNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getFlightNumberProperty());
         //TODO: какой-то формат для даты
 //        departureDateColumn.setCellValueFactory(cellData -> cellData.getValue().getDepartureCityProperty());
         //Пока так:
         departureDateColumn.setCellValueFactory(new PropertyValueFactory<>("departureDate"));
-        departureCityColumn.setCellValueFactory(cellData -> cellData.getValue().getDepartureCityProperty());
+        arrivalCityColumn.setCellValueFactory(cellData -> cellData.getValue().getArrivalCityProperty());
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().getStatusProperty());
         planeModelColumn.setCellValueFactory(cellData -> cellData.getValue().getPlaneModelProperty());
 
         // заполняем таблицу данными
-        departureTableView.setItems(flightsData);
+        departureTableView.setItems(departureFlightsData);
     }
 
     /**
@@ -67,7 +66,7 @@ public class DepartureBoardController extends BoardModel {
 //            for (int i = 0; i < result.size(); i++) {
 //                System.out.println(result.get(i).toString());
 //            }
-            flightsData.addAll(result);
+            departureFlightsData.addAll(result);
         } else {
             if (DateValidation.isOneDateBlank(this, stage)) {
                 if (DateValidation.isValidDateFormat(this, stage)) {
@@ -76,7 +75,7 @@ public class DepartureBoardController extends BoardModel {
 //                    for (int i = 0; i < result.size(); i++) {
 //                        System.out.println(result.get(i).toString());
 //                    }
-                    flightsData.addAll(result);
+                    departureFlightsData.addAll(result);
                 }
             }
         }
