@@ -8,41 +8,50 @@
     <top>
         <AnchorPane prefHeight="180.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="32.0" layoutY="62.0" text="От" AnchorPane.leftAnchor="30.0">
+                <Label layoutX="39.0" layoutY="89.0" text="От" AnchorPane.leftAnchor="40.0">
                     <font>
                         <Font name="Chalkboard SE Light" size="22.0"/>
                     </font>
                 </Label>
-                <Label layoutX="29.0" layoutY="108.0" text="До" AnchorPane.leftAnchor="30.0">
+                <Label layoutX="39.0" layoutY="135.0" text="До" AnchorPane.leftAnchor="40.0">
                     <font>
                         <Font name="Chalkboard SE Light" size="22.0"/>
                     </font>
                 </Label>
-                <Button layoutX="521.0" layoutY="99.0" mnemonicParsing="false" onAction="#handleShowDeparture"
-                        prefHeight="27.0" prefWidth="198.0" text="Найти рейсы" textFill="#142bcc">
+                <Button layoutX="850.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleShowDeparture"
+                        prefHeight="35.0" prefWidth="131.0" text="Найти рейсы" textFill="#142bcc"
+                        AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="125.0">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Button>
-                <TextField fx:id="startDateField" layoutX="166.0" layoutY="66.0" promptText="2021-02-27 10:00"
-                           AnchorPane.leftAnchor="120.0"/>
-                <TextField fx:id="endDateField" layoutX="163.0" layoutY="113.0" promptText="2021-05-05 06:30"
-                           AnchorPane.leftAnchor="120.0"/>
-                <Label layoutX="529.0" layoutY="23.0" prefHeight="29.0" prefWidth="238.0" text="Табло вылетов">
+                <TextField fx:id="startDateField" layoutX="130.0" layoutY="93.0" promptText="2021-02-27 10:00"
+                           AnchorPane.leftAnchor="130.0"/>
+                <TextField fx:id="endDateField" layoutX="130.0" layoutY="140.0" promptText="2021-05-05 06:30"
+                           AnchorPane.leftAnchor="130.0"/>
+                <Label layoutX="300.0" layoutY="21.0" prefHeight="29.0" prefWidth="238.0" text="Табло вылетов"
+                       AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="10.0">
                     <font>
                         <Font name="Chalkboard SE Light" size="24.0"/>
                     </font>
                 </Label>
-                <Label layoutX="39.0" layoutY="23.0" text="Поиск по дате и времени" AnchorPane.leftAnchor="30.0">
+                <Label layoutX="40.0" layoutY="50.0" text="Поиск по дате и времени" AnchorPane.leftAnchor="40.0">
                     <font>
                         <Font name="Chalkboard SE Light" size="22.0"/>
                     </font>
                 </Label>
+                <TextField fx:id="searchField" layoutX="658.0" layoutY="128.0" prefHeight="35.0" prefWidth="185.0"
+                           promptText="Рейс или направление" AnchorPane.rightAnchor="170.0"
+                           AnchorPane.topAnchor="125.0">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </TextField>
             </children>
         </AnchorPane>
     </top>
     <center>
-        <AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1"
+        <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1"
                     xmlns:fx="http://javafx.com/fxml/1">
             <children>
                 <SplitPane layoutX="144.0" layoutY="40.0" prefHeight="300.0" prefWidth="600.0"
@@ -59,7 +68,8 @@
                                         <TableColumn fx:id="flightNumberColumn" prefWidth="102.0" text="Номер рейса"/>
                                         <TableColumn fx:id="departureDateColumn" prefWidth="92.02156066894531"
                                                      text="Дата и время вылета"/>
-                                        <TableColumn fx:id="arrivalCityColumn" prefWidth="53.0" text="Аэропорт назначения"/>
+                                        <TableColumn fx:id="arrivalCityColumn" prefWidth="53.0"
+                                                     text="Аэропорт назначения"/>
                                         <TableColumn fx:id="statusColumn" prefWidth="53.0" text="Статус"/>
                                         <TableColumn fx:id="planeModelColumn" prefWidth="53.0" text="Модель самолета"/>
                                     </columns>
