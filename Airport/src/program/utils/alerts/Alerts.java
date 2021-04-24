@@ -64,6 +64,7 @@ public abstract class Alerts {
         alert.setContentText("Введите корректные данные или зарегистрируйтесь!");
         alert.showAndWait();
     }
+
     public static void showNoValidPhoneNumber(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -122,6 +123,7 @@ public abstract class Alerts {
                 """);
         alert.showAndWait();
     }
+
     public static void showNoValidAccountPassword(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(stage);
@@ -142,7 +144,10 @@ public abstract class Alerts {
         alert.initOwner(stage);
         alert.setTitle("Некорректный формат даты");
         alert.setHeaderText("Некорректный формат полей дат");
-        alert.setContentText("Укажите дату в следующем формате \'2021-04-16 18:59\'");
+        alert.setContentText("""
+                Укажите дату в следующем формате \'2021-04-16 18:59\'
+                Дата должна быть в диапазоне от вчерашнего до завтрашнего дня
+                """);
         alert.showAndWait();
     }
 

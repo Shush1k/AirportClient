@@ -10,7 +10,6 @@ import program.models.BoardModel;
 import program.models.Flight;
 import program.utils.validation.DateValidation;
 
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -63,15 +62,17 @@ public class ArrivalBoardController extends BoardModel {
     private void handleShowArrival() {
         arrivalTableView.getItems().clear();
         if (DateValidation.isBothDatesBlank(this)) {
-            // Получаем все рейсы
-            List<Flight> result = api.getAllFlights(true);
-            for (int i = 0; i < result.size(); i++) {
-                System.out.println(result.get(i).toString());
+            if (DateValidation.isDateYesterdayTodayTomorrow(this, stage)) {
+                // Получаем все рейсы
+                List<Flight> result = api.getAllFlights(true);
+                for (int i = 0; i < result.size(); i++) {
+                    System.out.println(result.get(i).toString());
+                }
+                arrivalFlightsData.addAll(result);
             }
-            arrivalFlightsData.addAll(result);
         } else {
             if (DateValidation.isOneDateBlank(this, stage)) {
-                if (DateValidation.isValidDateFormat(this, stage)) {
+                if (DateValidation.isDateYesterdayTodayTomorrow(this, stage)) {
                     // Получаем прыбывающие рейсы
                     List<Flight> result = api.getFlightsBetweenDates(startDateField.getText(), endDateField.getText(), true);
                     for (int i = 0; i < result.size(); i++) {
