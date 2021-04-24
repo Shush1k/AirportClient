@@ -43,32 +43,34 @@ public class Api {
         String json = gson.toJson(map);
         String URL = String.format("%s/users/auth", HOST);
         String response = HttpRequest.sendPost(URL, json);
-        JsonObject jsonResult = JsonParser.parseString(response).getAsJsonObject();
-        if (jsonResult.get("success").getAsBoolean()) {
-            JsonObject result = jsonResult.get("result").getAsJsonObject();
-            currentLoginPerson = new Person();
-            currentLoginPerson.setLogin(result.get("login").getAsString());
-            currentLoginPerson.setEmail(result.get("email").getAsString());
-            currentLoginPerson.setFirstName(result.get("firstName").getAsString());
-            currentLoginPerson.setLastName(result.get("lastName").getAsString());
+
+        if (response != null) {
+            JsonObject jsonResult = JsonParser.parseString(response).getAsJsonObject();
+            if (jsonResult.get("success").getAsBoolean()) {
+                JsonObject result = jsonResult.get("result").getAsJsonObject();
+                currentLoginPerson = new Person();
+                currentLoginPerson.setLogin(result.get("login").getAsString());
+                currentLoginPerson.setEmail(result.get("email").getAsString());
+                currentLoginPerson.setFirstName(result.get("firstName").getAsString());
+                currentLoginPerson.setLastName(result.get("lastName").getAsString());
 
 
-            try {
-                currentLoginPerson.setPhoneNumber(result.get("phoneNumber").getAsString());
-            } catch (RuntimeException e) {
-                currentLoginPerson.setPhoneNumber(null);
+                try {
+                    currentLoginPerson.setPhoneNumber(result.get("phoneNumber").getAsString());
+                } catch (RuntimeException e) {
+                    currentLoginPerson.setPhoneNumber(null);
+                }
+                try {
+                    LocalDate birthDay = DateConvert.stringToDate(result.get("birthDate").getAsString());
+                    currentLoginPerson.setBirthday(birthDay);
+
+                } catch (RuntimeException e) {
+                    //TODO: проверить возможен ли такой вариант после всех правок с датами на 23.04
+                    currentLoginPerson.setBirthday(DateConvert.stringToDate("2000-01-01"));
+                }
+
+                return true;
             }
-            try {
-                LocalDate birthDay = DateConvert.stringToDate(result.get("birthDate").getAsString());
-                currentLoginPerson.setBirthday(birthDay);
-
-            } catch (RuntimeException e) {
-                //TODO: проверить возможен ли такой вариант после всех правок с датами на 23.04
-                currentLoginPerson.setBirthday(DateConvert.stringToDate("2000-01-01"));
-            }
-
-
-            return true;
         }
 
         return false;
@@ -97,7 +99,7 @@ public class Api {
         String json = gson.toJson(map);
         String URL = String.format("%s/users/registration", HOST);
         String response = HttpRequest.sendPost(URL, json);
-        if (response != null){
+        if (response != null) {
             JsonObject jsonResult = JsonParser.parseString(response).getAsJsonObject();
             if (jsonResult.get("success").getAsBoolean()) {
                 return true;
@@ -150,9 +152,9 @@ public class Api {
 
         if (response != null) {
             JsonArray jsonArray = JsonParser.parseString(response).getAsJsonArray();
-
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonObject flightJson = jsonArray.get(i).getAsJsonObject();
+                JsonObject routeJson = flightJson.get("route").getAsJsonObject();
                 Flight flight = new Flight();
                 flight.setId(flightJson.get("flight_id").getAsInt());
                 flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
@@ -162,6 +164,8 @@ public class Api {
                 flight.setArrivalDate(arrivalDate);
                 flight.setStatus(flightJson.get("status").getAsString());
                 flight.setPlaneModel(flightJson.get("planeModel").getAsString());
+                flight.setArrivalCity(routeJson.get("arrivalCity").getAsString());
+                flight.setDepartureCity(routeJson.get("departureCity").getAsString());
                 result.add(flight);
             }
             return result;
@@ -185,6 +189,7 @@ public class Api {
 
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonObject flightJson = jsonArray.get(i).getAsJsonObject();
+                JsonObject routeJson = flightJson.get("route").getAsJsonObject();
                 Flight flight = new Flight();
                 flight.setId(flightJson.get("flight_id").getAsInt());
                 flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
@@ -194,6 +199,8 @@ public class Api {
                 flight.setArrivalDate(arrivalDate);
                 flight.setStatus(flightJson.get("status").getAsString());
                 flight.setPlaneModel(flightJson.get("planeModel").getAsString());
+                flight.setArrivalCity(routeJson.get("arrivalCity").getAsString());
+                flight.setDepartureCity(routeJson.get("departureCity").getAsString());
                 result.add(flight);
             }
             return result;

@@ -110,6 +110,14 @@ public class Flight {
         this.planeModel.set(planeModel);
     }
 
+    public void setDepartureCity(String departureCity) {
+        this.departureCity.set(departureCity);
+    }
+
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity.set(arrivalCity);
+    }
+
     public StringProperty getFlightNumberProperty() {
         return flightNumber;
     }
