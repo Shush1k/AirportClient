@@ -65,9 +65,9 @@ public class ArrivalBoardController extends BoardModel {
             if (DateValidation.isDateYesterdayTodayTomorrow(this, stage)) {
                 // Получаем все рейсы
                 List<Flight> result = api.getAllFlights(true);
-                for (int i = 0; i < result.size(); i++) {
-                    System.out.println(result.get(i).toString());
-                }
+//                for (int i = 0; i < result.size(); i++) {
+//                    System.out.println(result.get(i).toString());
+//                }
                 arrivalFlightsData.addAll(result);
             }
         } else {
@@ -75,9 +75,9 @@ public class ArrivalBoardController extends BoardModel {
                 if (DateValidation.isDateYesterdayTodayTomorrow(this, stage)) {
                     // Получаем прыбывающие рейсы
                     List<Flight> result = api.getFlightsBetweenDates(startDateField.getText(), endDateField.getText(), true);
-                    for (int i = 0; i < result.size(); i++) {
-                        System.out.println(result.get(i).toString());
-                    }
+//                    for (int i = 0; i < result.size(); i++) {
+//                        System.out.println(result.get(i).toString());
+//                    }
                     arrivalFlightsData.addAll(result);
                 }
             }

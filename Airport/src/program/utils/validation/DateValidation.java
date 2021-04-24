@@ -5,7 +5,6 @@ import program.models.BoardModel;
 import program.utils.alerts.Alerts;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -33,9 +32,9 @@ public class DateValidation {
     /**
      * Проверка, если одно поле пустое
      *
-     * @param model - модель
-     * @param stage - текущее окно
-     * @return true - если все верно
+     * @param model модель
+     * @param stage текущее окно
+     * @return true если все верно
      */
     public static boolean isOneDateBlank(BoardModel model, Stage stage) {
         String errorMessage = "";
@@ -55,10 +54,11 @@ public class DateValidation {
 
     /**
      * Валидация формата даты и попадание ее в временной диапазон
+     * вчера-завтра
      *
-     * @param model - модель
-     * @param stage - текущее окно
-     * @return
+     * @param model модель
+     * @param stage текущее окно
+     * @return true если все верно
      */
     public static boolean isDateYesterdayTodayTomorrow(BoardModel model, Stage stage) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(PATTERN);
@@ -67,21 +67,23 @@ public class DateValidation {
         LocalDate yesterday = today.minusDays(1);
         LocalDate tomorrow = today.plusDays(1);
 
-        try {
-            if ((model.startDateField.getText() == null) && (model.endDateField.getText() == null)) {
-                LocalDate startDateTime = LocalDate.from(yesterday);
-                LocalDate endDateTime = LocalDate.from(tomorrow);
-            } else {
+        // если поля ввода дат пустые
+        if ((model.startDateField.getText() == null) && (model.endDateField.getText() == null)) {
+            LocalDate startDateTime = LocalDate.from(yesterday);
+            LocalDate endDateTime = LocalDate.from(tomorrow);
+            return true;
+        } else {
+            try {
                 LocalDate startDateTime = LocalDate.parse(model.startDateField.getText(), formatter);
                 LocalDate endDateTime = LocalDate.parse(model.endDateField.getText(), formatter);
                 if ((LocalDate.from(startDateTime).isBefore(yesterday)) || (LocalDate.from(endDateTime).isAfter(tomorrow))) {
                     Alerts.showNoValidDateFormat(stage);
                     return false;
                 }
+            } catch (DateTimeParseException e) {
+                Alerts.showNoValidDateFormat(stage);
+                return false;
             }
-        } catch (DateTimeParseException e) {
-            Alerts.showNoValidDateFormat(stage);
-            return false;
         }
 
         return true;
