@@ -157,10 +157,6 @@ public class Api {
                 flight.setDepartureDate(departureDate);
                 LocalDateTime arrivalDate = DateConvert.stringToDateTime(flightJson.get("arrivalDate").getAsString());
                 flight.setArrivalDate(arrivalDate);
-
-                System.out.println(flightJson.get("arrivalDate").getAsString());
-
-
                 flight.setStatus(flightJson.get("status").getAsString());
                 flight.setPlaneModel(flightJson.get("planeModel").getAsString());
                 result.add(flight);
@@ -176,8 +172,8 @@ public class Api {
      *
      * @return список рейсов
      */
-    public List<Flight> getAllFlights() {
-        String URL = String.format("%s/flights/all", HOST);
+    public List<Flight> getAllFlights(Boolean isArrive) {
+        String URL = String.format("%s/flights/all?isArrive=%s", HOST, isArrive);
         List<Flight> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);
 

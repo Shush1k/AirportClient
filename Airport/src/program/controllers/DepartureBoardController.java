@@ -63,7 +63,7 @@ public class DepartureBoardController extends BoardModel {
 
         if (DateValidation.isBothDatesBlank(this)) {
             // Получаем все рейсы
-            List<Flight> result = api.getAllFlights();
+            List<Flight> result = api.getAllFlights(false);
 //            for (int i = 0; i < result.size(); i++) {
 //                System.out.println(result.get(i).toString());
 //            }
