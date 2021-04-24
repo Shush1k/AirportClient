@@ -84,7 +84,7 @@ public class Api {
      * @param password  - пароль
      * @return true - если добавлен в БД
      */
-//    TODO: сделать метод рабочим
+
     public Boolean createUser(String firstName, String lastName, String login, String email, String password) {
         Map<String, String> map = new HashMap<>();
         map.put("login", login);
@@ -92,13 +92,16 @@ public class Api {
         map.put("lastName", lastName);
         map.put("email", email);
         map.put("password", password);
+
         Gson gson = new Gson();
         String json = gson.toJson(map);
         String URL = String.format("%s/users/registration", HOST);
         String response = HttpRequest.sendPost(URL, json);
-        JsonObject jsonResult = JsonParser.parseString(response).getAsJsonObject();
-        if (jsonResult.get("success").getAsBoolean()) {
-            return true;
+        if (response != null){
+            JsonObject jsonResult = JsonParser.parseString(response).getAsJsonObject();
+            if (jsonResult.get("success").getAsBoolean()) {
+                return true;
+            }
         }
         return false;
     }

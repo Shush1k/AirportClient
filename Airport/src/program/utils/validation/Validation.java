@@ -17,7 +17,7 @@ public class Validation {
      * @param stage текущее окно
      * @return true если нет ошибок
      */
-    public static boolean isValidRegistrationRegex(RegistrationEditModel model, Stage stage) {
+    public static boolean isValidEditPersonRegex(RegistrationEditModel model, Stage stage) {
         if (!RegexValidation.checkStandard(model.firstNameField.getText()))
             Alerts.showNoValidStdRegex(stage, "Имя");
         else if (!RegexValidation.checkStandard(model.lastNameField.getText()))
@@ -26,8 +26,27 @@ public class Validation {
             Alerts.showNoValidStdRegex(stage, "Логин");
         else if (!RegexValidation.checkPhoneNumber(model.phoneField.getText()))
             Alerts.showNoValidPhoneNumber(stage);
-//        else if (!RegexValidation.checkPassword(model.passwordField.getText()))
-//            Alerts.showNoValidPasswordFormat(stage);
+        else
+            return true;
+        return false;
+    }
+
+    /**
+     * Проверка полей регистрации пользователя через RegEx
+     *
+     * @param model модель Регистрации
+     * @param stage текущее окно
+     * @return true если нет ошибок
+     */
+    public static boolean isValidRegistrationRegex(RegistrationEditModel model, Stage stage) {
+        if (!RegexValidation.checkStandard(model.firstNameField.getText()))
+            Alerts.showNoValidStdRegex(stage, "Имя");
+        else if (!RegexValidation.checkStandard(model.lastNameField.getText()))
+            Alerts.showNoValidStdRegex(stage, "Фамилия");
+        else if (!RegexValidation.checkStandard(model.loginField.getText()))
+            Alerts.showNoValidStdRegex(stage, "Логин");
+        else if (!RegexValidation.checkPassword(model.passwordField.getText()))
+            Alerts.showNoValidPasswordFormat(stage);
         else
             return true;
         return false;
@@ -207,7 +226,7 @@ public class Validation {
      * @return true если длина сообщения меньше возможной
      */
     public static boolean checkLength(String text, int len) {
-        if (text == null){
+        if (text == null) {
             return true;
         }
         return text.length() <= len;

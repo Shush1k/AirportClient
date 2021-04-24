@@ -146,6 +146,7 @@ public class Main extends Application {
 
             RegistrationPageController controller = loader.getController();
             controller.setRegistrationStage(stage);
+            controller.setApi(api);
             controller.setMain(this);
             stage.showAndWait();
         } catch (IOException e) {

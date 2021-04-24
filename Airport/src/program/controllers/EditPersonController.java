@@ -39,7 +39,7 @@ public class EditPersonController extends RegistrationEditModel {
     private void handleUpdate() {
         if (Validation.EditPersonDataValidation(this, RegistrationStage)) { // Поля не пустые
             if (Validation.isValidLength2(this, RegistrationStage)) { // Длина полей не большая
-                if (Validation.isValidRegistrationRegex(this, RegistrationStage)) {
+                if (Validation.isValidEditPersonRegex(this, RegistrationStage)) {
                     boolean authResult = main.getApi().checkUserExists(emailField.getText(), passwordField.getText());
                     if (authResult){
                         boolean updateResult = api.updateUser(firstNameField.getText(), lastNameField.getText(), loginField.getText(),

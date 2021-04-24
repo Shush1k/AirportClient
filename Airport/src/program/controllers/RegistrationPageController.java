@@ -32,29 +32,17 @@ public class RegistrationPageController extends RegistrationEditModel {
         if (Validation.RegistrationDataValidation(this, RegistrationStage)) {
             if (Validation.isValidLength(this, RegistrationStage)) {
                 if (Validation.isValidRegistrationRegex(this, RegistrationStage)) {
-                    /*TODO: здесь должен быть POST request с отправкой полей регистрации*/
-
-                    
-                    Alerts.showSuccessRegistration(RegistrationStage);
-                    RegistrationStage.close();
-
+                    boolean regResult = api.createUser(firstNameField.getText(), lastNameField.getText(), loginField.getText(), emailField.getText(), passwordField.getText());
+                    if (regResult) {
+                        Alerts.showSuccessRegistration(RegistrationStage);
+                        RegistrationStage.close();
+                    } else {
+                        Alerts.showFailedRegistration(RegistrationStage);
+                    }
                 }
             }
         }
-
-
-//                    boolean registrationResult = main.getApi().createUser(firstNameField.getText(),
-//                            lastNameField.getText(), loginField.getText(), emailField.getText(), passwordField.getText());
-//                    if (registrationResult){
-//
-//                    Alerts.showFailedRegistration(RegistrationStage);
-
-
-//                }
-//            }
-//        }
     }
-
-
 }
+
 
