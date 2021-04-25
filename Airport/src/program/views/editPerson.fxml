@@ -5,17 +5,18 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1"
+<AnchorPane prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="program.controllers.EditPersonController">
     <children>
-        <Label layoutX="421.0" layoutY="26.0" text="Личный кабинет" AnchorPane.leftAnchor="420.0"
+        <Label layoutX="495.0" layoutY="27.0" text="Личный кабинет" AnchorPane.leftAnchor="500.0"
                AnchorPane.topAnchor="30.0">
             <font>
-                <Font name="Chalkboard SE Light" size="24.0"/>
+                <Font name="Chalkboard SE Light" size="30.0"/>
             </font>
         </Label>
-        <GridPane layoutX="322.0" layoutY="125.0" prefHeight="281.0" prefWidth="398.0" vgap="5.0"
-                  AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="130.0">
+
+        <GridPane layoutX="322.0" layoutY="125.0" prefHeight="354.0" prefWidth="404.0" vgap="5.0"
+                  AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="396.0" AnchorPane.topAnchor="130.0">
             <columnConstraints>
                 <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="187.63253784179688" minWidth="10.0"
                                    prefWidth="187.63253784179688"/>
@@ -70,7 +71,7 @@
             </font>
         </Button>
         <Button layoutX="438.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="38.0"
-                prefWidth="154.0" text="Изменить данные" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="430.0">
+                prefWidth="154.0" text="Изменить данные" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="520.0">
             <cursor>
                 <Cursor fx:constant="HAND"/>
             </cursor>

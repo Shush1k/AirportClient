@@ -25,8 +25,6 @@ public class DepartureBoardController extends BoardModel {
     private TableColumn<Flight, String> arrivalCityColumn;
     @FXML
     private TableColumn<Flight, String> statusColumn;
-    @FXML
-    private TableColumn<Flight, String> planeModelColumn;
 
     /**
      * Инициализация полей
@@ -36,7 +34,15 @@ public class DepartureBoardController extends BoardModel {
 
         startDateField.setText(null);
         endDateField.setText(null);
+
         searchField.setText("");
+        flightNumberLabel.setText("");
+        departureCityLabel.setText("");
+        arrivalCityLabel.setText("");
+        planeModelLabel.setText("");
+        statusLabel.setText("");
+        departureDateLabel.setText("");
+        arrivalDateLabel.setText("");
 
 
         flightNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getFlightNumberProperty());
@@ -46,10 +52,27 @@ public class DepartureBoardController extends BoardModel {
         departureDateColumn.setCellValueFactory(new PropertyValueFactory<>("departureDate"));
         arrivalCityColumn.setCellValueFactory(cellData -> cellData.getValue().getArrivalCityProperty());
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().getStatusProperty());
-        planeModelColumn.setCellValueFactory(cellData -> cellData.getValue().getPlaneModelProperty());
 
+        departureTableView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showAirlineDepartureDetails(newValue));
         // заполняем таблицу данными
         departureTableView.setItems(departureFlightsData);
+    }
+
+    /**
+     * Устанавливаем текст для расширенной информации о вылетающем рейсе
+     *
+     * @param flight рейс
+     */
+    private void showAirlineDepartureDetails(Flight flight) {
+        flightNumberLabel.setText(flight.getFlightNumber());
+        departureCityLabel.setText(flight.getDepartureCity());
+        arrivalCityLabel.setText(flight.getArrivalCity());
+        planeModelLabel.setText(flight.getPlaneModel());
+        statusLabel.setText(flight.getStatus());
+        departureDateLabel.setText(String.valueOf(flight.getDepartureDate()));
+        arrivalDateLabel.setText(String.valueOf(flight.getArrivalDate()));
+
     }
 
     /**

@@ -41,6 +41,8 @@ public abstract class BoardModel {
     @FXML
     public Label arrivalDateLabel;
 
+    @FXML
+    public Label flightNumberLabel;
 
     /**
      * Закрытие сцены

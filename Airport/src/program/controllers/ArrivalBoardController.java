@@ -27,8 +27,6 @@ public class ArrivalBoardController extends BoardModel {
     private TableColumn<Flight, String> departureCityColumn;
     @FXML
     private TableColumn<Flight, String> statusColumn;
-    @FXML
-    private TableColumn<Flight, String> planeModelColumn;
 
 
     /**
@@ -39,7 +37,9 @@ public class ArrivalBoardController extends BoardModel {
 
         startDateField.setText(null);
         endDateField.setText(null);
+
         searchField.setText("");
+        flightNumberLabel.setText("");
         departureCityLabel.setText("");
         arrivalCityLabel.setText("");
         planeModelLabel.setText("");
@@ -63,7 +63,13 @@ public class ArrivalBoardController extends BoardModel {
         arrivalTableView.setItems(arrivalFlightsData);
     }
 
+    /**
+     * Устанавливаем текст для расширенной информации о прилетающем рейсе
+     *
+     * @param flight рейс
+     */
     private void showAirlineArrivalDetails(Flight flight) {
+        flightNumberLabel.setText(flight.getFlightNumber());
         departureCityLabel.setText(flight.getDepartureCity());
         arrivalCityLabel.setText(flight.getArrivalCity());
         planeModelLabel.setText(flight.getPlaneModel());
