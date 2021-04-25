@@ -98,7 +98,9 @@ public class Main extends Application {
             primaryStage.setResizable(false);
 
             MainLayoutController mainLayoutController = loader.getController();
+            mainLayoutController.setApi(api);
             mainLayoutController.setMain(this);
+            mainLayoutController.showHelloMessage();
             mainLayoutController.openArrivalBoard();
             primaryStage.show();
         } catch (IOException e) {
