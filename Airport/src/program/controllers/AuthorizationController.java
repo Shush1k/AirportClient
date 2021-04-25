@@ -30,13 +30,13 @@ public class AuthorizationController extends SignInModel {
 //        if (Validation.isValidAuthorization(this, AuthorizationStage)) {
 //            if (Validation.isValidAuthorizationRegex(this, AuthorizationStage)) {
                 /*TODO: POST запрос на авторизацию*/
-                boolean authResult = main.getApi().checkUserExists(loginField.getText(), passwordField.getText());
-                if (authResult){
+//                boolean authResult = main.getApi().checkUserExists(loginField.getText(), passwordField.getText());
+//                if (authResult){
                     main.MainLayout();
-                }
-                else {
-                    Alerts.showNoValidSignIn(AuthorizationStage);
-                }
+//                }
+//                else {
+//                    Alerts.showNoValidSignIn(AuthorizationStage);
+//                }
 
 //            }
 //        }

@@ -23,6 +23,7 @@ import java.util.Map;
 public class Api {
     private final String HOST = "http://localhost:8080";
     public Person currentLoginPerson;
+//    public ObservableList<Airline> airlinesData = FXCollections.observableArrayList();
 
     public Person getCurrentLoginPerson() {
         return currentLoginPerson;
@@ -182,7 +183,7 @@ public class Api {
     public List<Flight> getAllFlights(String searchText, Boolean isArrive) {
         searchText = URLEncoder.encode(searchText, StandardCharsets.UTF_8);
 
-        
+
         String URL = String.format("%s/flights/all?searchText=%s&isArrive=%s", HOST, searchText, isArrive);
         List<Flight> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);
@@ -250,6 +251,9 @@ public class Api {
 
     // TODO: заменить try/catch блок
     public List<Airline> getAirlinesBySubCompanyName(String subString, Boolean filter) {
+        subString = URLEncoder.encode(subString, StandardCharsets.UTF_8);
+
+
         String URL = String.format("%s/airlines/like?name=%s&filter=%s", HOST, subString, filter);
         List<Airline> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);
@@ -264,7 +268,6 @@ public class Api {
                 airline.setCode(airlineJson.get("companyCode").getAsString());
                 airline.setName(airlineJson.get("companyName").getAsString());
                 airline.setWebsite(airlineJson.get("website").getAsString());
-//            TODO: понять, что делать в случае если поле JsonNull
                 try {
                     airline.setPhoneNumber(airlineJson.get("phone").getAsString());
 

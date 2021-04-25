@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import program.Main;
 import program.models.Airline;
+import program.utils.alerts.Alerts;
 import program.utils.api.Api;
 import program.utils.validation.Validation;
 
@@ -19,9 +20,7 @@ import java.util.List;
 public class AirlineController {
     private Main main;
     private Stage stage;
-    private boolean filter = false;
     protected Api api;
-    private List<Airline> result;
     private ObservableList<Airline> airlinesData = FXCollections.observableArrayList();
 
     @FXML
@@ -73,31 +72,23 @@ public class AirlineController {
     @FXML
     public void handlerAirlinesBtn() {
         // обнуление таблицы
-        airlineTableView.getItems().clear();
-        if (sortAirlineBtn.isSelected()) {
-            filter = true;
-        } else {
-            filter = false;
-        }
-        if (Validation.isAirlineNameBlank(searchCompany.getText())) {
-            // Получаем все авиакомпании
-            result = api.getAllAirlines(filter);
-//            for (int i = 0; i < result.size(); i++) {
-//                System.out.println(result.get(i).toString());
-//            }
+        if (Validation.checkLength(searchCompany.getText(), 40)) {
+
+            airlineTableView.getItems().clear();
+            boolean filter = false;
+            filter = sortAirlineBtn.isSelected();
+            List<Airline> result;
+            if (Validation.isAirlineNameBlank(searchCompany.getText())) {
+                // Получаем все авиакомпании
+                result = api.getAllAirlines(filter);
+            } else {
+                // Получаем все авиакомпании по вхождению подстроки
+                result = api.getAirlinesBySubCompanyName(searchCompany.getText(), filter);
+            }
             airlinesData.addAll(result);
         } else {
-            // TODO: Валидация длины поля, а также реализация на сервер!
-            // пока фильтер: true, т.к. нет кнопки
-            // Получаем все авиакомпании по вхождению подстроки
-            result = api.getAirlinesBySubCompanyName(searchCompany.getText(), filter);
-//            for (int i = 0; i < result.size(); i++) {
-//                System.out.println(result.get(i).toString());
-//            }
-            airlinesData.addAll(result);
+            Alerts.showNoValidLength(stage, "поиск", 40);
         }
-
-
     }
 
     public void setMain(Main main) {
