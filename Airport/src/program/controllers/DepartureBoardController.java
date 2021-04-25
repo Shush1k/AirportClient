@@ -36,6 +36,7 @@ public class DepartureBoardController extends BoardModel {
 
         startDateField.setText(null);
         endDateField.setText(null);
+        searchField.setText("");
 
 
         flightNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getFlightNumberProperty());
@@ -63,7 +64,7 @@ public class DepartureBoardController extends BoardModel {
         if (DateValidation.isBothDatesBlank(this)) {
             if (DateValidation.isDateYesterdayTodayTomorrow(this, stage)) {
                 // Получаем все рейсы
-                List<Flight> result = api.getAllFlights(false);
+                List<Flight> result = api.getAllFlights(searchField.getText(), false);
 //            for (int i = 0; i < result.size(); i++) {
 //                System.out.println(result.get(i).toString());
 //            }
@@ -73,7 +74,7 @@ public class DepartureBoardController extends BoardModel {
             if (DateValidation.isOneDateBlank(this, stage)) {
                 if (DateValidation.isDateYesterdayTodayTomorrow(this, stage)) {
                     // Получаем отбывающие рейсы
-                    List<Flight> result = api.getFlightsBetweenDates(startDateField.getText(), endDateField.getText(), false);
+                    List<Flight> result = api.getFlightsBetweenDates(searchField.getText(), startDateField.getText(), endDateField.getText(), false);
 //                    for (int i = 0; i < result.size(); i++) {
 //                        System.out.println(result.get(i).toString());
 //                    }

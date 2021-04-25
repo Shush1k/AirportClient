@@ -19,6 +19,9 @@ public abstract class BoardModel {
     @FXML
     public TextField endDateField;
 
+    @FXML
+    public TextField searchField;
+
 
 // TODO: запихнуть сюда всю модель доски?
 

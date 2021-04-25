@@ -140,13 +140,13 @@ public class Api {
      * @param isArrive  - если true, значит поиск по прибывающим рейсам, иначе по отбывающим
      * @return список рейсов
      */
-    public List<Flight> getFlightsBetweenDates(String startDate, String endDate, Boolean isArrive) {
+    public List<Flight> getFlightsBetweenDates(String searchText, String startDate, String endDate, Boolean isArrive) {
 
         startDate = URLEncoder.encode(startDate, StandardCharsets.UTF_8);
         endDate = URLEncoder.encode(endDate, StandardCharsets.UTF_8);
+        searchText = URLEncoder.encode(searchText, StandardCharsets.UTF_8);
 
-
-        String URL = String.format("%s/flights/dates?startDate=%s&endDate=%s&isArrive=%s", HOST, startDate, endDate, isArrive.toString());
+        String URL = String.format("%s/flights/dates?searchText=%s&startDate=%s&endDate=%s&isArrive=%s", HOST, searchText, startDate, endDate, isArrive.toString());
         List<Flight> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);
 
@@ -179,8 +179,11 @@ public class Api {
      *
      * @return список рейсов
      */
-    public List<Flight> getAllFlights(Boolean isArrive) {
-        String URL = String.format("%s/flights/all?isArrive=%s", HOST, isArrive);
+    public List<Flight> getAllFlights(String searchText, Boolean isArrive) {
+        searchText = URLEncoder.encode(searchText, StandardCharsets.UTF_8);
+
+        
+        String URL = String.format("%s/flights/all?searchText=%s&isArrive=%s", HOST, searchText, isArrive);
         List<Flight> result = new ArrayList<>();
         String response = HttpRequest.sendGet(URL);
 
@@ -225,7 +228,6 @@ public class Api {
                 airline.setCode(airlineJson.get("companyCode").getAsString());
                 airline.setName(airlineJson.get("companyName").getAsString());
                 airline.setWebsite(airlineJson.get("website").getAsString());
-//            TODO: понять, что делать в случае если поле JsonNull
                 try {
                     airline.setPhoneNumber(airlineJson.get("phone").getAsString());
 
