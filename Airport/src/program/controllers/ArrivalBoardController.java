@@ -40,7 +40,12 @@ public class ArrivalBoardController extends BoardModel {
         startDateField.setText(null);
         endDateField.setText(null);
         searchField.setText("");
-
+        departureCityLabel.setText("");
+        arrivalCityLabel.setText("");
+        planeModelLabel.setText("");
+        statusLabel.setText("");
+        departureDateLabel.setText("");
+        arrivalDateLabel.setText("");
 
         flightNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getFlightNumberProperty());
         //TODO: какой-то формат для даты
@@ -49,10 +54,23 @@ public class ArrivalBoardController extends BoardModel {
         arrivalDateColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalDate"));
         departureCityColumn.setCellValueFactory(cellData -> cellData.getValue().getDepartureCityProperty());
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().getStatusProperty());
-        planeModelColumn.setCellValueFactory(cellData -> cellData.getValue().getPlaneModelProperty());
+//        planeModelColumn.setCellValueFactory(cellData -> cellData.getValue().getPlaneModelProperty());
+
+        arrivalTableView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showAirlineArrivalDetails(newValue));
 
         // заполняем таблицу данными
         arrivalTableView.setItems(arrivalFlightsData);
+    }
+
+    private void showAirlineArrivalDetails(Flight flight) {
+        departureCityLabel.setText(flight.getDepartureCity());
+        arrivalCityLabel.setText(flight.getArrivalCity());
+        planeModelLabel.setText(flight.getPlaneModel());
+        statusLabel.setText(flight.getStatus());
+        departureDateLabel.setText(String.valueOf(flight.getDepartureDate()));
+        arrivalDateLabel.setText(String.valueOf(flight.getArrivalDate()));
+
     }
 
     /**
@@ -75,7 +93,7 @@ public class ArrivalBoardController extends BoardModel {
             if (DateValidation.isOneDateBlank(this, stage)) {
                 if (DateValidation.isDateYesterdayTodayTomorrow(this, stage)) {
                     // Получаем прыбывающие рейсы
-                    List<Flight> result = api.getFlightsBetweenDates(searchField.getText() ,startDateField.getText(), endDateField.getText(), true);
+                    List<Flight> result = api.getFlightsBetweenDates(searchField.getText(), startDateField.getText(), endDateField.getText(), true);
 //                    for (int i = 0; i < result.size(); i++) {
 //                        System.out.println(result.get(i).toString());
 //                    }

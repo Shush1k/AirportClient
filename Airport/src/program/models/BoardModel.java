@@ -1,6 +1,7 @@
 package program.models;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import program.Main;
@@ -22,19 +23,39 @@ public abstract class BoardModel {
     @FXML
     public TextField searchField;
 
+    @FXML
+    public Label departureCityLabel;
 
-// TODO: запихнуть сюда всю модель доски?
+    @FXML
+    public Label arrivalCityLabel;
+
+    @FXML
+    public Label planeModelLabel;
+
+    @FXML
+    public Label statusLabel;
+
+    @FXML
+    public Label departureDateLabel;
+
+    @FXML
+    public Label arrivalDateLabel;
+
 
     /**
      * Закрытие сцены
      */
     @FXML
-    private void handleCancel(){stage.close();}
+    private void handleCancel() {
+        stage.close();
+    }
 
     /**
      * @param stage - установка сцены
      */
-    public void setStage(Stage stage){this.stage = stage;}
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
     public void setMain(Main main) {
         this.main = main;

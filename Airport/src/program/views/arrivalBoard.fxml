@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="program.controllers.ArrivalBoardController">
     <top>
         <AnchorPane prefHeight="180.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -51,32 +52,152 @@
         </AnchorPane>
     </top>
     <center>
-        <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1"
-                    xmlns:fx="http://javafx.com/fxml/1">
+        <AnchorPane prefHeight="700.0" prefWidth="1000.0">
             <children>
-                <SplitPane layoutX="144.0" layoutY="40.0" prefHeight="300.0" prefWidth="600.0"
+                <SplitPane layoutX="144.0" layoutY="40.0" prefHeight="700.0" prefWidth="1000.0"
                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                            AnchorPane.topAnchor="0.0">
                     <items>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="221.0"
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="433.0"
                                     styleClass="table-view">
                             <children>
-                                <TableView fx:id="arrivalTableView" prefHeight="298.0" prefWidth="175.0"
+                                <TableView fx:id="arrivalTableView" prefHeight="698.0" prefWidth="613.0"
                                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                           AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="0.0">
                                     <columns>
-                                        <TableColumn fx:id="flightNumberColumn" prefWidth="102.0" text="Номер рейса"/>
-                                        <TableColumn fx:id="arrivalDateColumn" prefWidth="92.02156066894531"
-                                                     text="Дата и время прилета"/>
-                                        <TableColumn fx:id="departureCityColumn" prefWidth="53.0"
-                                                     text="Аэропорт отправления"/>
-                                        <TableColumn fx:id="statusColumn" prefWidth="53.0" text="Статус"/>
-                                        <TableColumn fx:id="planeModelColumn" prefWidth="53.0" text="Модель самолета"/>
+                                        <TableColumn fx:id="flightNumberColumn" maxWidth="95.0" prefWidth="95.0"
+                                                     resizable="false" text="Номер рейса"/>
+                                        <TableColumn fx:id="arrivalDateColumn" maxWidth="180.0" prefWidth="180.0"
+                                                     resizable="false" text="Дата и время прилета"/>
+                                        <TableColumn fx:id="departureCityColumn" maxWidth="180.0" prefWidth="180.0"
+                                                     resizable="false" text="Аэропорт отправления"/>
+                                        <TableColumn fx:id="statusColumn" minWidth="120.0" prefWidth="150.0"
+                                                     resizable="false" text="Статус"/>
                                     </columns>
-                                    <columnResizePolicy>
-                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-                                    </columnResizePolicy>
                                 </TableView>
+                                <AnchorPane layoutX="610.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="389.0"
+                                            minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
+                                            prefWidth="389.0" xmlns="http://javafx.com/javafx/11.0.1"
+                                            xmlns:fx="http://javafx.com/fxml/1">
+                                    <children>
+                                        <GridPane layoutX="7.0" layoutY="211.0" prefHeight="200.0" prefWidth="300.0"
+                                                  AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+                                                  AnchorPane.topAnchor="211.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0"
+                                                                   prefWidth="200.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.15252685546875"
+                                                                   minWidth="10.0" prefWidth="178.08746337890625"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0"
+                                                                vgrow="SOMETIMES"/>
+                                                <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0"
+                                                                vgrow="SOMETIMES"/>
+                                                <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0"
+                                                                vgrow="SOMETIMES"/>
+                                                <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0"
+                                                                vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="Тип воздушного судна">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label text="Текущий статус рейса" GridPane.rowIndex="1">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label prefHeight="91.0" prefWidth="231.0"
+                                                       text="Дата и время отправления" GridPane.rowIndex="2">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label text="Дата и время прибытия" GridPane.rowIndex="3">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="planeModelLabel" text="Label" GridPane.columnIndex="1">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                    <GridPane.margin>
+                                                        <Insets left="10.0"/>
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <Label fx:id="statusLabel" text="Label" GridPane.columnIndex="1"
+                                                       GridPane.rowIndex="1">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                    <GridPane.margin>
+                                                        <Insets left="10.0"/>
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <Label fx:id="departureDateLabel" layoutX="283.0" layoutY="40.0"
+                                                       text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                    <GridPane.margin>
+                                                        <Insets left="10.0"/>
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <Label fx:id="arrivalDateLabel" layoutX="283.0" layoutY="120.0"
+                                                       text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                    <font>
+                                                        <Font size="16.0"/>
+                                                    </font>
+                                                    <GridPane.margin>
+                                                        <Insets left="10.0"/>
+                                                    </GridPane.margin>
+                                                </Label>
+                                            </children>
+                                        </GridPane>
+                                        <Label layoutX="222.0" layoutY="67.0" text="РЕЙС" AnchorPane.leftAnchor="100.0"
+                                               AnchorPane.topAnchor="20.0">
+                                            <font>
+                                                <Font size="24.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="flightNumberLabel" layoutX="369.0" layoutY="73.0"
+                                               text="Номер рейса" AnchorPane.leftAnchor="170.0"
+                                               AnchorPane.topAnchor="20.0">
+                                            <font>
+                                                <Font size="24.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="89.0" layoutY="132.0" text="Город отправления"
+                                               AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="121.0" layoutY="171.0" text="Город прибытия"
+                                               AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="150.0">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="departureCityLabel" layoutX="323.0" layoutY="103.0" text="Label"
+                                               AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="arrivalCityLabel" layoutX="333.0" layoutY="113.0" text="Label"
+                                               AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="150.0">
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+
+                                    </children>
+                                </AnchorPane>
                             </children>
                         </AnchorPane>
                     </items>

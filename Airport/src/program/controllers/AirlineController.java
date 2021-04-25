@@ -21,7 +21,7 @@ public class AirlineController {
     private Main main;
     private Stage stage;
     protected Api api;
-    private ObservableList<Airline> airlinesData = FXCollections.observableArrayList();
+    private final ObservableList<Airline> airlinesData = FXCollections.observableArrayList();
 
     @FXML
     private TableView<Airline> airlineTableView;

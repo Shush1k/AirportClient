@@ -147,6 +147,15 @@ public class Flight {
         return departureCity;
     }
 
+    public String getDepartureCity() {
+        return departureCity.get();
+    }
+
+    public String getArrivalCity() {
+        return arrivalCity.get();
+    }
+
+
     @Override
     public String toString() {
         return "Flight{" +
