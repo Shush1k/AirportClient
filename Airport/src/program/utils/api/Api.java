@@ -23,17 +23,12 @@ import java.util.Map;
 public class Api {
     private final String HOST = "http://localhost:8080";
     public Person currentLoginPerson;
-//    public ObservableList<Airline> airlinesData = FXCollections.observableArrayList();
-
-    public Person getCurrentLoginPerson() {
-        return currentLoginPerson;
-    }
 
     /**
      * Метод проверки авторизации пользователя на сервере
      *
-     * @param login    - логин
-     * @param password - пароль
+     * @param login    логин
+     * @param password пароль
      * @return true если есть в БД
      */
     public Boolean checkUserExists(String login, String password) {
@@ -66,8 +61,7 @@ public class Api {
                     currentLoginPerson.setBirthday(birthDay);
 
                 } catch (RuntimeException e) {
-                    //TODO: проверить возможен ли такой вариант после всех правок с датами на 23.04
-                    currentLoginPerson.setBirthday(DateConvert.stringToDate("2000-01-01"));
+                    currentLoginPerson.setBirthday(null);
                 }
 
                 return true;
@@ -78,16 +72,15 @@ public class Api {
     }
 
     /**
-     * Метод создания пользователя
+     * Метод регистрации пользователя
      *
-     * @param firstName - имя
-     * @param lastName  - фамилия
-     * @param login     - логин
-     * @param email     - почта
-     * @param password  - пароль
-     * @return true - если добавлен в БД
+     * @param firstName имя
+     * @param lastName  фамилия
+     * @param login     логин
+     * @param email     почта
+     * @param password  пароль
+     * @return true  если добавлен в БД
      */
-
     public Boolean createUser(String firstName, String lastName, String login, String email, String password) {
         Map<String, String> map = new HashMap<>();
         map.put("login", login);
@@ -109,6 +102,18 @@ public class Api {
         return false;
     }
 
+    /**
+     * Метод обновление информации о пользователе
+     *
+     * @param firstName   имя
+     * @param lastName    фамилия
+     * @param login       логин
+     * @param email       почта
+     * @param phoneNumber номер телефона
+     * @param birthDate   дата рождения
+     * @param password    пароль
+     * @return true если создали пользователя в БД
+     */
     public Boolean updateUser(String firstName, String lastName, String login,
                               String email, String phoneNumber, LocalDate birthDate, String password) {
         String URL = String.format("%s/users/update", HOST);
@@ -117,7 +122,9 @@ public class Api {
         user.put("firstName", firstName);
         user.put("lastName", lastName);
         user.put("email", email);
-        user.put("birthDate", String.valueOf(birthDate));
+        if (birthDate != null) {
+            user.put("birthDate", String.valueOf(birthDate));
+        }
         user.put("phoneNumber", phoneNumber);
         user.put("password", password);
 
@@ -134,11 +141,12 @@ public class Api {
     }
 
     /**
-     * Получаем список прибывающих/отбывающие рейсов попадающие в временной диапазон
+     * Получаем список прилетающих/вылетающих рейсов, попадающие в временной диапазон по полю поиска
      *
-     * @param startDate - начальная дата и время
-     * @param endDate   - конечная дата и время
-     * @param isArrive  - если true, значит поиск по прибывающим рейсам, иначе по отбывающим
+     * @param searchText поле поиска (номер рейса или город)
+     * @param startDate  начальная дата и время
+     * @param endDate    конечная дата и время
+     * @param isArrive   если true, значит поиск по прилетающим рейсам, иначе по вылетающим
      * @return список рейсов
      */
     public List<Flight> getFlightsBetweenDates(String searchText, String startDate, String endDate, Boolean isArrive) {
@@ -176,8 +184,11 @@ public class Api {
     }
 
     /**
-     * Получаем список всех рейсов
+     * Получаем список всех рейсов за промежуток времени вчера-завтра
+     * по полю поиска и типу рейса
      *
+     * @param searchText поле поиска (номер рейса или город)
+     * @param isArrive   тип рейса
      * @return список рейсов
      */
     public List<Flight> getAllFlights(String searchText, Boolean isArrive) {
@@ -213,7 +224,12 @@ public class Api {
 
     }
 
-    // TODO: заменить try/catch блок
+    /**
+     * Получаем всю информацию авиакомпаний
+     *
+     * @param filter вид сортировки
+     * @return список авиакомпаний
+     */
     public List<Airline> getAllAirlines(Boolean filter) {
         String URL = String.format("%s/airlines/all?filter=%s", HOST, filter);
         List<Airline> result = new ArrayList<>();
@@ -231,15 +247,12 @@ public class Api {
                 airline.setWebsite(airlineJson.get("website").getAsString());
                 try {
                     airline.setPhoneNumber(airlineJson.get("phone").getAsString());
-
                 } catch (RuntimeException e) {
-                    // временно, пока не знаем, как обрабатывать
                     airline.setPhoneNumber(null);
                 }
                 try {
                     airline.setEmail(airlineJson.get("email").getAsString());
                 } catch (RuntimeException e) {
-                    // временно, пока не знаем, как обрабатывать
                     airline.setEmail(null);
                 }
                 result.add(airline);
@@ -249,7 +262,13 @@ public class Api {
         return result;
     }
 
-    // TODO: заменить try/catch блок
+    /**
+     * Получаем всю информацию авиакомпаний по подстроке
+     *
+     * @param subString подстрока названия авиакомпании
+     * @param filter    вид сортировки
+     * @return список авиакомпаний
+     */
     public List<Airline> getAirlinesBySubCompanyName(String subString, Boolean filter) {
         subString = URLEncoder.encode(subString, StandardCharsets.UTF_8);
 
@@ -270,15 +289,12 @@ public class Api {
                 airline.setWebsite(airlineJson.get("website").getAsString());
                 try {
                     airline.setPhoneNumber(airlineJson.get("phone").getAsString());
-
                 } catch (RuntimeException e) {
-                    // временно, пока не знаем, как обрабатывать
                     airline.setPhoneNumber(null);
                 }
                 try {
                     airline.setEmail(airlineJson.get("email").getAsString());
                 } catch (RuntimeException e) {
-                    // временно, пока не знаем, как обрабатывать
                     airline.setEmail(null);
                 }
                 result.add(airline);
@@ -288,25 +304,20 @@ public class Api {
     }
 
     /**
-     * Удалить пользователя по почте
+     * Метод удаления пользователя по почте
      *
      * @param email    почта
      * @param password пароль
-     * @return true - если удалили пользователя, иначе false
+     * @return true если удалили пользователя из БД
      */
     public boolean deleteUser(String email, String password) {
         password = URLEncoder.encode(password, StandardCharsets.UTF_8);
 
         String URL = String.format("%s/users/delete?email=%s&password=%s", HOST, email, password);
-        //TODO: пока get запрос на удаление пользователя, delete не работал как нужно
         String response = HttpRequest.sendGet(URL);
-
         if (response != null) {
-
-            System.out.printf("Удалили пользователя с почтой: %s%n", email);
             return true;
         } else {
-            System.out.print("НЕ УДАЛИЛИ!");
             return false;
         }
 

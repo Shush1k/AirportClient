@@ -19,7 +19,9 @@ public class EditPersonController extends RegistrationEditModel {
         loginField.setText(this.person.getLogin());
         emailField.setText(this.person.getEmail());
         phoneField.setText(this.person.getPhoneNumber());
-        birthdayPicker.setValue(LocalDate.from(this.person.getBirthday()));
+        if (this.person.getBirthday() != null) {
+            birthdayPicker.setValue(LocalDate.from(this.person.getBirthday()));
+        }
         passwordField.setText(this.person.getPassword());
     }
 
@@ -41,7 +43,7 @@ public class EditPersonController extends RegistrationEditModel {
             if (Validation.isValidLength2(this, RegistrationStage)) { // Длина полей не большая
                 if (Validation.isValidEditPersonRegex(this, RegistrationStage)) {
                     boolean authResult = main.getApi().checkUserExists(emailField.getText(), passwordField.getText());
-                    if (authResult){
+                    if (authResult) {
                         boolean updateResult = api.updateUser(firstNameField.getText(), lastNameField.getText(), loginField.getText(),
                                 emailField.getText(), phoneField.getText(), birthdayPicker.getValue(), passwordField.getText());
                         if (updateResult) {
@@ -50,8 +52,11 @@ public class EditPersonController extends RegistrationEditModel {
                             api.currentLoginPerson.setLastName(lastNameField.getText());
                             api.currentLoginPerson.setLogin(loginField.getText());
                             api.currentLoginPerson.setEmail(emailField.getText());
-                            api.currentLoginPerson.setPhoneNumber(phoneField.getText());
-                            api.currentLoginPerson.setBirthday(LocalDate.from(birthdayPicker.getValue()));
+
+                            if (phoneField.getText() != null)
+                                api.currentLoginPerson.setPhoneNumber(phoneField.getText());
+                            if (birthdayPicker.getValue() != null)
+                                api.currentLoginPerson.setBirthday(LocalDate.from(birthdayPicker.getValue()));
                             Alerts.showSuccessEditPerson(RegistrationStage);
                         }
                     } else {
