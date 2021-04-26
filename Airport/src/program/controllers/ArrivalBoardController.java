@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import program.models.Airline;
 import program.models.BoardModel;
 import program.models.Flight;
 import program.utils.validation.DateValidation;
@@ -75,18 +74,19 @@ public class ArrivalBoardController extends BoardModel {
      * @param flight рейс
      */
     private void showArrivalFlightDetails(Flight flight) {
-        flightNumberLabel.setText(flight.getFlightNumber());
-        departureCityLabel.setText(flight.getDepartureCity());
-        arrivalCityLabel.setText(flight.getArrivalCity());
-        planeModelLabel.setText(flight.getPlaneModel());
-        statusLabel.setText(flight.getStatus());
-        departureDateLabel.setText(String.valueOf(flight.getDepartureDate()));
-        arrivalDateLabel.setText(String.valueOf(flight.getArrivalDate()));
-
-        companyNameLabel.setText(flight.getAirlineName());
-        phoneLabel.setText(flight.getPhoneNumber());
-        emailLabel.setText(flight.getEmail());
-        websiteLabel.setText(flight.getWebsite());
+        if (flight != null) {
+            flightNumberLabel.setText(flight.getFlightNumber());
+            departureCityLabel.setText(flight.getDepartureCity());
+            arrivalCityLabel.setText(flight.getArrivalCity());
+            planeModelLabel.setText(flight.getPlaneModel());
+            statusLabel.setText(flight.getStatus());
+            departureDateLabel.setText(String.valueOf(flight.getDepartureDate()));
+            arrivalDateLabel.setText(String.valueOf(flight.getArrivalDate()));
+            companyNameLabel.setText(flight.getAirlineName());
+            phoneLabel.setText(flight.getPhoneNumber());
+            emailLabel.setText(flight.getEmail());
+            websiteLabel.setText(flight.getWebsite());
+        }
 
     }
 

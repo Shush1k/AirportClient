@@ -44,6 +44,11 @@ public class DepartureBoardController extends BoardModel {
         departureDateLabel.setText("");
         arrivalDateLabel.setText("");
 
+        companyNameLabel.setText("");
+        phoneLabel.setText("");
+        emailLabel.setText("");
+        websiteLabel.setText("");
+
 
         flightNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getFlightNumberProperty());
         //TODO: какой-то формат для даты
@@ -54,7 +59,7 @@ public class DepartureBoardController extends BoardModel {
         statusColumn.setCellValueFactory(cellData -> cellData.getValue().getStatusProperty());
 
         departureTableView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showAirlineDepartureDetails(newValue));
+                (observable, oldValue, newValue) -> showDepartureFlightDetails(newValue));
         // заполняем таблицу данными
         departureTableView.setItems(departureFlightsData);
     }
@@ -64,15 +69,20 @@ public class DepartureBoardController extends BoardModel {
      *
      * @param flight рейс
      */
-    private void showAirlineDepartureDetails(Flight flight) {
-        flightNumberLabel.setText(flight.getFlightNumber());
-        departureCityLabel.setText(flight.getDepartureCity());
-        arrivalCityLabel.setText(flight.getArrivalCity());
-        planeModelLabel.setText(flight.getPlaneModel());
-        statusLabel.setText(flight.getStatus());
-        departureDateLabel.setText(String.valueOf(flight.getDepartureDate()));
-        arrivalDateLabel.setText(String.valueOf(flight.getArrivalDate()));
-
+    private void showDepartureFlightDetails(Flight flight) {
+        if (flight != null) {
+            flightNumberLabel.setText(flight.getFlightNumber());
+            departureCityLabel.setText(flight.getDepartureCity());
+            arrivalCityLabel.setText(flight.getArrivalCity());
+            planeModelLabel.setText(flight.getPlaneModel());
+            statusLabel.setText(flight.getStatus());
+            departureDateLabel.setText(String.valueOf(flight.getDepartureDate()));
+            arrivalDateLabel.setText(String.valueOf(flight.getArrivalDate()));
+            companyNameLabel.setText(flight.getAirlineName());
+            phoneLabel.setText(flight.getPhoneNumber());
+            emailLabel.setText(flight.getEmail());
+            websiteLabel.setText(flight.getWebsite());
+        }
     }
 
     /**
