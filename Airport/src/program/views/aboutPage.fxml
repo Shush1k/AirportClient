@@ -1,86 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="program.controllers.AboutPageController">
-    <Label layoutX="458.0" layoutY="420.0" text="Баранов Александр, ПИ19-3" AnchorPane.leftAnchor="458.0" AnchorPane.topAnchor="420.0">
-      <font>
-         <Font size="14.0" />
-      </font></Label>
-    <TextArea editable="false" layoutX="385.0" layoutY="160.0" prefHeight="169.0" prefWidth="295.0" text="Приложение может выводить информацию &#10;о рейсах, есть табло прилетов и вылетов.&#10;Доступна информация об авиакомпаниях.&#10;Чтобы воспользоваться функционалом&#10;данной программы, необходимо&#10;зарегистрироваться и авторизоваться." AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="160.0">
-      <font>
-         <Font size="14.0" />
-      </font></TextArea>
-   <Label layoutX="300.0" layoutY="38.0" text="Об Авторе" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="20.0">
-      <font>
-         <Font size="25.0" />
-      </font></Label>
-   <Label layoutX="470.0" layoutY="111.0" text="О программе" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="110.0">
-      <font>
-         <Font size="18.0" />
-      </font></Label>
-   <Label layoutX="458.0" layoutY="390.0" text="Работа выполнена студентом" AnchorPane.leftAnchor="458.0" AnchorPane.topAnchor="390.0">
-      <font>
-         <Font size="14.0" />
-      </font></Label>
-   <GridPane layoutX="82.0" layoutY="360.0" prefHeight="90.0" prefWidth="152.0" AnchorPane.topAnchor="360.0">
-     <columnConstraints>
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-     </columnConstraints>
-     <rowConstraints>
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-     </rowConstraints>
-      <children>
-         <Hyperlink onAction="#openGithub" text="GitHub">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
+            prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="program.controllers.AboutPageController">
+    <Label layoutX="458.0" layoutY="420.0" text="Баранов Александр, ПИ19-3" AnchorPane.leftAnchor="458.0"
+           AnchorPane.topAnchor="420.0">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Label>
+    <TextArea editable="false" layoutX="385.0" layoutY="160.0" prefHeight="169.0" prefWidth="295.0"
+              text="Приложение может выводить информацию &#10;о рейсах, есть табло прилетов и вылетов.&#10;Доступна информация об авиакомпаниях.&#10;Чтобы воспользоваться функционалом&#10;данной программы, необходимо&#10;зарегистрироваться и авторизоваться."
+              AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="160.0">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </TextArea>
+    <Label layoutX="300.0" layoutY="38.0" text="Об Авторе" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="20.0">
+        <font>
+            <Font size="25.0"/>
+        </font>
+    </Label>
+    <Label layoutX="470.0" layoutY="111.0" text="О программе" AnchorPane.rightAnchor="120.0"
+           AnchorPane.topAnchor="110.0">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="458.0" layoutY="390.0" text="Работа выполнена студентом" AnchorPane.leftAnchor="458.0"
+           AnchorPane.topAnchor="390.0">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Label>
+    <GridPane layoutX="22.0" layoutY="344.0" prefHeight="71.0" prefWidth="226.0" AnchorPane.topAnchor="344.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="21.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="53.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="150.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <Hyperlink onAction="#openGithub" text="GitHub" GridPane.columnIndex="1">
             <font>
-               <Font size="14.0" />
-            </font></Hyperlink>
-         <Hyperlink onAction="#openVk" text="VK" GridPane.rowIndex="1">
+                <Font size="14.0"/>
+            </font>
+        </Hyperlink>
+        <Hyperlink onAction="#openVk" prefHeight="26.0" prefWidth="76.0" text="VK" GridPane.columnIndex="1"
+                   GridPane.rowIndex="1">
             <font>
-               <Font size="14.0" />
-            </font></Hyperlink>
-      </children>
-   </GridPane>
-   <Button layoutX="286.0" layoutY="430.0" mnemonicParsing="false" onAction="#handleBackBtn" prefHeight="36.0" prefWidth="85.0" text="Назад">
-      <font>
-         <Font size="16.0" />
-      </font></Button>
-   <ImageView fitHeight="179.0" fitWidth="301.0" layoutX="44.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="160.0">
-      <image>
-         <Image url="@../resources/images/Congratulations.gif" />
-      </image>
-   </ImageView>
-   <Label layoutX="219.0" layoutY="373.0" text="- аккаунт на Github" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="365.0">
-      <font>
-         <Font size="14.0" />
-      </font>
-   </Label>
-   <Label layoutX="211.0" layoutY="405.0" text="- страница Вконтакте" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="395.0">
-      <font>
-         <Font size="14.0" />
-      </font>
-   </Label>
-   <Label layoutX="156.0" layoutY="113.0" text="Когда сделал курсовую работу" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="110.0">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Label>
-   <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="54.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="365.0">
-      <image>
-         <Image url="@../resources/images/GithubLogo.png" />
-      </image>
-   </ImageView>
+                <Font size="14.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets/>
+            </GridPane.margin>
+            <padding>
+                <Insets left="30.0"/>
+            </padding>
+        </Hyperlink>
+        <Label text="- аккаунт на Github" GridPane.columnIndex="2">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label text="- страница Вконтакте" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../resources/images/GithubLogo.png"/>
+        </ImageView>
+    </GridPane>
+    <Button defaultButton="true" layoutX="286.0" layoutY="430.0" mnemonicParsing="false" onAction="#handleBackBtn"
+            prefHeight="36.0" prefWidth="85.0" stylesheets="@../resources/styles/AuthStyle.css" text="Назад"
+            AnchorPane.bottomAnchor="40.0">
+        <font>
+            <Font size="16.0"/>
+        </font>
+    </Button>
+    <ImageView fitHeight="179.0" fitWidth="301.0" layoutX="44.0" layoutY="158.0" pickOnBounds="true"
+               preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="160.0">
+        <Image url="@../resources/images/Congratulations.gif"/>
+    </ImageView>
+    <Label layoutX="156.0" layoutY="113.0" text="Когда сделал курсовую работу" AnchorPane.leftAnchor="45.0"
+           AnchorPane.topAnchor="110.0">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
 
 </AnchorPane>
