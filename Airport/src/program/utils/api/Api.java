@@ -205,6 +205,7 @@ public class Api {
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonObject flightJson = jsonArray.get(i).getAsJsonObject();
                 JsonObject routeJson = flightJson.get("route").getAsJsonObject();
+                JsonObject airlineJson = flightJson.get("airline").getAsJsonObject();
                 Flight flight = new Flight();
                 flight.setId(flightJson.get("flight_id").getAsInt());
                 flight.setFlightNumber(flightJson.get("flightNumber").getAsString());
@@ -216,6 +217,19 @@ public class Api {
                 flight.setPlaneModel(flightJson.get("planeModel").getAsString());
                 flight.setArrivalCity(routeJson.get("arrivalCity").getAsString());
                 flight.setDepartureCity(routeJson.get("departureCity").getAsString());
+                flight.setAirlineName(airlineJson.get("companyName").getAsString());
+                flight.setAirlineWebsite(airlineJson.get("website").getAsString());
+                try {
+                    flight.setAirlinePhone(airlineJson.get("phone").getAsString());
+                } catch (RuntimeException e) {
+                    flight.setAirlinePhone(null);
+                }
+                try {
+                    flight.setAirlineEmail(airlineJson.get("email").getAsString());
+                } catch (RuntimeException e) {
+                    flight.setAirlineEmail(null);
+                }
+
                 result.add(flight);
             }
             return result;

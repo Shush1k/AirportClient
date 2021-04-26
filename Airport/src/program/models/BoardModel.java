@@ -44,6 +44,18 @@ public abstract class BoardModel {
     @FXML
     public Label flightNumberLabel;
 
+    @FXML
+    public Label companyNameLabel;
+
+    @FXML
+    public Label phoneLabel;
+
+    @FXML
+    public Label emailLabel;
+
+    @FXML
+    public Label websiteLabel;
+
     /**
      * Закрытие сцены
      */

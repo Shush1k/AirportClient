@@ -1,10 +1,9 @@
 package program.models;
 
 import javafx.beans.property.*;
-import program.utils.api.DateConvert;
-import program.utils.validation.DateValidation;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 /**
  * Класс Flight - рейсы
@@ -18,6 +17,10 @@ public class Flight {
     private final StringProperty arrivalCity;
     private final StringProperty status;
     private final StringProperty planeModel;
+    private final StringProperty airlineName;
+    private final StringProperty airlineWebsite;
+    private final StringProperty airlinePhone;
+    private final StringProperty airlineEmail;
 
     /**
      * Конструктор Рейсов
@@ -29,8 +32,10 @@ public class Flight {
      * @param departureCity город отправления
      * @param status        статус рейса
      * @param planeModel    модель самолета
+     *                      4 параметра!
      */
-    public Flight(String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, String arrivalCity, String departureCity, String status, String planeModel) {
+    public Flight(String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, String arrivalCity, String departureCity, String status, String planeModel,
+                  String airlineName, String airlinePhone, String airlineEmail, String airlineWebsite) {
         this.id = new SimpleLongProperty();
         this.flightNumber = new SimpleStringProperty(flightNumber);
         this.departureDate = new SimpleObjectProperty<>(departureDate);
@@ -39,6 +44,11 @@ public class Flight {
         this.departureCity = new SimpleStringProperty(departureCity);
         this.status = new SimpleStringProperty(status);
         this.planeModel = new SimpleStringProperty(planeModel);
+
+        this.airlineName = new SimpleStringProperty(airlineName);
+        this.airlinePhone = new SimpleStringProperty(airlinePhone);
+        this.airlineEmail = new SimpleStringProperty(airlineEmail);
+        this.airlineWebsite = new SimpleStringProperty(airlineWebsite);
     }
 
     /**
@@ -51,15 +61,16 @@ public class Flight {
      * @param departureCity город отправления
      * @param planeModel    модель самолета
      */
-    public Flight(String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, String arrivalCity, String departureCity, String planeModel) {
-        this(flightNumber, departureDate, arrivalDate, arrivalCity, departureCity, null, planeModel);
-    }
+    public Flight(String flightNumber, LocalDateTime departureDate, LocalDateTime arrivalDate, String arrivalCity, String departureCity, String planeModel, String airlineName, String airlinePhone, String airlineEmail, String airlineWebsite) {
+        this(flightNumber, departureDate, arrivalDate, arrivalCity, departureCity, null, planeModel, airlineName, airlinePhone, airlineEmail, airlineWebsite);
+    } // 4
+
 
     /**
      * Конструктор без параметров
      */
     public Flight() {
-        this(null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null, null, null);
     }
 
     public long getId() {
@@ -122,7 +133,6 @@ public class Flight {
         return flightNumber;
     }
 
-    //TODO: Что-то придумать с датой
     public ObjectProperty<LocalDateTime> getDepartureDateProperty() {
         return departureDate;
     }
@@ -155,6 +165,37 @@ public class Flight {
         return arrivalCity.get();
     }
 
+    public String getAirlineName() {
+        return airlineName.get();
+    }
+
+    public String getPhoneNumber() {
+        return airlinePhone.get();
+    }
+
+    public String getEmail() {
+        return airlineEmail.get();
+    }
+
+    public String getWebsite() {
+        return airlineWebsite.get();
+    }
+
+    public void setAirlineName(String airlineName) {
+        this.airlineName.set(airlineName);
+    }
+
+    public void setAirlineWebsite(String airlineWebsite) {
+        this.airlineWebsite.set(airlineWebsite);
+    }
+
+    public void setAirlinePhone(String airlinePhone) {
+        this.airlinePhone.set(airlinePhone);
+    }
+
+    public void setAirlineEmail(String airlineEmail) {
+        this.airlineEmail.set(airlineEmail);
+    }
 
     @Override
     public String toString() {
