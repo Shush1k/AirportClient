@@ -20,8 +20,9 @@
                     </font>
                 </Label>
                 <Button layoutX="850.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleShowArrival"
-                        prefHeight="35.0" prefWidth="131.0" text="Найти рейсы" textFill="#142bcc"
-                        AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="125.0">
+                        prefHeight="47.0" prefWidth="152.0" stylesheets="@../resources/styles/MainStyle.css"
+                        text="Найти рейсы" textFill="#090028" AnchorPane.rightAnchor="20.0"
+                        AnchorPane.topAnchor="120.0">
                     <font>
                         <Font size="18.0"/>
                     </font>
@@ -41,11 +42,11 @@
                         <Font name="Chalkboard SE Light" size="22.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="searchField" layoutX="658.0" layoutY="128.0" prefHeight="35.0" prefWidth="185.0"
-                           promptText="Рейс или направление" AnchorPane.rightAnchor="170.0"
+                <TextField fx:id="searchField" layoutX="658.0" layoutY="128.0" prefHeight="37.0" prefWidth="192.0"
+                           promptText="Рейс или направление" AnchorPane.rightAnchor="183.0"
                            AnchorPane.topAnchor="125.0">
                     <font>
-                        <Font size="16.0"/>
+                        <Font name="Chalkboard SE Light" size="16.0"/>
                     </font>
                 </TextField>
             </children>
@@ -83,13 +84,14 @@
                                             xmlns:fx="http://javafx.com/fxml/1">
                                     <children>
                                         <GridPane layoutX="7.0" layoutY="173.0" prefHeight="302.0" prefWidth="548.0"
+                                                  stylesheets="@../resources/styles/MainStyle.css"
                                                   AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
                                                   AnchorPane.topAnchor="100.0">
                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.90399169921875"
-                                                                   minWidth="10.0" prefWidth="271.90399169921875"/>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.15252685546875"
-                                                                   minWidth="10.0" prefWidth="209.59600830078125"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.96142578125"
+                                                                   minWidth="10.0" prefWidth="285.05938720703125"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.8961181640625"
+                                                                   minWidth="10.0" prefWidth="262.94061279296875"/>
                                             </columnConstraints>
                                             <rowConstraints>
                                                 <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0"
@@ -126,7 +128,7 @@
                                                         <Font size="18.0"/>
                                                     </font>
                                                 </Label>
-                                                <Label prefHeight="91.0" prefWidth="231.0"
+                                                <Label prefHeight="50.0" prefWidth="283.0"
                                                        text="Дата и время отправления" GridPane.rowIndex="4">
                                                     <font>
                                                         <Font size="18.0"/>
@@ -205,12 +207,13 @@
                                                 <Font size="22.0"/>
                                             </font>
                                         </Label>
-                                        <GridPane layoutX="18.0" layoutY="458.0" prefHeight="170.0" prefWidth="393.0">
+                                        <GridPane layoutX="18.0" layoutY="458.0" prefHeight="170.0" prefWidth="393.0"
+                                                  stylesheets="@../resources/styles/MainStyle.css">
                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.41900634765625"
-                                                                   minWidth="10.0" prefWidth="163.51409912109375"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.9495849609375"
+                                                                   minWidth="10.0" prefWidth="197.9495849609375"/>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.7147216796875"
-                                                                   minWidth="10.0" prefWidth="229.48590087890625"/>
+                                                                   minWidth="10.0" prefWidth="195.5504150390625"/>
                                             </columnConstraints>
                                             <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
@@ -219,9 +222,9 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                                             </rowConstraints>
                                             <children>
-                                                <Label prefWidth="114.0" text="Авиакомпания">
+                                                <Label prefHeight="33.0" prefWidth="154.0" text="Авиакомпания">
                                                     <font>
-                                                        <Font size="16.0"/>
+                                                        <Font size="1.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label text="Телефон" GridPane.rowIndex="1">

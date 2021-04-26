@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="program.controllers.AirlineController">
     <bottom>
-        <TableView fx:id="airlineTableView" prefHeight="700.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+        <TableView fx:id="airlineTableView" maxHeight="700.0" maxWidth="1200.0" prefHeight="700.0" prefWidth="1200.0"
+                   BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="airlineCodeColumn" prefWidth="102.0" text="Код"/>
-                <TableColumn fx:id="airlineNameColumn" prefWidth="303.0" text="Авиакомпания"/>
-                <TableColumn fx:id="websiteColumn" prefWidth="116.0" text="Сайт"/>
-                <TableColumn fx:id="telephoneColumn" prefWidth="120.0" text="Телефон"/>
-                <TableColumn fx:id="emailColumn" prefWidth="121.0" text="Email"/>
+                <TableColumn fx:id="airlineCodeColumn" maxWidth="150.0" minWidth="90.0" prefWidth="150.0" text="Код"/>
+                <TableColumn fx:id="airlineNameColumn" maxWidth="280.0" minWidth="100.0" prefWidth="200.0"
+                             text="Авиакомпания"/>
+                <TableColumn fx:id="websiteColumn" maxWidth="300.0" minWidth="100.0" prefWidth="300.0" text="Сайт"/>
+                <TableColumn fx:id="telephoneColumn" maxWidth="300.0" minWidth="100.0" prefWidth="200.0"
+                             text="Телефон"/>
+                <TableColumn fx:id="emailColumn" maxWidth="350.0" prefWidth="350.0" resizable="false" text="Email"/>
             </columns>
-            <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-            </columnResizePolicy>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
         </TableView>
     </bottom>
     <top>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="292.0" layoutY="89.0" mnemonicParsing="false" onAction="#handlerAirlinesBtn"
-                        prefHeight="40.0" prefWidth="122.0" text="Показать" AnchorPane.bottomAnchor="30.0"
+                <Button alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="292.0" layoutY="89.0"
+                        mnemonicParsing="false" onAction="#handlerAirlinesBtn" prefHeight="40.0" prefWidth="122.0"
+                        stylesheets="@../resources/styles/MainStyle.css" text="Показать" AnchorPane.bottomAnchor="30.0"
                         AnchorPane.leftAnchor="315.0">
                     <font>
                         <Font size="20.0"/>

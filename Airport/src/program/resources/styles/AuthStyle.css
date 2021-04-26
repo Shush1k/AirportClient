@@ -1,0 +1,21 @@
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+
+.button {
+    -fx-border-color: grey;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+
+.label {
+    -fx-font-size: 16pt;
+}
