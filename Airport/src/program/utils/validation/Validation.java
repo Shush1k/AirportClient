@@ -24,6 +24,9 @@ public class Validation {
             Alerts.showNoValidStdRegex(stage, "Фамилия");
         else if (!RegexValidation.checkStandard(model.loginField.getText()))
             Alerts.showNoValidStdRegex(stage, "Логин");
+        if (!RegexValidation.checkNameRu(model.firstNameField.getText())
+                || !RegexValidation.checkNameRu(model.lastNameField.getText()))
+            Alerts.showNoValidFirstLastName(stage);
         else if (!RegexValidation.checkPhoneNumber(model.phoneField.getText()))
             Alerts.showNoValidPhoneNumber(stage);
         else
@@ -43,6 +46,9 @@ public class Validation {
             Alerts.showNoValidStdRegex(stage, "Имя");
         else if (!RegexValidation.checkStandard(model.lastNameField.getText()))
             Alerts.showNoValidStdRegex(stage, "Фамилия");
+        if (!RegexValidation.checkNameRu(model.firstNameField.getText())
+                || !RegexValidation.checkNameRu(model.lastNameField.getText()))
+            Alerts.showNoValidFirstLastName(stage);
         else if (!RegexValidation.checkStandard(model.loginField.getText()))
             Alerts.showNoValidStdRegex(stage, "Логин");
         else if (!RegexValidation.checkPassword(model.passwordField.getText()))

@@ -167,6 +167,21 @@ public abstract class Alerts {
     }
 
     /**
+     * Неправильные символы для имени/фамилии
+     *
+     * @param stage текущее окно
+     */
+    public static void showNoValidFirstLastName(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(stage);
+        alert.setTitle("Ошибка ввода");
+        alert.setHeaderText("Введите корректное имя и фамилию");
+        alert.setContentText("Имя или фамилия должны содержать буквы русского алфавита");
+        alert.showAndWait();
+    }
+
+
+    /**
      * Ошибка формата почты
      *
      * @param stage - текущее окно
