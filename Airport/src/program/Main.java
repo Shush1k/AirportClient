@@ -96,6 +96,7 @@ public class Main extends Application {
             Scene scene = new Scene(mainLayout);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
+            primaryStage.centerOnScreen();
 
             MainLayoutController mainLayoutController = loader.getController();
             mainLayoutController.setApi(api);

@@ -1,0 +1,25 @@
+.button {
+    -fx-border-color: white;
+    -fx-background-color: #b5deff;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-font-family: "Chalkboard SE";
+    -fx-font-size: 14pt;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-border-color: grey;
+}
+.button:pressed {
+    -fx-border-color: grey;
+    -fx-background-color: grey;
+}
+.label {
+    -fx-font-size: 18pt;
+}
+
+.text-field {
+    -fx-font-size: 16pt;
+}
