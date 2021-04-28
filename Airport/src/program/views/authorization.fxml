@@ -14,11 +14,10 @@
             </font>
         </Label>
         <GridPane layoutX="67.0" layoutY="3.0" prefHeight="110.0" prefWidth="283.0" AnchorPane.bottomAnchor="150.0"
-                  AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="140.0">
+                  AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="140.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="77.39993286132812"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.23281860351562" minWidth="10.0"
-                                   prefWidth="206.10006713867188"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="82.5"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.23281860351562" minWidth="10.0" prefWidth="200.5"/>
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES"/>
@@ -35,12 +34,14 @@
                         <Font size="18.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="loginField" GridPane.columnIndex="1">
+                <TextField fx:id="loginField" minHeight="35.0" minWidth="200.0" prefHeight="15.0" prefWidth="200.0"
+                           GridPane.columnIndex="1">
                     <GridPane.margin>
                         <Insets bottom="10.0"/>
                     </GridPane.margin>
                 </TextField>
-                <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <PasswordField fx:id="passwordField" minHeight="35.0" minWidth="200.0" prefHeight="15.0"
+                               prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets bottom="10.0"/>
                     </GridPane.margin>
