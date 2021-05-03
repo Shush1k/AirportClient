@@ -27,19 +27,18 @@ public class AuthorizationController extends SignInModel {
      */
     @FXML
     private void handlerSignInBtn() {
-//        if (Validation.isValidAuthorization(this, AuthorizationStage)) {
-//            if (Validation.isValidAuthorizationRegex(this, AuthorizationStage)) {
-                /*TODO: POST запрос на авторизацию*/
-//                boolean authResult = main.getApi().checkUserExists(loginField.getText(), passwordField.getText());
-//                if (authResult){
+        if (Validation.isValidAuthorization(this, AuthorizationStage)) {
+            if (Validation.isValidAuthorizationRegex(this, AuthorizationStage)) {
+                boolean authResult = main.getApi().checkUserExists(loginField.getText(), passwordField.getText());
+                if (authResult){
                     main.MainLayout();
-//                }
-//                else {
-//                    Alerts.showNoValidSignIn(AuthorizationStage);
-//                }
+                }
+                else {
+                    Alerts.showNoValidSignIn(AuthorizationStage);
+                }
 
-//            }
-//        }
+            }
+        }
     }
 
     /**
